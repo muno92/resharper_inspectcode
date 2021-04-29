@@ -25,7 +25,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.2.7"
+    "@actions/core": "^1.2.7",
+    "htmlparser2": "^6.1.0"
   },
   "devDependencies": {
     "@types/jest": "^26.0.23",
