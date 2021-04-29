@@ -1,89 +1,118 @@
 [
   {
-    "TypeId": "RedundantUsingDirective"
+    "TypeId": "RedundantUsingDirective",
+    "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Controllers/WeatherForecastController.cs"
   },
   {
-    "TypeId": "UnusedField.Compiler"
+    "TypeId": "UnusedField.Compiler",
+    "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Controllers/WeatherForecastController.cs"
   },
   {
-    "TypeId": "MemberCanBePrivate.Global"
+    "TypeId": "MemberCanBePrivate.Global",
+    "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Controllers/WeatherForecastController.cs"
   },
   {
-    "TypeId": "NotAccessedField.Global"
+    "TypeId": "NotAccessedField.Global",
+    "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Controllers/WeatherForecastController.cs"
   },
   {
-    "TypeId": "NotAccessedField.Local"
+    "TypeId": "NotAccessedField.Local",
+    "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Controllers/WeatherForecastController.cs"
   },
   {
-    "TypeId": "NotAccessedVariable.Compiler"
+    "TypeId": "NotAccessedVariable.Compiler",
+    "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Controllers/WeatherForecastController.cs"
   },
   {
-    "TypeId": "RedundantUsingDirective"
+    "TypeId": "RedundantUsingDirective",
+    "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Program.cs"
   },
   {
-    "TypeId": "RedundantUsingDirective"
+    "TypeId": "RedundantUsingDirective",
+    "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Program.cs"
   },
   {
-    "TypeId": "RedundantUsingDirective"
+    "TypeId": "RedundantUsingDirective",
+    "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Program.cs"
   },
   {
-    "TypeId": "RedundantUsingDirective"
+    "TypeId": "RedundantUsingDirective",
+    "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Program.cs"
   },
   {
-    "TypeId": "RedundantUsingDirective"
+    "TypeId": "RedundantUsingDirective",
+    "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Program.cs"
   },
   {
-    "TypeId": "RedundantUsingDirective"
+    "TypeId": "RedundantUsingDirective",
+    "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Program.cs"
   },
   {
-    "TypeId": "ClassNeverInstantiated.Global"
+    "TypeId": "ClassNeverInstantiated.Global",
+    "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Program.cs"
   },
   {
-    "TypeId": "MemberCanBePrivate.Global"
+    "TypeId": "MemberCanBePrivate.Global",
+    "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Program.cs"
   },
   {
-    "TypeId": "RedundantUsingDirective"
+    "TypeId": "RedundantUsingDirective",
+    "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Startup.cs"
   },
   {
-    "TypeId": "RedundantUsingDirective"
+    "TypeId": "RedundantUsingDirective",
+    "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Startup.cs"
   },
   {
-    "TypeId": "RedundantUsingDirective"
+    "TypeId": "RedundantUsingDirective",
+    "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Startup.cs"
   },
   {
-    "TypeId": "RedundantUsingDirective"
+    "TypeId": "RedundantUsingDirective",
+    "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Startup.cs"
   },
   {
-    "TypeId": "RedundantUsingDirective"
+    "TypeId": "RedundantUsingDirective",
+    "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Startup.cs"
   },
   {
-    "TypeId": "RedundantUsingDirective"
+    "TypeId": "RedundantUsingDirective",
+    "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Startup.cs"
   },
   {
-    "TypeId": "RedundantUsingDirective"
+    "TypeId": "RedundantUsingDirective",
+    "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Startup.cs"
   },
   {
-    "TypeId": "MemberCanBePrivate.Global"
+    "TypeId": "MemberCanBePrivate.Global",
+    "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Startup.cs"
   },
   {
-    "TypeId": "UnusedAutoPropertyAccessor.Global"
+    "TypeId": "UnusedAutoPropertyAccessor.Global",
+    "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Startup.cs"
   },
   {
-    "TypeId": "UnusedAutoPropertyAccessor.Global"
+    "TypeId": "UnusedAutoPropertyAccessor.Global",
+    "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/WeatherForecast.cs"
   },
   {
-    "TypeId": "PropertyCanBeMadeInitOnly.Global"
+    "TypeId": "PropertyCanBeMadeInitOnly.Global",
+    "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/WeatherForecast.cs"
   },
   {
-    "TypeId": "PropertyCanBeMadeInitOnly.Global"
+    "TypeId": "PropertyCanBeMadeInitOnly.Global",
+    "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/WeatherForecast.cs"
   },
   {
-    "TypeId": "UnusedMember.Global"
+    "TypeId": "UnusedMember.Global",
+    "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/WeatherForecast.cs"
   },
   {
-    "TypeId": "UnusedAutoPropertyAccessor.Global"
+    "TypeId": "UnusedAutoPropertyAccessor.Global",
+    "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/WeatherForecast.cs"
   },
   {
-    "TypeId": "PropertyCanBeMadeInitOnly.Global"
+    "TypeId": "PropertyCanBeMadeInitOnly.Global",
+    "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/WeatherForecast.cs"
   }
 ]

@@ -23,11 +23,15 @@ export class Report {
       const typeId = issue.attributes.find(
         a => a.name.toLowerCase() === 'typeid'
       )
-      if (!typeId) {
+      const filePath = issue.attributes.find(
+        a => a.name.toLowerCase() === 'file'
+      )
+      if (!typeId || !filePath) {
         continue
       }
       this.issues.push({
-        TypeId: typeId.value
+        TypeId: typeId.value,
+        FilePath: filePath.value
       })
     }
   }
