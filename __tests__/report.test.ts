@@ -1,5 +1,6 @@
 import {Report} from '../src/report'
 import path from 'path'
+import failureReportIssues from '../__fixtures__/failure_report_issues.json'
 
 test('success report has no issue', () => {
   const report = new Report(path.join(__dirname, 'inspection_reports', 'success.xml'))
@@ -8,5 +9,5 @@ test('success report has no issue', () => {
 
 test('failure report has issues', () => {
   const report = new Report(path.join(__dirname, 'inspection_reports', 'failure.xml'))
-  expect(report.issues.length).toBe(29)
+  expect(report.issues).toIncludeSameMembers(failureReportIssues)
 })

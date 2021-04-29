@@ -1,0 +1,89 @@
+[
+  {
+    "TypeId": "RedundantUsingDirective"
+  },
+  {
+    "TypeId": "UnusedField.Compiler"
+  },
+  {
+    "TypeId": "MemberCanBePrivate.Global"
+  },
+  {
+    "TypeId": "NotAccessedField.Global"
+  },
+  {
+    "TypeId": "NotAccessedField.Local"
+  },
+  {
+    "TypeId": "NotAccessedVariable.Compiler"
+  },
+  {
+    "TypeId": "RedundantUsingDirective"
+  },
+  {
+    "TypeId": "RedundantUsingDirective"
+  },
+  {
+    "TypeId": "RedundantUsingDirective"
+  },
+  {
+    "TypeId": "RedundantUsingDirective"
+  },
+  {
+    "TypeId": "RedundantUsingDirective"
+  },
+  {
+    "TypeId": "RedundantUsingDirective"
+  },
+  {
+    "TypeId": "ClassNeverInstantiated.Global"
+  },
+  {
+    "TypeId": "MemberCanBePrivate.Global"
+  },
+  {
+    "TypeId": "RedundantUsingDirective"
+  },
+  {
+    "TypeId": "RedundantUsingDirective"
+  },
+  {
+    "TypeId": "RedundantUsingDirective"
+  },
+  {
+    "TypeId": "RedundantUsingDirective"
+  },
+  {
+    "TypeId": "RedundantUsingDirective"
+  },
+  {
+    "TypeId": "RedundantUsingDirective"
+  },
+  {
+    "TypeId": "RedundantUsingDirective"
+  },
+  {
+    "TypeId": "MemberCanBePrivate.Global"
+  },
+  {
+    "TypeId": "UnusedAutoPropertyAccessor.Global"
+  },
+  {
+    "TypeId": "UnusedAutoPropertyAccessor.Global"
+  },
+  {
+    "TypeId": "PropertyCanBeMadeInitOnly.Global"
+  },
+  {
+    "TypeId": "PropertyCanBeMadeInitOnly.Global"
+  },
+  {
+    "TypeId": "UnusedMember.Global"
+  },
+  {
+    "TypeId": "UnusedAutoPropertyAccessor.Global"
+  },
+  {
+    "TypeId": "PropertyCanBeMadeInitOnly.Global"
+  }
+]
