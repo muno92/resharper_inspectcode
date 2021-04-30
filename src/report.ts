@@ -19,20 +19,41 @@ export class Report {
 
     const xml = htmlparser2.parseDocument(file)
     const issueTags = htmlparser2.DomUtils.getElementsByTagName('issue', xml)
-    for (const issue of issueTags) {
-      const typeId = issue.attributes.find(
+    for (const issueTag of issueTags) {
+      const typeId = issueTag.attributes.find(
         a => a.name.toLowerCase() === 'typeid'
       )
-      const filePath = issue.attributes.find(
+      const filePath = issueTag.attributes.find(
         a => a.name.toLowerCase() === 'file'
       )
-      if (!typeId || !filePath) {
+      const message = issueTag.attributes.find(
+        a => a.name.toLowerCase() === 'message'
+      )
+
+      if (!typeId || !filePath || !message) {
         continue
       }
-      this.issues.push({
+
+      const offset =
+        issueTag.attributes.find(a => a.name.toLowerCase() === 'offset')
+          ?.value ?? '0-0'
+      const column = parseInt(offset.substring(0, offset.indexOf('-')))
+
+      const issue: Issue = {
         TypeId: typeId.value,
-        FilePath: filePath.value
-      })
+        FilePath: filePath.value,
+        Column: column,
+        Message: message.value
+      }
+
+      const line = issueTag.attributes.find(
+        a => a.name.toLowerCase() === 'line'
+      )
+      if (line) {
+        issue.Line = parseInt(line.value)
+      }
+
+      this.issues.push(issue)
     }
   }
 }
