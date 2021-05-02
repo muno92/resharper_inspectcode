@@ -4,200 +4,229 @@
     "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Controllers/WeatherForecastController.cs",
     "Column": 67,
     "Line": 4,
-    "Message": "Using directive is not required by the code and can be safely removed"
+    "Message": "Using directive is not required by the code and can be safely removed",
+    "Severity": "warning"
   },
   {
     "TypeId": "UnusedField.Compiler",
     "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Controllers/WeatherForecastController.cs",
     "Column": 347,
     "Line": 14,
-    "Message": "Field 'UnusedField' is never used"
+    "Message": "Field 'UnusedField' is never used",
+    "Severity": "warning"
   },
   {
     "TypeId": "MemberCanBePrivate.Global",
     "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Controllers/WeatherForecastController.cs",
     "Column": 369,
     "Line": 16,
-    "Message": "Field 'TooOpenField' can be made private"
+    "Message": "Field 'TooOpenField' can be made private",
+    "Severity": "info"
   },
   {
     "TypeId": "NotAccessedField.Global",
     "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Controllers/WeatherForecastController.cs",
     "Column": 383,
     "Line": 16,
-    "Message": "Field 'TooOpenField' is assigned but its value is never used"
+    "Message": "Field 'TooOpenField' is assigned but its value is never used",
+    "Severity": "info"
   },
   {
     "TypeId": "NotAccessedField.Local",
     "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Controllers/WeatherForecastController.cs",
     "Column": 658,
     "Line": 23,
-    "Message": "Field '_logger' is assigned but its value is never used"
+    "Message": "Field '_logger' is assigned but its value is never used",
+    "Severity": "warning"
   },
   {
     "TypeId": "NotAccessedVariable.Compiler",
     "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Controllers/WeatherForecastController.cs",
     "Column": 871,
     "Line": 29,
-    "Message": "Local variable 'unusedVariable' is only assigned but its value is never used"
+    "Message": "Local variable 'unusedVariable' is only assigned but its value is never used",
+    "Severity": "warning"
   },
   {
     "TypeId": "RedundantUsingDirective",
     "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Program.cs",
     "Column": 0,
-    "Message": "Using directive is not required by the code and can be safely removed"
+    "Message": "Using directive is not required by the code and can be safely removed",
+    "Severity": "warning"
   },
   {
     "TypeId": "RedundantUsingDirective",
     "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Program.cs",
     "Column": 14,
     "Line": 2,
-    "Message": "Using directive is not required by the code and can be safely removed"
+    "Message": "Using directive is not required by the code and can be safely removed",
+    "Severity": "warning"
   },
   {
     "TypeId": "RedundantUsingDirective",
     "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Program.cs",
     "Column": 48,
     "Line": 3,
-    "Message": "Using directive is not required by the code and can be safely removed"
+    "Message": "Using directive is not required by the code and can be safely removed",
+    "Severity": "warning"
   },
   {
     "TypeId": "RedundantUsingDirective",
     "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Program.cs",
     "Column": 67,
     "Line": 4,
-    "Message": "Using directive is not required by the code and can be safely removed"
+    "Message": "Using directive is not required by the code and can be safely removed",
+    "Severity": "warning"
   },
   {
     "TypeId": "RedundantUsingDirective",
     "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Program.cs",
     "Column": 133,
     "Line": 6,
-    "Message": "Using directive is not required by the code and can be safely removed"
+    "Message": "Using directive is not required by the code and can be safely removed",
+    "Severity": "warning"
   },
   {
     "TypeId": "RedundantUsingDirective",
     "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Program.cs",
     "Column": 211,
     "Line": 8,
-    "Message": "Using directive is not required by the code and can be safely removed"
+    "Message": "Using directive is not required by the code and can be safely removed",
+    "Severity": "warning"
   },
   {
     "TypeId": "ClassNeverInstantiated.Global",
     "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Program.cs",
     "Column": 300,
     "Line": 12,
-    "Message": "Class 'Program' is never instantiated"
+    "Message": "Class 'Program' is never instantiated",
+    "Severity": "info"
   },
   {
     "TypeId": "MemberCanBePrivate.Global",
     "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Program.cs",
     "Column": 441,
     "Line": 19,
-    "Message": "Method 'CreateHostBuilder' can be made private"
+    "Message": "Method 'CreateHostBuilder' can be made private",
+    "Severity": "info"
   },
   {
     "TypeId": "RedundantUsingDirective",
     "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Startup.cs",
     "Column": 0,
-    "Message": "Using directive is not required by the code and can be safely removed"
+    "Message": "Using directive is not required by the code and can be safely removed",
+    "Severity": "warning"
   },
   {
     "TypeId": "RedundantUsingDirective",
     "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Startup.cs",
     "Column": 14,
     "Line": 2,
-    "Message": "Using directive is not required by the code and can be safely removed"
+    "Message": "Using directive is not required by the code and can be safely removed",
+    "Severity": "warning"
   },
   {
     "TypeId": "RedundantUsingDirective",
     "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Startup.cs",
     "Column": 48,
     "Line": 3,
-    "Message": "Using directive is not required by the code and can be safely removed"
+    "Message": "Using directive is not required by the code and can be safely removed",
+    "Severity": "warning"
   },
   {
     "TypeId": "RedundantUsingDirective",
     "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Startup.cs",
     "Column": 67,
     "Line": 4,
-    "Message": "Using directive is not required by the code and can be safely removed"
+    "Message": "Using directive is not required by the code and can be safely removed",
+    "Severity": "warning"
   },
   {
     "TypeId": "RedundantUsingDirective",
     "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Startup.cs",
     "Column": 169,
     "Line": 7,
-    "Message": "Using directive is not required by the code and can be safely removed"
+    "Message": "Using directive is not required by the code and can be safely removed",
+    "Severity": "warning"
   },
   {
     "TypeId": "RedundantUsingDirective",
     "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Startup.cs",
     "Column": 209,
     "Line": 8,
-    "Message": "Using directive is not required by the code and can be safely removed"
+    "Message": "Using directive is not required by the code and can be safely removed",
+    "Severity": "warning"
   },
   {
     "TypeId": "RedundantUsingDirective",
     "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Startup.cs",
     "Column": 367,
     "Line": 12,
-    "Message": "Using directive is not required by the code and can be safely removed"
+    "Message": "Using directive is not required by the code and can be safely removed",
+    "Severity": "warning"
   },
   {
     "TypeId": "MemberCanBePrivate.Global",
     "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Startup.cs",
     "Column": 595,
     "Line": 23,
-    "Message": "Property 'Configuration' can be made private"
+    "Message": "Property 'Configuration' can be made private",
+    "Severity": "info"
   },
   {
     "TypeId": "UnusedAutoPropertyAccessor.Global",
     "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Startup.cs",
     "Column": 633,
     "Line": 23,
-    "Message": "Auto-property accessor is never used"
+    "Message": "Auto-property accessor is never used",
+    "Severity": "warning"
   },
   {
     "TypeId": "UnusedAutoPropertyAccessor.Global",
     "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/WeatherForecast.cs",
     "Column": 120,
     "Line": 7,
-    "Message": "Auto-property accessor is never used"
+    "Message": "Auto-property accessor is never used",
+    "Severity": "warning"
   },
   {
     "TypeId": "PropertyCanBeMadeInitOnly.Global",
     "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/WeatherForecast.cs",
     "Column": 125,
     "Line": 7,
-    "Message": "Property can be made init-only"
+    "Message": "Property can be made init-only",
+    "Severity": "info"
   },
   {
     "TypeId": "PropertyCanBeMadeInitOnly.Global",
     "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/WeatherForecast.cs",
     "Column": 172,
     "Line": 9,
-    "Message": "Property can be made init-only"
+    "Message": "Property can be made init-only",
+    "Severity": "info"
   },
   {
     "TypeId": "UnusedMember.Global",
     "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/WeatherForecast.cs",
     "Column": 199,
     "Line": 11,
-    "Message": "Property 'TemperatureF' is never used"
+    "Message": "Property 'TemperatureF' is never used",
+    "Severity": "info"
   },
   {
     "TypeId": "UnusedAutoPropertyAccessor.Global",
     "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/WeatherForecast.cs",
     "Column": 284,
     "Line": 13,
-    "Message": "Auto-property accessor is never used"
+    "Message": "Auto-property accessor is never used",
+    "Severity": "warning"
   },
   {
     "TypeId": "PropertyCanBeMadeInitOnly.Global",
     "FilePath": "/home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/WeatherForecast.cs",
     "Column": 289,
     "Line": 13,
-    "Message": "Property can be made init-only"
+    "Message": "Property can be made init-only",
+    "Severity": "info"
   }
 ]

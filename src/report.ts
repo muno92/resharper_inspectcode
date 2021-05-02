@@ -1,4 +1,4 @@
-import {Issue} from './type'
+import {Issue, IssueTypes, Severity} from './type'
 import * as fs from 'fs'
 import * as core from '@actions/core'
 import * as htmlparser2 from 'htmlparser2'
@@ -19,16 +19,17 @@ export class Report {
     }
 
     const xml = htmlparser2.parseDocument(file)
-    this.issues = Report.extractIssues(xml)
+    const issueTypes = this.extractIssueTypes(xml)
+    this.issues = this.extractIssues(xml, issueTypes)
   }
 
-  private static extractIssues(xml: Node): Issue[] {
+  private extractIssues(xml: Node, issueTypes: IssueTypes): Issue[] {
     return htmlparser2.DomUtils.getElementsByTagName('issue', xml)
-      .map(i => Report.parseIssue(i))
+      .map(i => this.parseIssue(i, issueTypes))
       .filter((issue): issue is NonNullable<Issue> => issue != null)
   }
 
-  private static parseIssue(issueTag: Element): Issue | null {
+  private parseIssue(issueTag: Element, issueTypes: IssueTypes): Issue | null {
     const typeId = issueTag.attributes.find(
       a => a.name.toLowerCase() === 'typeid'
     )
@@ -52,7 +53,8 @@ export class Report {
       TypeId: typeId.value,
       FilePath: filePath.value,
       Column: column,
-      Message: message.value
+      Message: message.value,
+      Severity: issueTypes[typeId.value]
     }
 
     const line = issueTag.attributes.find(a => a.name.toLowerCase() === 'line')
@@ -61,5 +63,41 @@ export class Report {
     }
 
     return issue
+  }
+
+  private extractIssueTypes(xml: Node): IssueTypes {
+    const issueTypes: IssueTypes = {}
+
+    const convertSeverity = (severity: string): Severity => {
+      switch (severity) {
+        case 'suggestion':
+          return 'info'
+        case 'warning':
+          return severity
+        default:
+          return 'error' //In Problem Matchers, default severity is error
+      }
+    }
+
+    const issueTypeTags = htmlparser2.DomUtils.getElementsByTagName(
+      'issuetype',
+      xml
+    )
+    for (const issueType of issueTypeTags) {
+      const id = issueType.attributes.find(a => a.name.toLowerCase() === 'id')
+      if (!id) {
+        continue
+      }
+      if (issueTypes[id.value]) {
+        continue
+      }
+      issueTypes[id.value] = convertSeverity(
+        issueType.attributes
+          .find(a => a.name.toLowerCase() === 'severity')
+          ?.value.toLowerCase() ?? 'error'
+      )
+    }
+
+    return issueTypes
   }
 }
