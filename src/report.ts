@@ -2,7 +2,7 @@ import {Issue} from './type'
 import * as fs from 'fs'
 import * as core from '@actions/core'
 import * as htmlparser2 from 'htmlparser2'
-import {Element} from 'domhandler'
+import {Element, Node} from 'domhandler'
 
 export class Report {
   issues: Issue[]
@@ -19,16 +19,13 @@ export class Report {
     }
 
     const xml = htmlparser2.parseDocument(file)
-    const issueTags = htmlparser2.DomUtils.getElementsByTagName('issue', xml)
-    for (const issueTag of issueTags) {
-      const issue = Report.parseIssue(issueTag)
+    this.issues = Report.extractIssues(xml)
+  }
 
-      if (!issue) {
-        continue
-      }
-
-      this.issues.push(issue)
-    }
+  private static extractIssues(xml: Node): Issue[] {
+    return htmlparser2.DomUtils.getElementsByTagName('issue', xml)
+      .map(i => Report.parseIssue(i))
+      .filter((issue): issue is NonNullable<Issue> => issue != null)
   }
 
   private static parseIssue(issueTag: Element): Issue | null {
