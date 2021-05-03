@@ -49,13 +49,13 @@ export class Report {
       '0-0'
     const column = parseInt(offset.substring(0, offset.indexOf('-')))
 
-    const issue: Issue = {
-      TypeId: typeId.value,
-      FilePath: filePath.value,
-      Column: column,
-      Message: message.value,
-      Severity: issueTypes[typeId.value]
-    }
+    const issue = new Issue(
+      typeId.value,
+      filePath.value,
+      column,
+      message.value,
+      issueTypes[typeId.value]
+    )
 
     const line = issueTag.attributes.find(a => a.name.toLowerCase() === 'line')
     if (line) {
