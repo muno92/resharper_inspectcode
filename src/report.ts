@@ -1,4 +1,4 @@
-import {Issue, IssueTypes, Severity} from './type'
+import {Issue, IssueTypes, Severity} from './issue'
 import * as fs from 'fs'
 import * as core from '@actions/core'
 import * as htmlparser2 from 'htmlparser2'

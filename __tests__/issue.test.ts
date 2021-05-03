@@ -1,4 +1,4 @@
-import {Issue} from '../src/type'
+import {Issue} from '../src/issue'
 
 test('output message with line and column number', () => {
   const issue = new Issue(
