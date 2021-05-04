@@ -1,16 +1,26 @@
 import * as core from '@actions/core'
-import {wait} from './wait'
+import * as exec from '@actions/exec'
+import {Installer} from './installer'
+import path from 'path'
+import {Report} from './report'
 
 async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
-    core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
+    const installer = new Installer()
+    installer.install()
 
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
+    const cwd = process.cwd()
 
-    core.setOutput('time', new Date().toTimeString())
+    const solutionPath: string = path.join(cwd, core.getInput('solutionPath'))
+    const outputPath = path.join(cwd, 'result.xml')
+    await exec.exec(`jb inspect code -o ${outputPath} -a ${solutionPath}`)
+
+    const matcherPath = path.join(__dirname, '..', '.github', 'inspection.json')
+    // eslint-disable-next-line no-console
+    console.log(`##[add-matcher]${matcherPath}`)
+
+    const report = new Report(outputPath)
+    report.output()
   } catch (error) {
     core.setFailed(error.message)
   }

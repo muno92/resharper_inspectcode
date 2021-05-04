@@ -1,0 +1,17 @@
+{
+  "problemMatcher": [
+    {
+      "owner": "resharper_inspection",
+      "pattern": [
+        {
+          "regexp": "^\\[(info|warning|error)] \"([^\"]+)\" on ([^(]+)(\\((\\d+),(\\d+)\\))?",
+          "severity": 1,
+          "message": 2,
+          "file": 3,
+          "column": 5,
+          "line": 6
+        }
+      ]
+    }
+  ]
+}

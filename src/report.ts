@@ -100,4 +100,18 @@ export class Report {
 
     return issueTypes
   }
+
+  output(): void {
+    for (const issue of this.issues) {
+      if (issue.Severity === 'info') {
+        core.info(issue.output())
+        continue
+      }
+      if (issue.Severity === 'warning') {
+        core.warning(issue.output())
+        continue
+      }
+      core.error(issue.output())
+    }
+  }
 }
