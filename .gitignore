@@ -99,3 +99,7 @@ __tests__/runner/*
 lib/**/*
 
 .idea/
+
+# .NET
+obj/
+bin/
