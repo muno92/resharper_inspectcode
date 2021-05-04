@@ -17,11 +17,16 @@ jobs:
           npm run all
   test: # make sure the action works on a clean machine without building
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        operating-system: [ ubuntu-latest, windows-latest, macOS-latest ]
+        dotnet-version: [ '3.0', '3.1', '5.0' ]
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '3.1.x'
+          dotnet-version: ${{ matrix.dotnet-version }}
       - uses: ./
         with:
           solutionPath: TestSolution/TestSolution.sln
