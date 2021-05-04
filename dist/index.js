@@ -31,7 +31,7 @@ const exec = __importStar(__nccwpck_require__(514));
 class Installer {
     //TODO check dotnet sdk in constructor
     install() {
-        exec.exec('dotnet add package JetBrains.ReSharper.CommandLineTools');
+        exec.exec('dotnet tool install -g JetBrains.ReSharper.GlobalTools');
     }
 }
 exports.Installer = Installer;
