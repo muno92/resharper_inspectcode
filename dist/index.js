@@ -25,13 +25,24 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Installer = void 0;
 const exec = __importStar(__nccwpck_require__(514));
 class Installer {
     //TODO check dotnet sdk in constructor
     install() {
-        exec.exec('dotnet tool install -g JetBrains.ReSharper.GlobalTools');
+        return __awaiter(this, void 0, void 0, function* () {
+            return exec.exec('dotnet tool install -g JetBrains.ReSharper.GlobalTools');
+        });
     }
 }
 exports.Installer = Installer;
@@ -108,7 +119,7 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const installer = new installer_1.Installer();
-            installer.install();
+            yield installer.install();
             const cwd = process.cwd();
             const solutionPath = path_1.default.join(cwd, core.getInput('solutionPath'));
             const outputPath = path_1.default.join(cwd, 'result.xml');

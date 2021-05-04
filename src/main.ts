@@ -7,7 +7,7 @@ import {Report} from './report'
 async function run(): Promise<void> {
   try {
     const installer = new Installer()
-    installer.install()
+    await installer.install()
 
     const cwd = process.cwd()
 
