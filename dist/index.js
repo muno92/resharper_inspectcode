@@ -123,7 +123,7 @@ function run() {
             const cwd = process.cwd();
             const solutionPath = path_1.default.join(cwd, core.getInput('solutionPath'));
             const outputPath = path_1.default.join(cwd, 'result.xml');
-            yield exec.exec(`jb inspectcode -o ${outputPath} -a ${solutionPath}`);
+            yield exec.exec(`jb inspectcode -o=${outputPath} -a ${solutionPath}`);
             const matcherPath = path_1.default.join(__dirname, '..', '.github', 'inspection.json');
             // eslint-disable-next-line no-console
             console.log(`##[add-matcher]${matcherPath}`);

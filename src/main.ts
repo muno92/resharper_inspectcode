@@ -13,7 +13,7 @@ async function run(): Promise<void> {
 
     const solutionPath: string = path.join(cwd, core.getInput('solutionPath'))
     const outputPath = path.join(cwd, 'result.xml')
-    await exec.exec(`jb inspectcode -o ${outputPath} -a ${solutionPath}`)
+    await exec.exec(`jb inspectcode -o=${outputPath} -a ${solutionPath}`)
 
     const matcherPath = path.join(__dirname, '..', '.github', 'inspection.json')
     // eslint-disable-next-line no-console
