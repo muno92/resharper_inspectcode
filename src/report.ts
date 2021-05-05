@@ -70,10 +70,10 @@ export class Report {
 
     const convertSeverity = (severity: string): Severity => {
       switch (severity) {
+        case 'hint':
         case 'suggestion':
-          return 'info'
         case 'warning':
-          return severity
+          return 'warning' //Severity info is not supported
         default:
           return 'error' //In Problem Matchers, default severity is error
       }
@@ -103,15 +103,7 @@ export class Report {
 
   output(): void {
     for (const issue of this.issues) {
-      if (issue.Severity === 'info') {
-        core.info(issue.output())
-        continue
-      }
-      if (issue.Severity === 'warning') {
-        core.warning(issue.output())
-        continue
-      }
-      core.error(issue.output())
+      core.info(issue.output())
     }
   }
 }
