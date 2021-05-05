@@ -8,8 +8,8 @@
           "severity": 1,
           "message": 2,
           "file": 3,
-          "column": 5,
-          "line": 6
+          "line": 5,
+          "column": 6
         }
       ]
     }
