@@ -5,6 +5,10 @@ inputs:
   solutionPath:
     required: true
     description: 'input solution file path here'
+  failOnIssue:
+    required: false
+    default: '1'
+    description:  'action fail when issue exists'
 runs:
   using: 'node12'
   main: 'dist/index.js'

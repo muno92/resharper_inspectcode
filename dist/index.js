@@ -129,7 +129,8 @@ function run() {
             console.log(`##[add-matcher]${matcherPath}`);
             const report = new report_1.Report(outputPath);
             report.output();
-            if (report.issues.length > 0) {
+            const failOnIssue = core.getInput('failOnIssue');
+            if (failOnIssue === '1' && report.issues.length > 0) {
                 core.setFailed('Issue is exist.');
             }
         }

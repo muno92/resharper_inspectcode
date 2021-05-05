@@ -30,3 +30,4 @@ jobs:
       - uses: ./
         with:
           solutionPath: TestSolutions/TestSolution${{ matrix.dotnet-version }}/TestSolution${{ matrix.dotnet-version }}.sln
+          failOnIssue: '0'
