@@ -29,4 +29,4 @@ jobs:
           dotnet-version: ${{ matrix.dotnet-version }}
       - uses: ./
         with:
-          solutionPath: TestSolution/TestSolution.sln
+          solutionPath: TestSolutions/TestSolution${{ matrix.dotnet-version }}/TestSolution${{ matrix.dotnet-version }}.sln
