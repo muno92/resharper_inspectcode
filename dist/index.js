@@ -235,15 +235,15 @@ class Report {
     }
     output() {
         for (const issue of this.issues) {
-            if (issue.Severity === 'info') {
-                core.info(issue.output());
-                continue;
-            }
-            if (issue.Severity === 'warning') {
-                core.warning(issue.output());
-                continue;
-            }
-            core.error(issue.output());
+            // if (issue.Severity === 'info') {
+            core.info(issue.output());
+            //   continue
+            // }
+            // if (issue.Severity === 'warning') {
+            //   core.warning(issue.output())
+            //   continue
+            // }
+            // core.error(issue.output())
         }
     }
 }
