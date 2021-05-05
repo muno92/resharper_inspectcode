@@ -15,7 +15,7 @@ export class Issue {
   }
 }
 
-export type Severity = 'info' | 'warning' | 'error'
+export type Severity = 'warning' | 'error'
 
 export type IssueTypes = {
   [Id: string]: Severity
