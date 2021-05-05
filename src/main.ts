@@ -21,6 +21,10 @@ async function run(): Promise<void> {
 
     const report = new Report(outputPath)
     report.output()
+
+    if (report.issues.length > 0) {
+      core.setFailed('Issue is exist.')
+    }
   } catch (error) {
     core.setFailed(error.message)
   }

@@ -129,6 +129,9 @@ function run() {
             console.log(`##[add-matcher]${matcherPath}`);
             const report = new report_1.Report(outputPath);
             report.output();
+            if (report.issues.length > 0) {
+                core.setFailed('Issue is exist.');
+            }
         }
         catch (error) {
             core.setFailed(error.message);
