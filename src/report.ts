@@ -3,6 +3,7 @@ import * as fs from 'fs'
 import * as core from '@actions/core'
 import * as htmlparser2 from 'htmlparser2'
 import {Element, Node} from 'domhandler'
+import {issueCommand} from '@actions/core/lib/command'
 
 export class Report {
   issues: Issue[]
@@ -103,7 +104,15 @@ export class Report {
 
   output(): void {
     for (const issue of this.issues) {
-      core.info(issue.output())
+      const properties: {[key: string]: string | number} = {}
+
+      properties['file'] = issue.FilePath
+      if (issue.Line) {
+        properties['line'] = issue.Line
+        properties['col'] = issue.Column
+      }
+
+      issueCommand(issue.Severity, properties, issue.Message)
     }
   }
 }
