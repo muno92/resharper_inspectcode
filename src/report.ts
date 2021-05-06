@@ -112,7 +112,7 @@ export class Report {
         properties['col'] = issue.Column
       }
 
-      issueCommand(issue.Severity, properties, issue.Message)
+      issueCommand(issue.Severity, properties, issue.output())
     }
   }
 }

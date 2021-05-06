@@ -15,10 +15,6 @@ async function run(): Promise<void> {
     const outputPath = path.join(cwd, 'result.xml')
     await exec.exec(`jb inspectcode -o=${outputPath} -a ${solutionPath}`)
 
-    const matcherPath = path.join(__dirname, '..', '.github', 'inspection.json')
-    // eslint-disable-next-line no-console
-    console.log(`##[add-matcher]${matcherPath}`)
-
     const report = new Report(outputPath)
     report.output()
 
