@@ -66,7 +66,7 @@ class Issue {
         this.Line = Line;
     }
     output() {
-        return `[${this.Severity}] "${this.Message}" on ${this.FilePath}${this.Line ? `(${this.Line},${this.Column})` : ''}`;
+        return `"${this.Message}" on ${this.FilePath}${this.Line ? `(${this.Line},${this.Column})` : ''}`;
     }
 }
 exports.Issue = Issue;
@@ -124,9 +124,6 @@ function run() {
             const solutionPath = path_1.default.join(cwd, core.getInput('solutionPath'));
             const outputPath = path_1.default.join(cwd, 'result.xml');
             yield exec.exec(`jb inspectcode -o=${outputPath} -a ${solutionPath}`);
-            const matcherPath = path_1.default.join(__dirname, '..', '.github', 'inspection.json');
-            // eslint-disable-next-line no-console
-            console.log(`##[add-matcher]${matcherPath}`);
             const report = new report_1.Report(outputPath);
             report.output();
             const failOnIssue = core.getInput('failOnIssue');
@@ -173,6 +170,7 @@ const issue_1 = __nccwpck_require__(18);
 const fs = __importStar(__nccwpck_require__(747));
 const core = __importStar(__nccwpck_require__(186));
 const htmlparser2 = __importStar(__nccwpck_require__(928));
+const command_1 = __nccwpck_require__(351);
 class Report {
     constructor(reportPath) {
         this.issues = [];
@@ -239,7 +237,13 @@ class Report {
     }
     output() {
         for (const issue of this.issues) {
-            core.info(issue.output());
+            const properties = {};
+            properties['file'] = issue.FilePath;
+            if (issue.Line) {
+                properties['line'] = issue.Line;
+                properties['col'] = issue.Column;
+            }
+            command_1.issueCommand(issue.Severity, properties, issue.output());
         }
     }
 }

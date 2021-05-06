@@ -8,7 +8,7 @@ namespace TestConsoleApp
 
         static void Main(string[] args)
         {
-            var unusedVariable = 100;
+            var unusedVariable = 1;
         }
     }
 }
