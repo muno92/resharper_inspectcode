@@ -9,7 +9,7 @@ export class Issue {
   ) {}
 
   output(): string {
-    return `[${this.Severity}] "${this.Message}" on ${this.FilePath}${
+    return `"${this.Message}" on ${this.FilePath}${
       this.Line ? `(${this.Line},${this.Column})` : ''
     }`
   }

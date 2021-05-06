@@ -66,7 +66,7 @@ class Issue {
         this.Line = Line;
     }
     output() {
-        return `[${this.Severity}] "${this.Message}" on ${this.FilePath}${this.Line ? `(${this.Line},${this.Column})` : ''}`;
+        return `"${this.Message}" on ${this.FilePath}${this.Line ? `(${this.Line},${this.Column})` : ''}`;
     }
 }
 exports.Issue = Issue;
