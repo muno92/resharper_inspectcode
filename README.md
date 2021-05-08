@@ -38,6 +38,8 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '5.0.x' # or 3.1.x
+      - name: Restore
+        run: dotnet restore
       - name: Inspect code
         uses: muno92/resharper_inspectcode@1.0.0
         with:
