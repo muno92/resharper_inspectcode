@@ -39,7 +39,7 @@ jobs:
         with:
           dotnet-version: '5.0.x' # or 3.1.x
       - name: Inspect code
-        uses: muno92/resharper_inspectcode@v1.0.0
+        uses: muno92/resharper_inspectcode@1.0.0
         with:
           solutionPath: ./YourSolution.sln
 ```
