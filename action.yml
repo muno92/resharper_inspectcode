@@ -1,6 +1,6 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'ReSharper CLI InspectCode'
+description: 'Inspect code with ReSharper Command Line Tool and annotate PR'
+author: 'muno92'
 inputs:
   solutionPath:
     required: true
@@ -12,3 +12,6 @@ inputs:
 runs:
   using: 'node12'
   main: 'dist/index.js'
+branding:
+  icon: hash
+  color: orange

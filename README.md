@@ -1,105 +1,45 @@
-<p align="center">
-  <a href="https://github.com/actions/typescript-action/actions"><img alt="typescript-action status" src="https://github.com/actions/typescript-action/workflows/build-test/badge.svg"></a>
-</p>
+[![build-test](https://github.com/muno92/resharper_inspectcode/actions/workflows/test.yml/badge.svg)](https://github.com/muno92/resharper_inspectcode/actions/workflows/test.yml)
 
-# Create a JavaScript Action using TypeScript
+# ReSharper CLI InspectCode
 
-Use this template to bootstrap the creation of a TypeScript action.:rocket:
+This action inspect code with ReSharper Command Line Tool.
 
-This template includes compilation support, tests, a validation workflow, publishing, and versioning guidance.  
+Inspection result is annotate to PR File Change Tab.
 
-If you are new, there's also a simpler introduction.  See the [Hello World JavaScript Action](https://github.com/actions/hello-world-javascript-action)
+![Annotation](annotation.png)
 
-## Create an action from this template
+## Input
 
-Click the `Use this Template` and provide the new repo details for your action
+### solutionPath
 
-## Code in Main
+**Required**
 
-> First, you'll need to have a reasonably modern version of `node` handy. This won't work with versions older than 9, for instance.
+Inspection Target Solution File Path
 
-Install the dependencies  
-```bash
-$ npm install
-```
+### failOnIssue
 
-Build the typescript and package it for distribution
-```bash
-$ npm run build && npm run package
-```
+Default is '1'.
 
-Run the tests :heavy_check_mark:  
-```bash
-$ npm test
+Set this option '0', only annotation is enabled, action will not failed when issue is exists.
 
- PASS  ./index.test.js
-  ✓ throws invalid number (3ms)
-  ✓ wait 500 ms (504ms)
-  ✓ test runs (95ms)
-
-...
-```
-
-## Change action.yml
-
-The action.yml contains defines the inputs and output for your action.
-
-Update the action.yml with your name, description, inputs and outputs for your action.
-
-See the [documentation](https://help.github.com/en/articles/metadata-syntax-for-github-actions)
-
-## Change the Code
-
-Most toolkit and CI/CD operations involve async operations so the action is run in an async function.
-
-```javascript
-import * as core from '@actions/core';
-...
-
-async function run() {
-  try { 
-      ...
-  } 
-  catch (error) {
-    core.setFailed(error.message);
-  }
-}
-
-run()
-```
-
-See the [toolkit documentation](https://github.com/actions/toolkit/blob/master/README.md#packages) for the various packages.
-
-## Publish to a distribution branch
-
-Actions are run from GitHub repos so we will checkin the packed dist folder. 
-
-Then run [ncc](https://github.com/zeit/ncc) and push the results:
-```bash
-$ npm run package
-$ git add dist
-$ git commit -a -m "prod dependencies"
-$ git push origin releases/v1
-```
-
-Note: We recommend using the `--license` option for ncc, which will create a license file for all of the production node modules used in your project.
-
-Your action is now published! :rocket: 
-
-See the [versioning documentation](https://github.com/actions/toolkit/blob/master/docs/action-versioning.md)
-
-## Validate
-
-You can now validate the action by referencing `./` in a workflow in your repo (see [test.yml](.github/workflows/test.yml))
+## Usage
 
 ```yaml
-uses: ./
-with:
-  milliseconds: 1000
+on: [push]
+
+jobs:
+  inspection:
+    runs-on: ubuntu-latest # or macos-latest, windows-latest
+    name: Inspection
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '5.0.x' # or 3.1.x
+      - name: Inspect code
+        uses: muno92/resharper_inspectcode@v1
+        with:
+          solutionPath: ./YourSolution.sln
 ```
-
-See the [actions tab](https://github.com/actions/typescript-action/actions) for runs of this action! :rocket:
-
-## Usage:
-
-After testing you can [create a v1 tag](https://github.com/actions/toolkit/blob/master/docs/action-versioning.md) to reference the stable and latest V1 action
