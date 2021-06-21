@@ -28,6 +28,7 @@ export class Report {
     return htmlparser2.DomUtils.getElementsByTagName('issue', xml)
       .map(i => this.parseIssue(i, issueTypes))
       .filter((issue): issue is NonNullable<Issue> => issue != null)
+      .filter((issue): issue is NotIgnored<Issue> => issue.Severity !== 'ignored')
   }
 
   private parseIssue(issueTag: Element, issueTypes: IssueTypes): Issue | null {
@@ -71,8 +72,11 @@ export class Report {
 
     const convertSeverity = (severity: string): Severity => {
       switch (severity) {
+        case 'hint':
+        case 'suggestion':
+          return 'ignored'
         case 'warning':
-          return 'warning' //Severity info is not supported
+          return 'warning'
         default:
           return 'error' //In Problem Matchers, default severity is error
       }
