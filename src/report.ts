@@ -21,6 +21,7 @@ export class Report {
 
     const xml = htmlparser2.parseDocument(file)
     const issueTypes = this.extractIssueTypes(xml)
+    console.log(issueTypes);
     this.issues = this.extractIssues(xml, issueTypes)
   }
 
@@ -50,7 +51,7 @@ export class Report {
       issueTag.attributes.find(a => a.name.toLowerCase() === 'offset')?.value ??
       '0-0'
     const column = parseInt(offset.substring(0, offset.indexOf('-')))
-
+    console.log(typeId.value);
     const issue = new Issue(
       typeId.value,
       filePath.value,
