@@ -21,7 +21,6 @@ export class Report {
 
     const xml = htmlparser2.parseDocument(file)
     const issueTypes = this.extractIssueTypes(xml)
-    console.log(issueTypes);
     this.issues = this.extractIssues(xml, issueTypes)
   }
 
@@ -29,7 +28,7 @@ export class Report {
     return htmlparser2.DomUtils.getElementsByTagName('issue', xml)
       .map(i => this.parseIssue(i, issueTypes))
       .filter((issue): issue is NonNullable<Issue> => issue != null)
-      .filter((issue): issue is NotIgnored<Issue> => issue.Severity !== 'ignored')
+      .filter(issue => issue.Severity !== 'ignored')
   }
 
   private parseIssue(issueTag: Element, issueTypes: IssueTypes): Issue | null {
@@ -51,7 +50,6 @@ export class Report {
       issueTag.attributes.find(a => a.name.toLowerCase() === 'offset')?.value ??
       '0-0'
     const column = parseInt(offset.substring(0, offset.indexOf('-')))
-    console.log(typeId.value);
     const issue = new Issue(
       typeId.value,
       filePath.value,
@@ -75,13 +73,11 @@ export class Report {
       switch (severity) {
         case 'hint':
         case 'suggestion':
-          return 'ignored';
-          break;
+          return 'ignored'
         case 'warning':
-          return 'warning';
-          break;
+          return 'warning'
         default:
-          return 'error'; //In Problem Matchers, default severity is error
+          return 'error' //In Problem Matchers, default severity is error
       }
     }
 
