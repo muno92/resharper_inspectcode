@@ -74,11 +74,13 @@ export class Report {
       switch (severity) {
         case 'hint':
         case 'suggestion':
-          return 'ignored'
+          return 'ignored';
+          break;
         case 'warning':
-          return 'warning'
+          return 'warning';
+          break;
         default:
-          return 'error' //In Problem Matchers, default severity is error
+          return 'error'; //In Problem Matchers, default severity is error
       }
     }
 
