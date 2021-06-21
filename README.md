@@ -45,3 +45,9 @@ jobs:
         with:
           solutionPath: ./YourSolution.sln
 ```
+
+## Update ReSharper version
+
+1. In `src/installer.ts`, change the version number in line 6 to the required version, and commit.
+2. Create new tag for this repository.
+3. In the repositories that uses this action, change the tag in the workflow to the new tag.
