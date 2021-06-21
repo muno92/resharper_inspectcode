@@ -71,8 +71,6 @@ export class Report {
 
     const convertSeverity = (severity: string): Severity => {
       switch (severity) {
-        case 'hint':
-        case 'suggestion':
         case 'warning':
           return 'warning' //Severity info is not supported
         default:
