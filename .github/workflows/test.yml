@@ -23,7 +23,7 @@ jobs:
         operating-system: [ ubuntu-latest, windows-latest, macOS-latest ]
         dotnet-version: [ '3.1', '5.0' ]
     steps:
-      - run: ~/.dotnet/dotnet version
+      - run: ~/.dotnet/dotnet --version
       - uses: actions/checkout@v2
       - uses: actions/setup-dotnet@v1
         with:
