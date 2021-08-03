@@ -23,11 +23,12 @@ jobs:
         operating-system: [ ubuntu-latest, windows-latest, macOS-latest ]
         dotnet-version: [ '3.1', '5.0' ]
     steps:
-      - run: dotnet --list-sdks
+      - run: which dotnet
       - uses: actions/checkout@v2
       - uses: actions/setup-dotnet@v1
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
+      - run: which dotnet
       - uses: ./
         with:
           solutionPath: TestSolutions/TestSolution${{ matrix.dotnet-version }}/TestSolution${{ matrix.dotnet-version }}.sln
