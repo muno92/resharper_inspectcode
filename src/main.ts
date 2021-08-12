@@ -1,8 +1,8 @@
 import * as core from '@actions/core'
 import * as exec from '@actions/exec'
 import {Installer} from './installer'
-import path from 'path'
 import {Report} from './report'
+import path from 'path'
 
 async function run(): Promise<void> {
   try {
