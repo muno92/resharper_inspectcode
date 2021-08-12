@@ -1,8 +1,8 @@
-import {Issue, IssueTypes, Severity} from './issue'
-import * as fs from 'fs'
 import * as core from '@actions/core'
+import * as fs from 'fs'
 import * as htmlparser2 from 'htmlparser2'
 import {Element, Node} from 'domhandler'
+import {Issue, IssueTypes, Severity} from './issue'
 import {issueCommand} from '@actions/core/lib/command'
 
 export class Report {
