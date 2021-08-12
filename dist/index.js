@@ -41,7 +41,7 @@ class Installer {
     //TODO check dotnet sdk in constructor
     install() {
         return __awaiter(this, void 0, void 0, function* () {
-            //ver 2021.2 depends on .NET 5
+            //ver 2021.2 requires .NET 5
             return exec.exec('dotnet tool install -g JetBrains.ReSharper.GlobalTools --version 2021.1.5');
         });
     }
@@ -114,8 +114,8 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__nccwpck_require__(186));
 const exec = __importStar(__nccwpck_require__(514));
 const installer_1 = __nccwpck_require__(480);
-const path_1 = __importDefault(__nccwpck_require__(622));
 const report_1 = __nccwpck_require__(269);
+const path_1 = __importDefault(__nccwpck_require__(622));
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -167,10 +167,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Report = void 0;
-const issue_1 = __nccwpck_require__(18);
-const fs = __importStar(__nccwpck_require__(747));
 const core = __importStar(__nccwpck_require__(186));
+const fs = __importStar(__nccwpck_require__(747));
 const htmlparser2 = __importStar(__nccwpck_require__(928));
+const issue_1 = __nccwpck_require__(18);
 const command_1 = __nccwpck_require__(351);
 class Report {
     constructor(reportPath) {
