@@ -41,7 +41,7 @@ jobs:
       - name: Restore
         run: dotnet restore
       - name: Inspect code
-        uses: muno92/resharper_inspectcode@1.0.0
+        uses: muno92/resharper_inspectcode@1.1.0
         with:
           solutionPath: ./YourSolution.sln
 ```
