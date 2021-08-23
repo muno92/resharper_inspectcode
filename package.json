@@ -27,7 +27,7 @@
   "dependencies": {
     "@actions/core": "^1.5.0",
     "@actions/exec": "^1.1.0",
-    "htmlparser2": "^6.1.0"
+    "htmlparser2": "^7.0.0"
   },
   "devDependencies": {
     "@types/jest": "^27.0.1",
