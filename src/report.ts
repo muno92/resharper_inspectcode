@@ -15,7 +15,9 @@ export class Report {
     try {
       file = fs.readFileSync(reportPath, {encoding: 'utf8'})
     } catch (err) {
-      core.error(err.message)
+      if (err instanceof Error) {
+        core.error(err.message)
+      }
       return
     }
 
