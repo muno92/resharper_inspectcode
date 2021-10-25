@@ -10,7 +10,9 @@ test('output message with line and column number', () => {
     4
   )
 
-  expect(issue.output()).toBe('"Using directive is not required by the code and can be safely removed" on /home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Controllers/WeatherForecastController.cs(4,67)')
+  expect(issue.output()).toBe(
+    '"Using directive is not required by the code and can be safely removed" on /home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Controllers/WeatherForecastController.cs(4,67)'
+  )
 })
 
 test('output message without line and column number', () => {
@@ -22,5 +24,7 @@ test('output message without line and column number', () => {
     'warning'
   )
 
-  expect(issue.output()).toBe('"Using directive is not required by the code and can be safely removed" on /home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Program.cs')
+  expect(issue.output()).toBe(
+    '"Using directive is not required by the code and can be safely removed" on /home/runner/work/ReShaperInspectionInCI/ReShaperInspectionInCI/ReShaperInspectionInCI/Program.cs'
+  )
 })
