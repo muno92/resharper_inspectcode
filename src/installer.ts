@@ -2,10 +2,9 @@ import * as exec from '@actions/exec'
 
 export class Installer {
   //TODO check dotnet sdk in constructor
-  async install(): Promise<number> {
-    //ver 2021.2 requires .NET 5
+  async install(version: string): Promise<number> {
     return exec.exec(
-      'dotnet tool install -g JetBrains.ReSharper.GlobalTools --version 2021.2.2'
+      `dotnet tool install -g JetBrains.ReSharper.GlobalTools --version ${version}`
     )
   }
 }

@@ -7,7 +7,8 @@ import path from 'path'
 async function run(): Promise<void> {
   try {
     const installer = new Installer()
-    await installer.install()
+    const resharperVersion: string = core.getInput('version')
+    await installer.install(resharperVersion)
 
     const cwd = process.cwd()
 
