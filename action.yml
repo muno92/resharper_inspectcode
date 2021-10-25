@@ -8,7 +8,11 @@ inputs:
   failOnIssue:
     required: false
     default: '1'
-    description:  'action fail when issue exists'
+    description: 'action fail when issue exists'
+  version:
+    required: false
+    description: 'input solution file path here'
+    default: '2021.1.5'
 runs:
   using: 'node12'
   main: 'dist/index.js'
