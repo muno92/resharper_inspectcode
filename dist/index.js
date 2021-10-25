@@ -121,8 +121,8 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const installer = new installer_1.Installer();
-            const resharperVersion = core.getInput('version');
-            yield installer.install(resharperVersion);
+            const version = core.getInput('version');
+            yield installer.install(version);
             const cwd = process.cwd();
             const solutionPath = path_1.default.join(cwd, core.getInput('solutionPath'));
             const outputPath = path_1.default.join(cwd, 'result.xml');
