@@ -22,6 +22,12 @@ Default is '1'.
 
 Set this option '0', only annotation is enabled, action will not failed when issue is exists.
 
+### version
+
+Default is '2021.1.5'.
+
+Set this option to change the version of the Resharper CLI that's installed.
+
 ## Usage
 
 ```yaml
