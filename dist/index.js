@@ -41,7 +41,7 @@ class Installer {
     //TODO check dotnet sdk in constructor
     install() {
         return __awaiter(this, void 0, void 0, function* () {
-            return exec.exec('dotnet tool install -g JetBrains.ReSharper.GlobalTools --version 2021.1.3');
+            return exec.exec('dotnet tool install -g JetBrains.ReSharper.GlobalTools --version 2021.2.2');
         });
     }
 }
