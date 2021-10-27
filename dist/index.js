@@ -126,7 +126,7 @@ function run() {
             const cwd = process.cwd();
             const solutionPath = path_1.default.join(cwd, core.getInput('solutionPath'));
             const outputPath = path_1.default.join(cwd, 'result.xml');
-            yield exec.exec(`jb inspectcode -o=${outputPath} -a ${solutionPath}`);
+            yield exec.exec(`jb inspectcode -o=${outputPath} -a ${solutionPath} --build`);
             const report = new report_1.Report(outputPath);
             report.output();
             const failOnIssue = core.getInput('failOnIssue');
