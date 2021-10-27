@@ -22,6 +22,12 @@ Default is '1'.
 
 Set this option '0', only annotation is enabled, action will not failed when issue is exists.
 
+### version
+
+Default is '2021.1.5'.
+
+Set this option to change the version of the Resharper CLI that's installed.
+
 ## Usage
 
 ```yaml
@@ -41,7 +47,7 @@ jobs:
       - name: Restore
         run: dotnet restore
       - name: Inspect code
-        uses: muno92/resharper_inspectcode@1.0.0
+        uses: muno92/resharper_inspectcode@1.2.0
         with:
           solutionPath: ./YourSolution.sln
 ```

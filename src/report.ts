@@ -1,8 +1,8 @@
-import {Issue, IssueTypes, Severity} from './issue'
-import * as fs from 'fs'
 import * as core from '@actions/core'
+import * as fs from 'fs'
 import * as htmlparser2 from 'htmlparser2'
 import {Element, Node} from 'domhandler'
+import {Issue, IssueTypes, Severity} from './issue'
 import {issueCommand} from '@actions/core/lib/command'
 
 export class Report {
@@ -15,7 +15,9 @@ export class Report {
     try {
       file = fs.readFileSync(reportPath, {encoding: 'utf8'})
     } catch (err) {
-      core.error(err.message)
+      if (err instanceof Error) {
+        core.error(err.message)
+      }
       return
     }
 

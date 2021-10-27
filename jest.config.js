@@ -8,5 +8,5 @@ module.exports = {
     '^.+\\.ts$': 'ts-jest'
   },
   verbose: true,
-  setupFilesAfterEnv: ["jest-extended"]
+  setupFilesAfterEnv: ["jest-extended/all"]
 }
