@@ -21,7 +21,7 @@ jobs:
       fail-fast: false
       matrix:
         operating-system: [ ubuntu-latest, windows-latest, macOS-latest ]
-        dotnet-version: [ '3.1', '5.0' ]
+        dotnet-version: [ '3.1', '5.0', '6.0' ]
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-dotnet@v1
@@ -29,5 +29,5 @@ jobs:
           dotnet-version: ${{ matrix.dotnet-version }}
       - uses: ./
         with:
-          solutionPath: TestSolutions/TestSolution${{ matrix.dotnet-version }}/TestSolution${{ matrix.dotnet-version }}.sln
+          solutionPath: TestSolution/TestSolution.sln
           failOnIssue: '0'
