@@ -75,6 +75,7 @@ export class Report {
       switch (severity) {
         case 'hint':
         case 'suggestion':
+          return 'notice'
         case 'warning':
           return 'warning' //Severity info is not supported
         default:

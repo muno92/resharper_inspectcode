@@ -21,7 +21,7 @@
     "Column": 369,
     "Line": 16,
     "Message": "Field 'TooOpenField' can be made private",
-    "Severity": "warning"
+    "Severity": "notice"
   },
   {
     "TypeId": "NotAccessedField.Global",
@@ -29,7 +29,7 @@
     "Column": 383,
     "Line": 16,
     "Message": "Field 'TooOpenField' is assigned but its value is never used",
-    "Severity": "warning"
+    "Severity": "notice"
   },
   {
     "TypeId": "NotAccessedField.Local",
@@ -100,7 +100,7 @@
     "Column": 300,
     "Line": 12,
     "Message": "Class 'Program' is never instantiated",
-    "Severity": "warning"
+    "Severity": "notice"
   },
   {
     "TypeId": "MemberCanBePrivate.Global",
@@ -108,7 +108,7 @@
     "Column": 441,
     "Line": 19,
     "Message": "Method 'CreateHostBuilder' can be made private",
-    "Severity": "warning"
+    "Severity": "notice"
   },
   {
     "TypeId": "RedundantUsingDirective",
@@ -171,7 +171,7 @@
     "Column": 595,
     "Line": 23,
     "Message": "Property 'Configuration' can be made private",
-    "Severity": "warning"
+    "Severity": "notice"
   },
   {
     "TypeId": "UnusedAutoPropertyAccessor.Global",
@@ -195,7 +195,7 @@
     "Column": 125,
     "Line": 7,
     "Message": "Property can be made init-only",
-    "Severity": "warning"
+    "Severity": "notice"
   },
   {
     "TypeId": "PropertyCanBeMadeInitOnly.Global",
@@ -203,7 +203,7 @@
     "Column": 172,
     "Line": 9,
     "Message": "Property can be made init-only",
-    "Severity": "warning"
+    "Severity": "notice"
   },
   {
     "TypeId": "UnusedMember.Global",
@@ -211,7 +211,7 @@
     "Column": 199,
     "Line": 11,
     "Message": "Property 'TemperatureF' is never used",
-    "Severity": "warning"
+    "Severity": "notice"
   },
   {
     "TypeId": "UnusedAutoPropertyAccessor.Global",
@@ -227,6 +227,6 @@
     "Column": 289,
     "Line": 13,
     "Message": "Property can be made init-only",
-    "Severity": "warning"
+    "Severity": "notice"
   }
 ]
