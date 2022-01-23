@@ -43,7 +43,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '5.0.x' # or 3.1.x
+          dotnet-version: '6.0.x' # or 3.1.x, 5.0.x
       - name: Restore
         run: dotnet restore
       - name: Inspect code
