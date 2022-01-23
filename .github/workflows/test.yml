@@ -29,5 +29,5 @@ jobs:
           dotnet-version: ${{ matrix.dotnet-version }}
       - uses: ./
         with:
-          solutionPath: TestSolutions/TestSolution${{ matrix.dotnet-version }}/TestSolution${{ matrix.dotnet-version }}.sln
+          solutionPath: TestSolution/TestSolution.sln
           failOnIssue: '0'
