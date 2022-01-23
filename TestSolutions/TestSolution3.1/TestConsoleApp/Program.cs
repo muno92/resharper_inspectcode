@@ -4,7 +4,7 @@ namespace TestConsoleApp
 {
     class Program
     {
-        public static int canBePrivate = "hello";
+        public static public static int canBePrivate = "hello"; canBePrivate = "hello";
 
         private static int unusedField = 0;
 
