@@ -26,7 +26,7 @@ Set this option '0', only annotation is enabled, action will not fail when issue
 
 Default is '2021.1.5'.
 
-Set this option to change the version of the Resharper CLI that's installed.
+Set this option to change the version of the ReSharper CLI that's installed.
 
 ### minimumSeverity
 
@@ -36,6 +36,10 @@ Set this option to change the version of the Resharper CLI that's installed.
 
 If set this option 'warning', action will fail when error or warning issue is exists.
 (Notice issue is annotated only.)
+
+### exclude
+
+Set this options to specified exclude path to ReSharper CLI.
 
 ## Usage
 
