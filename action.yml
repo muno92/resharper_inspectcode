@@ -13,6 +13,16 @@ inputs:
     required: false
     description: 'input solution file path here'
     default: '2021.1.5'
+  minimumSeverity:
+    required: false
+    description: 'If set this option 'warning', action will fail when error or warning issue is exists.(Notice issue is annotated only.)'
+    default: 'notice'
+  exclude:
+    required: false
+    description: Set this options to specified exclude path to ReSharper CLI.
+  ignoreIssueType:
+    required: false
+    description: Comma-separated list of ignore issue type.
 runs:
   using: 'node12'
   main: 'dist/index.js'
