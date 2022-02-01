@@ -14,7 +14,15 @@ async function run(): Promise<void> {
 
     const solutionPath: string = path.join(cwd, core.getInput('solutionPath'))
     const outputPath = path.join(cwd, 'result.xml')
-    await exec.exec(`jb inspectcode -o=${outputPath} -a ${solutionPath}`)
+
+    let command = `jb inspectcode -o=${outputPath} -a ${solutionPath}`
+
+    const exclude = core.getInput('exclude') ?? ''
+    if (exclude !== '') {
+      command += ` --exclude=${exclude}`
+    }
+
+    await exec.exec(command)
 
     const report = new Report(outputPath)
     report.output()
