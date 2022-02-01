@@ -118,6 +118,7 @@ const installer_1 = __nccwpck_require__(1480);
 const report_1 = __nccwpck_require__(8269);
 const path_1 = __importDefault(__nccwpck_require__(1017));
 function run() {
+    var _a, _b, _c;
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const installer = new installer_1.Installer();
@@ -126,11 +127,21 @@ function run() {
             const cwd = process.cwd();
             const solutionPath = path_1.default.join(cwd, core.getInput('solutionPath'));
             const outputPath = path_1.default.join(cwd, 'result.xml');
-            yield exec.exec(`jb inspectcode -o=${outputPath} -a ${solutionPath}`);
-            const report = new report_1.Report(outputPath);
+            let command = `jb inspectcode -o=${outputPath} -a ${solutionPath}`;
+            const exclude = (_a = core.getInput('exclude')) !== null && _a !== void 0 ? _a : '';
+            if (exclude !== '') {
+                command += ` --exclude=${exclude}`;
+            }
+            yield exec.exec(command);
+            const ignoreIssueType = (_b = core.getInput('ignoreIssueType')) !== null && _b !== void 0 ? _b : '';
+            const report = new report_1.Report(outputPath, ignoreIssueType);
             report.output();
             const failOnIssue = core.getInput('failOnIssue');
-            if (failOnIssue === '1' && report.issues.length > 0) {
+            const minimumSeverity = (_c = core.getInput('minimumSeverity')) !== null && _c !== void 0 ? _c : 'notice';
+            if (failOnIssue !== '1') {
+                return;
+            }
+            if (report.issueOverThresholdIsExists(minimumSeverity)) {
                 core.setFailed('Issue is exist.');
             }
         }
@@ -178,7 +189,7 @@ const htmlparser2 = __importStar(__nccwpck_require__(2928));
 const issue_1 = __nccwpck_require__(6018);
 const command_1 = __nccwpck_require__(7351);
 class Report {
-    constructor(reportPath) {
+    constructor(reportPath, ignoreIssueType) {
         this.issues = [];
         let file;
         try {
@@ -190,14 +201,15 @@ class Report {
             }
             return;
         }
+        const ignoreIssueTypes = ignoreIssueType.split(',');
         const xml = htmlparser2.parseDocument(file);
         const issueTypes = this.extractIssueTypes(xml);
-        this.issues = this.extractIssues(xml, issueTypes);
+        this.issues = this.extractIssues(xml, issueTypes, ignoreIssueTypes);
     }
-    extractIssues(xml, issueTypes) {
+    extractIssues(xml, issueTypes, ignoreIssueTypes) {
         return htmlparser2.DomUtils.getElementsByTagName('issue', xml)
             .map(i => this.parseIssue(i, issueTypes))
-            .filter((issue) => issue != null);
+            .filter((issue) => issue != null && !ignoreIssueTypes.includes(issue.TypeId));
     }
     parseIssue(issueTag, issueTypes) {
         var _a, _b;
@@ -254,6 +266,19 @@ class Report {
             }
             (0, command_1.issueCommand)(issue.Severity, properties, issue.output());
         }
+    }
+    issueOverThresholdIsExists(minimumSeverity) {
+        const errorTarget = this.switchErrorTarget(minimumSeverity);
+        return this.issues.filter(i => errorTarget.includes(i.Severity)).length > 0;
+    }
+    switchErrorTarget(minimumSeverity) {
+        if (minimumSeverity === 'error') {
+            return ['error'];
+        }
+        if (minimumSeverity === 'warning') {
+            return ['warning', 'error'];
+        }
+        return ['notice', 'warning', 'error'];
     }
 }
 exports.Report = Report;
