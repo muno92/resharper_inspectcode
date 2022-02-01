@@ -20,13 +20,22 @@ Inspection Target Solution File Path
 
 Default is '1'.
 
-Set this option '0', only annotation is enabled, action will not failed when issue is exists.
+Set this option '0', only annotation is enabled, action will not fail when issue is exists.
 
 ### version
 
 Default is '2021.1.5'.
 
 Set this option to change the version of the Resharper CLI that's installed.
+
+### minimumSeverity
+
+- error
+- warning
+- notice (default)
+
+If set this option 'warning', action will fail when error or warning issue is exists.
+(Notice issue is annotated only.)
 
 ## Usage
 

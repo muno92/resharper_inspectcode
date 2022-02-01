@@ -118,4 +118,20 @@ export class Report {
       issueCommand(issue.Severity, properties, issue.output())
     }
   }
+
+  issueOverThresholdIsExists(minimumSeverity: string): boolean {
+    const errorTarget = this.switchErrorTarget(minimumSeverity)
+
+    return this.issues.filter(i => errorTarget.includes(i.Severity)).length > 0
+  }
+
+  private switchErrorTarget(minimumSeverity: string): Severity[] {
+    if (minimumSeverity === 'error') {
+      return ['error']
+    }
+    if (minimumSeverity === 'warning') {
+      return ['warning', 'error']
+    }
+    return ['notice', 'warning', 'error']
+  }
 }

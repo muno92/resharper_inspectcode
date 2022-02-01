@@ -20,8 +20,13 @@ async function run(): Promise<void> {
     report.output()
 
     const failOnIssue = core.getInput('failOnIssue')
+    const minimumSeverity = core.getInput('minimumSeverity') ?? 'notice'
 
-    if (failOnIssue === '1' && report.issues.length > 0) {
+    if (failOnIssue !== '1') {
+      return
+    }
+
+    if (report.issueOverThresholdIsExists(minimumSeverity)) {
       core.setFailed('Issue is exist.')
     }
   } catch (error) {
