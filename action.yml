@@ -15,7 +15,7 @@ inputs:
     default: '2021.1.5'
   minimumSeverity:
     required: false
-    description: 'If set this option 'warning', action will fail when error or warning issue is exists.(Notice issue is annotated only.)'
+    description: 'If set this option warning, action will fail when error or warning issue is exists.(Notice issue is annotated only.)'
     default: 'notice'
   exclude:
     required: false
