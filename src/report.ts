@@ -8,7 +8,7 @@ import {issueCommand} from '@actions/core/lib/command'
 export class Report {
   issues: Issue[]
 
-  constructor(reportPath: string) {
+  constructor(reportPath: string, ignoreIssueType: string) {
     this.issues = []
 
     let file: string
@@ -21,15 +21,24 @@ export class Report {
       return
     }
 
+    const ignoreIssueTypes = ignoreIssueType.split(',')
+
     const xml = htmlparser2.parseDocument(file)
     const issueTypes = this.extractIssueTypes(xml)
-    this.issues = this.extractIssues(xml, issueTypes)
+    this.issues = this.extractIssues(xml, issueTypes, ignoreIssueTypes)
   }
 
-  private extractIssues(xml: Node, issueTypes: IssueTypes): Issue[] {
+  private extractIssues(
+    xml: Node,
+    issueTypes: IssueTypes,
+    ignoreIssueTypes: string[]
+  ): Issue[] {
     return htmlparser2.DomUtils.getElementsByTagName('issue', xml)
       .map(i => this.parseIssue(i, issueTypes))
-      .filter((issue): issue is NonNullable<Issue> => issue != null)
+      .filter(
+        (issue): issue is NonNullable<Issue> =>
+          issue != null && !ignoreIssueTypes.includes(issue.TypeId)
+      )
   }
 
   private parseIssue(issueTag: Element, issueTypes: IssueTypes): Issue | null {

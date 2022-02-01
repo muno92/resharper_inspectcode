@@ -43,6 +43,19 @@ Set this options to specified exclude path to ReSharper CLI.
 
 (See [https://www.jetbrains.com/help/resharper/InspectCode.html#inspection-parameters](https://www.jetbrains.com/help/resharper/InspectCode.html#inspection-parameters))
 
+### ignoreIssueType
+
+Comma-separated list of ignore issue type.
+
+example) 
+
+```text
+UnusedField.Compiler,UnusedMember.Global
+```
+
+References:  
+[https://www.jetbrains.com/help/resharper/Reference__Code_Inspections_CSHARP.html#BestPractice](https://www.jetbrains.com/help/resharper/Reference__Code_Inspections_CSHARP.html#BestPractice)
+
 ## Usage
 
 ```yaml

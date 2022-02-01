@@ -24,7 +24,9 @@ async function run(): Promise<void> {
 
     await exec.exec(command)
 
-    const report = new Report(outputPath)
+    const ignoreIssueType = core.getInput('ignoreIssueType') ?? ''
+
+    const report = new Report(outputPath, ignoreIssueType)
     report.output()
 
     const failOnIssue = core.getInput('failOnIssue')
