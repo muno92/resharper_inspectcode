@@ -41,6 +41,8 @@ If set this option 'warning', action will fail when error or warning issue is ex
 
 Set this options to specified exclude path to ReSharper CLI.
 
+(See [https://www.jetbrains.com/help/resharper/InspectCode.html#inspection-parameters](https://www.jetbrains.com/help/resharper/InspectCode.html#inspection-parameters))
+
 ## Usage
 
 ```yaml
