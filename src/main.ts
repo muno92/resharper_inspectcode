@@ -2,6 +2,7 @@ import * as core from '@actions/core'
 import * as exec from '@actions/exec'
 import {Installer} from './installer'
 import {Report} from './report'
+import {Severity} from './issue'
 import path from 'path'
 
 async function run(): Promise<void> {
@@ -20,8 +21,16 @@ async function run(): Promise<void> {
     report.output()
 
     const failOnIssue = core.getInput('failOnIssue')
+    const minimumSeverity = core.getInput('minimumSeverity') ?? 'notice'
 
-    if (failOnIssue === '1' && report.issues.length > 0) {
+    if (failOnIssue !== '1') {
+      return
+    }
+
+    const errorTarget = switchErrorTarget(minimumSeverity)
+
+    const issues = report.issues.filter(i => errorTarget.includes(i.Severity))
+    if (issues.length > 0) {
       core.setFailed('Issue is exist.')
     }
   } catch (error) {
@@ -29,6 +38,16 @@ async function run(): Promise<void> {
       core.setFailed(error.message)
     }
   }
+}
+
+function switchErrorTarget(minimumSeverity: string): Severity[] {
+  if (minimumSeverity === 'error') {
+    return ['error']
+  }
+  if (minimumSeverity === 'warning') {
+    return ['warning', 'error']
+  }
+  return ['notice', 'warning', 'error']
 }
 
 run()
