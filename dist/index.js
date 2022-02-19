@@ -36,11 +36,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Installer = void 0;
+const core = __importStar(__nccwpck_require__(2186));
 const exec = __importStar(__nccwpck_require__(1514));
+const io = __importStar(__nccwpck_require__(7436));
 class Installer {
     //TODO check dotnet sdk in constructor
     install(version) {
         return __awaiter(this, void 0, void 0, function* () {
+            // If JetBrains.ReSharper.GlobalTools is already installed, skip installation to avoid install error.
+            try {
+                yield io.which('jb');
+                core.info('JetBrains.ReSharper.GlobalTools is already installed, so skip installation.');
+                return 0;
+            }
+            catch (Error) {
+                core.info('Install JetBrains.ReSharper.GlobalTools.');
+            }
             return exec.exec(`dotnet tool install -g JetBrains.ReSharper.GlobalTools --version ${version}`);
         });
     }
