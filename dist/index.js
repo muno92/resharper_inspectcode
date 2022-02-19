@@ -45,7 +45,7 @@ class Installer {
         return __awaiter(this, void 0, void 0, function* () {
             // If JetBrains.ReSharper.GlobalTools is already installed, skip installation to avoid install error.
             try {
-                yield io.which('jb');
+                yield io.which('jb', true);
                 core.info('JetBrains.ReSharper.GlobalTools is already installed, so skip installation.');
                 return 0;
             }
