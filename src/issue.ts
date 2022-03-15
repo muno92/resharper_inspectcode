@@ -15,11 +15,7 @@ export class Issue {
   }
 }
 
-<<<<<<< HEAD
-export type Severity = 'ignored' | 'warning' | 'error'
-=======
 export type Severity = 'notice' | 'warning' | 'error'
->>>>>>> 537ae9d37a0dc8943e57058308b5a75bbb873101
 
 export type IssueTypes = {
   [Id: string]: Severity
