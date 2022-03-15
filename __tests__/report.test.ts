@@ -4,19 +4,6 @@ import failureReportIssues from './expected_data/failure_report_issues.json'
 import {Issue} from '../src/issue'
 
 test('success report has no issue', () => {
-<<<<<<< HEAD
-  const report = new Report(
-    path.join(
-      __dirname,
-      '..',
-      '__fixtures__',
-      'inspection_reports',
-      'success.xml'
-    )
-  )
-  expect(report.issues.length).toBe(0)
-})
-=======
   const report = new Report(path.join(__dirname, '..', '__fixtures__', 'inspection_reports', 'success.xml'), '')
   expect(report.issues.length).toBe(0)
 })
@@ -44,4 +31,3 @@ test('ignore issue type', () => {
   const report = new Report(path.join(__dirname, '..', '__fixtures__', 'inspection_reports', 'failure.xml'), 'UnusedMember.Global,UnusedField.Compiler')
   expect(report.issues.length).toBe(27)
 })
->>>>>>> 537ae9d37a0dc8943e57058308b5a75bbb873101
