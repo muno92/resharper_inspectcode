@@ -83,11 +83,7 @@ export class Report {
       switch (severity) {
         case 'hint':
         case 'suggestion':
-<<<<<<< HEAD
-          return 'ignored'
-=======
           return 'notice'
->>>>>>> 537ae9d37a0dc8943e57058308b5a75bbb873101
         case 'warning':
           return 'warning'
         default:
