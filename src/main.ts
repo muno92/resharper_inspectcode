@@ -14,16 +14,29 @@ async function run(): Promise<void> {
 
     const solutionPath: string = path.join(cwd, core.getInput('solutionPath'))
     const outputPath = path.join(cwd, 'result.xml')
-    await exec.exec(
-      `jb inspectcode -o=${outputPath} -a ${solutionPath} --build`
-    )
 
-    const report = new Report(outputPath)
+    let command = `jb inspectcode -o=${outputPath} -a ${solutionPath} --build`
+
+    const exclude = core.getInput('exclude') ?? ''
+    if (exclude !== '') {
+      command += ` --exclude=${exclude}`
+    }
+
+    await exec.exec(command)
+
+    const ignoreIssueType = core.getInput('ignoreIssueType') ?? ''
+
+    const report = new Report(outputPath, ignoreIssueType)
     report.output()
 
     const failOnIssue = core.getInput('failOnIssue')
+    const minimumSeverity = core.getInput('minimumSeverity') ?? 'notice'
 
-    if (failOnIssue === '1' && report.issues.length > 0) {
+    if (failOnIssue !== '1') {
+      return
+    }
+
+    if (report.issueOverThresholdIsExists(minimumSeverity)) {
       core.setFailed('Issue is exist.')
     }
   } catch (error) {

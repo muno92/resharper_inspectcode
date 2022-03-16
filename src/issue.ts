@@ -9,13 +9,13 @@ export class Issue {
   ) {}
 
   output(): string {
-    return `"${this.Message}" on ${this.FilePath}${
+    return `"[${this.TypeId}] ${this.Message}" on ${this.FilePath}${
       this.Line ? `(${this.Line},${this.Column})` : ''
     }`
   }
 }
 
-export type Severity = 'ignored' | 'warning' | 'error'
+export type Severity = 'notice' | 'warning' | 'error'
 
 export type IssueTypes = {
   [Id: string]: Severity
