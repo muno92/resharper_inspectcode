@@ -7,7 +7,7 @@ export class Installer {
   async install(version: string): Promise<number> {
     // If JetBrains.ReSharper.GlobalTools is already installed, skip installation to avoid install error.
     try {
-      await io.which('jb', true)
+      await io.which('/root/.dotnet/tools/jb', true)
       core.info(
         'JetBrains.ReSharper.GlobalTools is already installed, so skip installation.'
       )

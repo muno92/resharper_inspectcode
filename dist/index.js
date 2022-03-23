@@ -8,7 +8,11 @@ require('./sourcemap-register.js');/******/ (() => { // webpackBootstrap
 
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -45,7 +49,7 @@ class Installer {
         return __awaiter(this, void 0, void 0, function* () {
             // If JetBrains.ReSharper.GlobalTools is already installed, skip installation to avoid install error.
             try {
-                yield io.which('jb', true);
+                yield io.which('/root/.dotnet/tools/jb', true);
                 core.info('JetBrains.ReSharper.GlobalTools is already installed, so skip installation.');
                 return 0;
             }
@@ -93,7 +97,11 @@ exports.Issue = Issue;
 
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -138,7 +146,7 @@ function run() {
             const cwd = process.cwd();
             const solutionPath = path_1.default.join(cwd, core.getInput('solutionPath'));
             const outputPath = path_1.default.join(cwd, 'result.xml');
-            let command = `jb inspectcode -o=${outputPath} -a ${solutionPath} --build`;
+            let command = `/root/.dotnet/tools/jb inspectcode -o=${outputPath} -a ${solutionPath} --build`;
             const exclude = (_a = core.getInput('exclude')) !== null && _a !== void 0 ? _a : '';
             if (exclude !== '') {
                 command += ` --exclude=${exclude}`;
@@ -175,7 +183,11 @@ run();
 
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
