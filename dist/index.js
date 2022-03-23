@@ -49,7 +49,7 @@ class Installer {
         return __awaiter(this, void 0, void 0, function* () {
             // If JetBrains.ReSharper.GlobalTools is already installed, skip installation to avoid install error.
             try {
-                yield io.which('/root/.dotnet/tools/jb', true);
+                yield io.which('/github/home/.dotnet/tools/jb', true);
                 core.info('JetBrains.ReSharper.GlobalTools is already installed, so skip installation.');
                 return 0;
             }
@@ -146,7 +146,7 @@ function run() {
             const cwd = process.cwd();
             const solutionPath = path_1.default.join(cwd, core.getInput('solutionPath'));
             const outputPath = path_1.default.join(cwd, 'result.xml');
-            let command = `/root/.dotnet/tools/jb inspectcode -o=${outputPath} -a ${solutionPath} --build`;
+            let command = `/github/home/.dotnet/tools/jb inspectcode -o=${outputPath} -a ${solutionPath} --build --verbosity=WARN`;
             const exclude = (_a = core.getInput('exclude')) !== null && _a !== void 0 ? _a : '';
             if (exclude !== '') {
                 command += ` --exclude=${exclude}`;
