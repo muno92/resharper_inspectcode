@@ -14,8 +14,10 @@ async function run(): Promise<void> {
 
     const solutionPath: string = path.join(cwd, core.getInput('solutionPath'))
     const outputPath = path.join(cwd, 'result.xml')
+    
+    let executablePath = core.getInput('executablePath') ?? 'jb'
 
-    let command = `/github/home/.dotnet/tools/jb inspectcode -o=${outputPath} -a ${solutionPath} --build --verbosity=WARN`
+    let command = `${executablePath} inspectcode -o=${outputPath} -a ${solutionPath} --build --verbosity=WARN`
 
     const exclude = core.getInput('exclude') ?? ''
     if (exclude !== '') {
