@@ -23,6 +23,10 @@ inputs:
   ignoreIssueType:
     required: false
     description: Comma-separated list of ignore issue type.
+  executablePath:
+    required: false
+    description: The path for the jb executable
+    default: 'jb'
 runs:
   using: 'node12'
   main: 'dist/index.js'
