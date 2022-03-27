@@ -8,14 +8,13 @@ async function run(): Promise<void> {
   try {
     const installer = new Installer()
     const version: string = core.getInput('version')
-    await installer.install(version)
+    const executablePath = core.getInput('executablePath') ?? 'jb'
+    await installer.install(version, executablePath)
 
     const cwd = process.cwd()
 
     const solutionPath: string = path.join(cwd, core.getInput('solutionPath'))
     const outputPath = path.join(cwd, 'result.xml')
-    
-    let executablePath = core.getInput('executablePath') ?? 'jb'
 
     let command = `${executablePath} inspectcode -o=${outputPath} -a ${solutionPath} --build --verbosity=WARN`
 
