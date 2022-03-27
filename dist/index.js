@@ -45,11 +45,11 @@ const exec = __importStar(__nccwpck_require__(1514));
 const io = __importStar(__nccwpck_require__(7436));
 class Installer {
     //TODO check dotnet sdk in constructor
-    install(version) {
+    install(version, executablePath) {
         return __awaiter(this, void 0, void 0, function* () {
             // If JetBrains.ReSharper.GlobalTools is already installed, skip installation to avoid install error.
             try {
-                yield io.which('/github/home/.dotnet/tools/jb', true);
+                yield io.which(`${executablePath}`, true);
                 core.info('JetBrains.ReSharper.GlobalTools is already installed, so skip installation.');
                 return 0;
             }
@@ -137,26 +137,27 @@ const installer_1 = __nccwpck_require__(1480);
 const report_1 = __nccwpck_require__(8269);
 const path_1 = __importDefault(__nccwpck_require__(1017));
 function run() {
-    var _a, _b, _c;
+    var _a, _b, _c, _d;
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const installer = new installer_1.Installer();
             const version = core.getInput('version');
-            yield installer.install(version);
+            const executablePath = (_a = core.getInput('executablePath')) !== null && _a !== void 0 ? _a : 'jb';
+            yield installer.install(version, executablePath);
             const cwd = process.cwd();
             const solutionPath = path_1.default.join(cwd, core.getInput('solutionPath'));
             const outputPath = path_1.default.join(cwd, 'result.xml');
-            let command = `/github/home/.dotnet/tools/jb inspectcode -o=${outputPath} -a ${solutionPath} --build --verbosity=WARN`;
-            const exclude = (_a = core.getInput('exclude')) !== null && _a !== void 0 ? _a : '';
+            let command = `${executablePath} inspectcode -o=${outputPath} -a ${solutionPath} --build --verbosity=WARN`;
+            const exclude = (_b = core.getInput('exclude')) !== null && _b !== void 0 ? _b : '';
             if (exclude !== '') {
                 command += ` --exclude=${exclude}`;
             }
             yield exec.exec(command);
-            const ignoreIssueType = (_b = core.getInput('ignoreIssueType')) !== null && _b !== void 0 ? _b : '';
+            const ignoreIssueType = (_c = core.getInput('ignoreIssueType')) !== null && _c !== void 0 ? _c : '';
             const report = new report_1.Report(outputPath, ignoreIssueType);
             report.output();
             const failOnIssue = core.getInput('failOnIssue');
-            const minimumSeverity = (_c = core.getInput('minimumSeverity')) !== null && _c !== void 0 ? _c : 'notice';
+            const minimumSeverity = (_d = core.getInput('minimumSeverity')) !== null && _d !== void 0 ? _d : 'notice';
             if (failOnIssue !== '1') {
                 return;
             }
