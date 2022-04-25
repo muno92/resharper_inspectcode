@@ -1,7 +1,7 @@
 import * as core from '@actions/core'
 import * as fs from 'fs'
 import * as htmlparser2 from 'htmlparser2'
-import {Element, Node} from 'domhandler'
+import {Element, Document} from 'domhandler'
 import {Issue, IssueTypes, Severity} from './issue'
 import {issueCommand} from '@actions/core/lib/command'
 
@@ -29,7 +29,7 @@ export class Report {
   }
 
   private extractIssues(
-    xml: Node,
+    xml: Document,
     issueTypes: IssueTypes,
     ignoreIssueTypes: string[]
   ): Issue[] {
@@ -77,7 +77,7 @@ export class Report {
     return issue
   }
 
-  private extractIssueTypes(xml: Node): IssueTypes {
+  private extractIssueTypes(xml: Document): IssueTypes {
     const issueTypes: IssueTypes = {}
 
     const convertSeverity = (severity: string): Severity => {
