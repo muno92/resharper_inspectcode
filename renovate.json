@@ -1,5 +1,5 @@
 {
-  "extends": [
-    "config:base"
-  ]
+  "npm": {
+    "stabilityDays": 3
+  }
 }
