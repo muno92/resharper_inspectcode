@@ -1,8 +1,8 @@
 import * as core from '@actions/core'
 import * as exec from '@actions/exec'
+import * as fs from 'fs';
 import {Installer} from './installer'
 import {Report} from './report'
-import {fs} from 'fs';
 import path from 'path'
 
 
