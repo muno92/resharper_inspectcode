@@ -27,6 +27,9 @@ inputs:
     required: false
     description: The path for the jb executable
     default: 'jb'
+  shouldRemoveTests:
+    required: false
+    description: should remove tests folder from the inspection - specific for legit project structure
 runs:
   using: 'node12'
   main: 'dist/index.js'
