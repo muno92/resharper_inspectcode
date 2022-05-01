@@ -1,6 +1,5 @@
 import * as core from '@actions/core'
 import * as exec from '@actions/exec'
-import * as fs from 'fs';
 import {Installer} from './installer'
 import {Report} from './report'
 import path from 'path'
@@ -17,13 +16,13 @@ async function run(): Promise<void> {
     const cwd = process.cwd()
 
     const solutionPath: string = path.join(cwd, core.getInput('solutionPath'))
-    if (removeTests) {
-      fs.rmdirSync(`${solutionPath}\\tests`, { recursive: true })
-    }
     
     const outputPath = path.join(cwd, 'result.xml')
 
     let command = `${executablePath} inspectcode -o=${outputPath} -a ${solutionPath} --build --verbosity=WARN`
+    if (removeTests) {
+      await exec.exec(`${solutionPath}\\..\\tests`)
+    }
 
     const exclude = core.getInput('exclude') ?? ''
     if (exclude !== '') {
