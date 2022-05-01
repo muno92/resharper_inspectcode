@@ -21,7 +21,8 @@ async function run(): Promise<void> {
 
     let command = `${executablePath} inspectcode -o=${outputPath} -a ${solutionPath} --build --verbosity=WARN`
     if (removeTests) {
-      await exec.exec(`${solutionPath}/../tests`)
+      const tests_path = solutionPath.replace(solutionPath.split('/')[solutionPath.split('/').length - 1], "tests")
+      await exec.exec(`rm -rf ${tests_path}`)
     }
 
     const exclude = core.getInput('exclude') ?? ''
