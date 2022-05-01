@@ -10,7 +10,6 @@ async function run(): Promise<void> {
     const installer = new Installer()
     const version: string = core.getInput('version')
     const executablePath = core.getInput('executablePath') ?? 'jb'
-    const removeTests = core.getInput('shouldRemoveTests') ?? false
     await installer.install(version, executablePath)
 
     const cwd = process.cwd()
@@ -20,10 +19,6 @@ async function run(): Promise<void> {
     const outputPath = path.join(cwd, 'result.xml')
 
     let command = `${executablePath} inspectcode -o=${outputPath} -a ${solutionPath} --build --verbosity=WARN`
-    if (removeTests) {
-      const tests_path = solutionPath.replace(solutionPath.split('/')[solutionPath.split('/').length - 1], "tests")
-      await exec.exec(`rm -rf ${tests_path}`)
-    }
 
     const exclude = core.getInput('exclude') ?? ''
     if (exclude !== '') {
