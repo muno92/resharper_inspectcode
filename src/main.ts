@@ -4,7 +4,6 @@ import {Installer} from './installer'
 import {Report} from './report'
 import path from 'path'
 
-
 async function run(): Promise<void> {
   try {
     const installer = new Installer()
@@ -15,7 +14,6 @@ async function run(): Promise<void> {
     const cwd = process.cwd()
 
     const solutionPath: string = path.join(cwd, core.getInput('solutionPath'))
-    
     const outputPath = path.join(cwd, 'result.xml')
 
     let command = `${executablePath} inspectcode -o=${outputPath} -a ${solutionPath} --build --verbosity=WARN`
