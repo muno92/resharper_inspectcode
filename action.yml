@@ -4,25 +4,27 @@ author: 'muno92'
 inputs:
   solutionPath:
     required: true
-    description: 'input solution file path here'
+    description: Path to Solution file to be inspected.
   failOnIssue:
     required: false
     default: '1'
-    description: 'action fail when issue exists'
+    description: Whether the action should fail if there are any issues.
   version:
     required: false
-    description: 'input solution file path here'
-    default: '2021.1.5'
+    description: Version of the Resharper CLI tool to install. Defaults to the latest available.
   minimumSeverity:
     required: false
-    description: 'If set this option warning, action will fail when error or warning issue is exists.(Notice issue is annotated only.)'
+    description: Minimum severity for issues to cause the action to fail. Defaults to "notice". Ignored if failOnIssue is set to '0'.
     default: 'notice'
   exclude:
     required: false
-    description: Set this options to specified exclude path to ReSharper CLI.
+    description: Relative path(s) or file masks that define which files to exclude during the inspection.
   ignoreIssueType:
     required: false
-    description: Comma-separated list of ignore issue type.
+    description: Comma-separated list of issue types to ignore.
+  solutionWideAnalysis:
+    required: false
+    description: Explicitly enable or disable solution-wide analysis. If not specified, solution-wide analysis will be enabled or disabled based on the existing settings.
 runs:
   using: 'node12'
   main: 'dist/index.js'
