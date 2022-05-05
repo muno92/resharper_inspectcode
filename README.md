@@ -14,19 +14,17 @@ Inspection result is annotate to PR File Change Tab.
 
 **Required**
 
-Inspection Target Solution File Path
+Path to Solution file to be inspected.
 
 ### failOnIssue
 
-Default is '1'.
+Whether the action should fail if there are any issues. Default is `'1'`.
 
-Set this option '0', only annotation is enabled, action will not fail when issue is exists.
+Set this option to `'0'` prevent the action from failing when issues exist (annotations will still be present).
 
 ### version
 
-Default is '2021.1.5'.
-
-Set this option to change the version of the ReSharper CLI that's installed.
+Version of the Resharper CLI tool to install. Defaults to the latest available.
 
 ### minimumSeverity
 
@@ -34,27 +32,33 @@ Set this option to change the version of the ReSharper CLI that's installed.
 - warning
 - notice (default)
 
-If set this option 'warning', action will fail when error or warning issue is exists.
-(Notice issue is annotated only.)
+Minimum severity for issues to cause the action to fail. Defaults to "notice". Ignored if `failOnIssue` is set to `'0'`.
 
 ### exclude
 
-Set this options to specified exclude path to ReSharper CLI.
+Relative path(s) or file masks that define which files to exclude during the inspection.
 
-(See [https://www.jetbrains.com/help/resharper/InspectCode.html#inspection-parameters](https://www.jetbrains.com/help/resharper/InspectCode.html#inspection-parameters))
+More info: https://www.jetbrains.com/help/resharper/InspectCode.html#inspection-parameters
 
 ### ignoreIssueType
 
-Comma-separated list of ignore issue type.
+Comma-separated list of issue types to ignore.
 
-example) 
+Example:
 
 ```text
 UnusedField.Compiler,UnusedMember.Global
 ```
 
-References:  
-[https://www.jetbrains.com/help/resharper/Reference__Code_Inspections_CSHARP.html#BestPractice](https://www.jetbrains.com/help/resharper/Reference__Code_Inspections_CSHARP.html#BestPractice)
+Issue Types reference: https://www.jetbrains.com/help/resharper/Reference__Code_Inspections_CSHARP.html
+
+
+### solutionWideAnalysis
+
+- true
+- false
+
+Explicitly enable or disable solution-wide analysis. If not specified, solution-wide analysis will be enabled or disabled based on the existing settings.
 
 ## Usage
 
@@ -75,7 +79,7 @@ jobs:
       - name: Restore
         run: dotnet restore
       - name: Inspect code
-        uses: muno92/resharper_inspectcode@1.4.0
+        uses: muno92/resharper_inspectcode@1.5.0
         with:
           solutionPath: ./YourSolution.sln
 ```

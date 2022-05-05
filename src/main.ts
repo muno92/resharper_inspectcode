@@ -7,7 +7,7 @@ import path from 'path'
 async function run(): Promise<void> {
   try {
     const installer = new Installer()
-    const version: string = core.getInput('version')
+    const version: string = core.getInput('version') ?? ''
     await installer.install(version)
 
     const cwd = process.cwd()
@@ -15,11 +15,19 @@ async function run(): Promise<void> {
     const solutionPath: string = path.join(cwd, core.getInput('solutionPath'))
     const outputPath = path.join(cwd, 'result.xml')
 
-    let command = `jb inspectcode -o=${outputPath} -a ${solutionPath}`
+    let command = `jb inspectcode --build --output=${outputPath} --severity=HINT --absolute-paths ${solutionPath}`
 
     const exclude = core.getInput('exclude') ?? ''
     if (exclude !== '') {
       command += ` --exclude=${exclude}`
+    }
+
+    const solutionWideAnalysis: string =
+      core.getInput('solutionWideAnalysis') ?? ''
+    if (solutionWideAnalysis !== '') {
+      command += ` --${
+        solutionWideAnalysis.toLowerCase() !== 'true' ? 'no-' : ''
+      }swea`
     }
 
     await exec.exec(command)
@@ -37,7 +45,7 @@ async function run(): Promise<void> {
     }
 
     if (report.issueOverThresholdIsExists(minimumSeverity)) {
-      core.setFailed('Issue is exist.')
+      core.setFailed('Issues found.')
     }
   } catch (error) {
     if (error instanceof Error) {
