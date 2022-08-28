@@ -36,7 +36,7 @@
     "@vercel/ncc": "^0.34.0",
     "eslint": "^8.14.0",
     "eslint-plugin-github": "^4.3.6",
-    "eslint-plugin-jest": "^26.1.5",
+    "eslint-plugin-jest": "^27.0.0",
     "jest": "^28.0.3",
     "jest-circus": "^28.0.3",
     "jest-extended": "^3.0.0",
