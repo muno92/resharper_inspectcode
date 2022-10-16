@@ -121,15 +121,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__nccwpck_require__(2186));
 const exec = __importStar(__nccwpck_require__(1514));
 const installer_1 = __nccwpck_require__(1480);
 const report_1 = __nccwpck_require__(8269);
-const path_1 = __importDefault(__nccwpck_require__(1017));
 function run() {
     var _a, _b, _c, _d, _e;
     return __awaiter(this, void 0, void 0, function* () {
@@ -137,13 +133,12 @@ function run() {
             const installer = new installer_1.Installer();
             const version = (_a = core.getInput('version')) !== null && _a !== void 0 ? _a : '';
             yield installer.install(version);
-            const cwd = process.cwd();
-            const solutionPath = path_1.default.join(cwd, core.getInput('solutionPath'));
-            const outputPath = path_1.default.join(cwd, 'result.xml');
+            const solutionPath = core.getInput('solutionPath');
+            const outputPath = 'result.xml';
             let command = `jb inspectcode --build --output=${outputPath} --severity=HINT --absolute-paths ${solutionPath}`;
             const include = core.getInput('include');
             if (include) {
-                command += ` --include='${include.trim().replace(/[\r\n]+/g, ';')}'`;
+                command += ` --include=${include.trim().replace(/[\r\n]+/g, ';')}`;
             }
             const exclude = (_b = core.getInput('exclude')) !== null && _b !== void 0 ? _b : '';
             if (exclude !== '') {
@@ -152,6 +147,11 @@ function run() {
             const solutionWideAnalysis = (_c = core.getInput('solutionWideAnalysis')) !== null && _c !== void 0 ? _c : '';
             if (solutionWideAnalysis !== '') {
                 command += ` --${solutionWideAnalysis.toLowerCase() !== 'true' ? 'no-' : ''}swea`;
+            }
+            const workingDir = core.getInput('workingDirectory');
+            if (workingDir) {
+                core.debug(`Changing to working directory: ${workingDir}`);
+                process.chdir(workingDir);
             }
             yield exec.exec(command);
             const ignoreIssueType = (_d = core.getInput('ignoreIssueType')) !== null && _d !== void 0 ? _d : '';

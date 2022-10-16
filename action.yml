@@ -22,6 +22,9 @@ inputs:
   include:
     required: false
     description: Relative path(s) or file masks that define which files to include during the inspection.
+  workingDirectory:
+    required: false
+    description: The working directory in which to run the `jb` command and to which all paths/patterns are relative.
   ignoreIssueType:
     required: false
     description: Comma-separated list of issue types to ignore.

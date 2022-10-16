@@ -71,13 +71,18 @@ UnusedField.Compiler,UnusedMember.Global
 
 Issue Types reference: https://www.jetbrains.com/help/resharper/Reference__Code_Inspections_CSHARP.html
 
-
 ### solutionWideAnalysis
 
 - true
 - false
 
-Explicitly enable or disable solution-wide analysis. If not specified, solution-wide analysis will be enabled or disabled based on the existing settings.
+Explicitly enable or disable solution-wide analysis. If not specified, solution-wide analysis will
+be enabled or disabled based on the existing settings.
+
+### workingDirectory
+
+The directory to run the command in. All paths (solution path, include/exclude patterns, etc) are
+also relative to this directory.
 
 ## Usage
 
