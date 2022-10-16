@@ -17,6 +17,11 @@ async function run(): Promise<void> {
 
     let command = `jb inspectcode --build --output=${outputPath} --severity=HINT --absolute-paths ${solutionPath}`
 
+    const include: string = core.getInput('include')
+    if (include) {
+      command += ` --include='${include.trim().replace(/[\r\n]+/g, ';')}'`
+    }
+
     const exclude = core.getInput('exclude') ?? ''
     if (exclude !== '') {
       command += ` --exclude=${exclude}`

@@ -19,6 +19,9 @@ inputs:
   exclude:
     required: false
     description: Relative path(s) or file masks that define which files to exclude during the inspection.
+  include:
+    required: false
+    description: Relative path(s) or file masks that define which files to include during the inspection.
   ignoreIssueType:
     required: false
     description: Comma-separated list of issue types to ignore.
