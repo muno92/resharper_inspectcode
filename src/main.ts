@@ -2,7 +2,6 @@ import * as core from '@actions/core'
 import * as exec from '@actions/exec'
 import {Installer} from './installer'
 import {Report} from './report'
-import path from 'path'
 
 async function run(): Promise<void> {
   try {
@@ -10,12 +9,15 @@ async function run(): Promise<void> {
     const version: string = core.getInput('version') ?? ''
     await installer.install(version)
 
-    const cwd = process.cwd()
-
-    const solutionPath: string = path.join(cwd, core.getInput('solutionPath'))
-    const outputPath = path.join(cwd, 'result.xml')
+    const solutionPath: string = core.getInput('solutionPath')
+    const outputPath = 'result.xml'
 
     let command = `jb inspectcode --build --output=${outputPath} --severity=HINT --absolute-paths ${solutionPath}`
+
+    const include: string = core.getInput('include')
+    if (include) {
+      command += ` --include=${include.trim().replace(/[\r\n]+/g, ';')}`
+    }
 
     const exclude = core.getInput('exclude') ?? ''
     if (exclude !== '') {
@@ -28,6 +30,12 @@ async function run(): Promise<void> {
       command += ` --${
         solutionWideAnalysis.toLowerCase() !== 'true' ? 'no-' : ''
       }swea`
+    }
+
+    const workingDir: string = core.getInput('workingDirectory')
+    if (workingDir) {
+      core.debug(`Changing to working directory: ${workingDir}`)
+      process.chdir(workingDir)
     }
 
     await exec.exec(command)

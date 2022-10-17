@@ -40,6 +40,25 @@ Relative path(s) or file masks that define which files to exclude during the ins
 
 More info: https://www.jetbrains.com/help/resharper/InspectCode.html#inspection-parameters
 
+### include
+
+Include one or more paths or file masks; see [the documentation][include-arg]. Specify one path or
+pattern per line.
+
+Example:
+
+```yml
+- name: Inspect code
+  uses: muno92/resharper_inspectcode@1.5.0
+  with:
+    solutionPath: ./YourSolution.sln
+    include: |
+      **.cs
+      **.cshtml
+```
+
+[include-arg]: https://www.jetbrains.com/help/resharper/InspectCode.html#inspection-parameters
+
 ### ignoreIssueType
 
 Comma-separated list of issue types to ignore.
@@ -52,13 +71,18 @@ UnusedField.Compiler,UnusedMember.Global
 
 Issue Types reference: https://www.jetbrains.com/help/resharper/Reference__Code_Inspections_CSHARP.html
 
-
 ### solutionWideAnalysis
 
 - true
 - false
 
-Explicitly enable or disable solution-wide analysis. If not specified, solution-wide analysis will be enabled or disabled based on the existing settings.
+Explicitly enable or disable solution-wide analysis. If not specified, solution-wide analysis will
+be enabled or disabled based on the existing settings.
+
+### workingDirectory
+
+The directory to run the command in. All paths (solution path, include/exclude patterns, etc) are
+also relative to this directory.
 
 ## Usage
 
