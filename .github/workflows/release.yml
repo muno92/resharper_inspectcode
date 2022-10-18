@@ -1,0 +1,17 @@
+name: Release
+on:
+  push:
+    branches:
+      - add_tagpr
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - id: tagpr
+        uses: Songmu/tagpr@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          versionFile: package.json
+          release: draft
