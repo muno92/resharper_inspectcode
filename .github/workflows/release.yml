@@ -12,6 +12,3 @@ jobs:
         uses: Songmu/tagpr@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          versionFile: package.json
-          release: draft
