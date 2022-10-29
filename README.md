@@ -97,7 +97,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Setup .NET
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '6.0.x' # or 3.1.x, 5.0.x
       - name: Restore
