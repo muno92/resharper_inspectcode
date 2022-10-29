@@ -31,6 +31,5 @@
 #       If this value is not set, the release is to be created.
 [tagpr]
 	vPrefix = false
-	release = draft
 	releaseBranch = main
-	versionFile = package.json
+	versionFile = package.json,README.md
