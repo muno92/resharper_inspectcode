@@ -3,6 +3,12 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - '.github/**'
+      - '__fixtures/**'
+      - '__tests__/**'
+      - 'TestSolution/**'
+      - '.tagpr'
 jobs:
   release:
     runs-on: ubuntu-latest
