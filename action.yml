@@ -32,7 +32,7 @@ inputs:
     required: false
     description: Explicitly enable or disable solution-wide analysis. If not specified, solution-wide analysis will be enabled or disabled based on the existing settings.
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'dist/index.js'
 branding:
   icon: hash
