@@ -7,7 +7,7 @@ on: # rebuild any PRs and main branch changes
       - 'releases/*'
 
 jobs:
-  build: # make sure build/ci work properly
+  lint_test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -15,7 +15,7 @@ jobs:
           npm install
       - run: |
           npm run all
-  test: # make sure the action works on a clean machine without building
+  e2e_test:
     runs-on: ${{ matrix.operating-system }}
     strategy:
       fail-fast: false
@@ -36,3 +36,19 @@ jobs:
         with:
           solutionPath: TestSolution/TestSolution.sln
           failOnIssue: '0'
+  package:
+    needs: [lint_test, e2e_test]
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Dependencies
+        run: npm install
+      - name: Build
+        run: npm run build && npm run package
+      - name: Commit compiled code
+        run: |
+          git config --local user.name 'GitHub Actions'
+          git config --local user.mail 'action@github.com'
+          git add .
+          git diff --exit-code --quiet || git commit -m 'Compile' && git push origin ${{ github.head_ref }}
