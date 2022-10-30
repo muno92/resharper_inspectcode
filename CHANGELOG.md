@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.6.1](https://github.com/muno92/resharper_inspectcode/compare/1.6.0...1.6.1) - 2022-10-30
+- Update dependency @types/node to v18 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/350
+
 ## [1.6.0](https://github.com/muno92/resharper_inspectcode/compare/1.5.0...1.6.0) - 2022-10-18
 - Update dependency @vercel/ncc to ^0.34.0 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/337
 - Update dependency prettier to v2.7.0 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/339
