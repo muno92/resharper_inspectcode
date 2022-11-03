@@ -95,7 +95,7 @@ jobs:
     name: Inspection
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
@@ -103,7 +103,7 @@ jobs:
       - name: Restore
         run: dotnet restore
       - name: Inspect code
-        uses: muno92/resharper_inspectcode@1.6.0
+        uses: muno92/resharper_inspectcode@1.6.2
         with:
           solutionPath: ./YourSolution.sln
 ```
