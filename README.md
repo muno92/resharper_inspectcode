@@ -49,7 +49,7 @@ Example:
 
 ```yml
 - name: Inspect code
-  uses: muno92/resharper_inspectcode@1.6.2
+  uses: muno92/resharper_inspectcode@1.6.3
   with:
     solutionPath: ./YourSolution.sln
     include: |
