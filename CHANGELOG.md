@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.6.3](https://github.com/muno92/resharper_inspectcode/compare/1.6.2...1.6.3) - 2022-11-24
+- Add .NET 7 to test target by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/357
+- Update dependency prettier to v2.8.0 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/360
+
 ## [1.6.2](https://github.com/muno92/resharper_inspectcode/compare/1.6.1...1.6.2) - 2022-11-01
 - Fix minimatch ReDoS vulnerability by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/354
 
