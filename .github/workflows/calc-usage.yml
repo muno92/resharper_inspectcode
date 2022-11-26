@@ -1,0 +1,22 @@
+name: Calculate usage
+
+on:
+#  schedule:
+#    - cron:  '5 0 1 * *'
+  workflow_dispatch:
+
+jobs:
+  calc-usage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set Start Date
+        run: echo "START_DATE=$(date -d "$(date +'%Y%m01') 1 month ago" +'%Y-%m-%d')" >> $GITHUB_ENV
+      - name: Set End Date
+        run: echo "END_DATE=$(date -d "$(date +'%Y%m01') 1 days ago" +'%Y-%m-%d')" >> $GITHUB_ENV
+      - uses: muno92/gha-usage@v0.1.0
+        with:
+          repo: ${{ github.repository }}
+          start-date: ${{ env.START_DATE }}
+          end-date: ${{ env.END_DATE }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
