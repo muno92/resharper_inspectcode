@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.6.5](https://github.com/muno92/resharper_inspectcode/compare/1.6.4...1.6.5) - 2022-12-16
+- Support .NET 7 by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/365
+
 ## [1.6.4](https://github.com/muno92/resharper_inspectcode/compare/1.6.3...1.6.4) - 2022-12-08
 - Update all non-major dependencies by @renovate in https://github.com/muno92/resharper_inspectcode/pull/363
 
