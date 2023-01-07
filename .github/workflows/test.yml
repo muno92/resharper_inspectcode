@@ -54,4 +54,6 @@ jobs:
           git config --local user.name 'github-actions[bot]'
           git config --local user.mail '41898282+github-actions[bot]@users.noreply.github.com'
           git add .
+          git status
+          git diff
           git diff --exit-code --quiet || git commit -m 'Compile' && git push origin ${{ github.head_ref }}
