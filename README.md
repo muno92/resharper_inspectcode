@@ -107,3 +107,78 @@ jobs:
         with:
           solutionPath: ./YourSolution.sln
 ```
+
+### Inspect Code works perfectly with Cleanup Code
+
+Save your time from having to do a code review and make fixes with enter a commit message each time.
+
+Check out a demo of that GitHub Actions in action. Here in that demo project
+[ReSharper CLI CleanupCode GitHub Action Demo](https://github.com/ArturWincenciak/ReSharper_CleanupCode_Demo#cleanup-code-works-perfectly-with-inspect-code),
+I show you how to combine [ReSharper CLI CleanupCode](https://github.com/marketplace/actions/resharper-cli-cleanupcode)
+and [ReSharper CLI InspectCode](https://github.com/marketplace/actions/resharper-cli-inspectcode)
+using [GitHub Action Definition](https://github.com/ArturWincenciak/ReSharper_CleanupCode_Demo/blob/main/.github/workflows/cleanup_code.yml)
+that contains two jobs: `cleanup` and `inspection`.
+
+Refer to
+[the demo project](https://github.com/ArturWincenciak/ReSharper_CleanupCode_Demo)
+and gain all the knowledge on how to speed up your daily development process.
+
+```yaml
+name: ReSharper CLI CleanupCode and InspectCode
+
+on: [ push ]
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    name: Cleanup Code
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 7.0.x
+
+      - name: Restore Dependencies
+        run: dotnet restore ReSharperCleanupCodeDemo.sln
+          
+      - name: Cleanup Code
+        id: cleanup
+        uses: ArturWincenciak/ReSharper_CleanupCode@v2.0
+        with:
+          solution: 'ReSharperCleanupCodeDemo.sln'
+          fail_on_reformat_needed: 'no'
+          auto_commit: 'yes'
+          jb_cleanup_code_arg: '--verbosity=INFO --profile=Almost Full Cleanup --exclude=**UnitTests/**.*'
+          commit_message: 'Cleanup code by ReSharper CLI CleanupCode GitHub Action'
+          commit_creator_email: 'cleanupcode@github.action'
+          commit_creator_name: 'CleanupCode Action'
+  
+  inspection:
+    runs-on: ubuntu-latest
+    name: Inspect Code
+    needs: cleanup
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 7.0.x
+
+      - name: Restore Dependencies
+        run: dotnet restore ReSharperCleanupCodeDemo.sln
+
+      - name: Inspect code
+        uses: muno92/resharper_inspectcode@1.6.5
+        with:
+          solutionPath: ./ReSharperCleanupCodeDemo.sln
+          failOnIssue: 1
+          minimumSeverity: notice
+          solutionWideAnalysis: true
+```
