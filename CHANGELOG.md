@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.6.6](https://github.com/muno92/resharper_inspectcode/compare/1.6.5...1.6.6) - 2023-01-12
+- Update dependency prettier to v2.8.2 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/367
+- Bump json5 from 1.0.1 to 1.0.2 by @dependabot in https://github.com/muno92/resharper_inspectcode/pull/369
+
 ## [1.6.5](https://github.com/muno92/resharper_inspectcode/compare/1.6.4...1.6.5) - 2022-12-16
 - Support .NET 7 by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/365
 
