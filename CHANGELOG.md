@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.6.10](https://github.com/muno92/resharper_inspectcode/compare/1.6.9...1.6.10) - 2023-03-20
+- Update dependency prettier to v2.8.5 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/378
+
 ## [1.6.9](https://github.com/muno92/resharper_inspectcode/compare/1.6.8...1.6.9) - 2023-03-16
 - Update dependency typescript to v5 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/376
 
