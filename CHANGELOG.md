@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.6.12](https://github.com/muno92/resharper_inspectcode/compare/1.6.11...1.6.12) - 2023-04-09
+- Update dependency prettier to v2.8.7 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/383
+
 ## [1.6.11](https://github.com/muno92/resharper_inspectcode/compare/1.6.10...1.6.11) - 2023-03-21
 - Update dependency prettier to v2.8.6 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/380
 
