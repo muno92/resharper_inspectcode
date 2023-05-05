@@ -23,6 +23,11 @@ async function run(): Promise<void> {
       command += ` --exclude=${exclude}`
     }
 
+    const cachesHome = core.getInput('cachesHome') ?? ''
+    if (cachesHome !== '') {
+      command += ` --caches-home=${cachesHome}`
+    }
+
     await exec.exec(command)
 
     const ignoreIssueType = core.getInput('ignoreIssueType') ?? ''

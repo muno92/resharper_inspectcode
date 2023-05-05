@@ -27,6 +27,9 @@ inputs:
     required: false
     description: The path for the jb executable
     default: 'jb'
+  cachesHome:
+    required: false
+    description: 'caches directory'
 runs:
   using: 'node12'
   main: 'dist/index.js'
