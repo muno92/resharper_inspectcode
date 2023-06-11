@@ -135,7 +135,7 @@ function run() {
             yield installer.install(version);
             const solutionPath = core.getInput('solutionPath');
             const outputPath = 'result.xml';
-            let command = `jb inspectcode --build --output=${outputPath} --severity=HINT --absolute-paths ${solutionPath}`;
+            let command = `jb inspectcode --build --output=${outputPath} --absolute-paths ${solutionPath}`;
             const include = core.getInput('include');
             if (include) {
                 command += ` --include=${include.trim().replace(/[\r\n]+/g, ';')}`;
@@ -148,6 +148,8 @@ function run() {
             if (solutionWideAnalysis !== '') {
                 command += ` --${solutionWideAnalysis.toLowerCase() !== 'true' ? 'no-' : ''}swea`;
             }
+            const minimumReportSeverity = getMinimumReportSeverity();
+            command += ` --severity=${minimumReportSeverity}`;
             const workingDir = core.getInput('workingDirectory');
             if (workingDir) {
                 core.debug(`Changing to working directory: ${workingDir}`);
@@ -172,6 +174,22 @@ function run() {
             }
         }
     });
+}
+function getMinimumReportSeverity() {
+    var _a;
+    const minimumReportSeverity = (_a = core.getInput('minimumReportSeverity').toUpperCase()) !== null && _a !== void 0 ? _a : '';
+    switch (minimumReportSeverity) {
+        case 'INTO':
+            return 'INFO';
+        case 'SUGGESTION':
+            return 'SUGGESTION';
+        case 'WARNING':
+            return 'WARNING';
+        case 'ERROR':
+            return 'ERROR';
+        default:
+            return 'HINT';
+    }
 }
 run();
 
