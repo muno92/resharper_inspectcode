@@ -1,7 +1,7 @@
 import * as core from '@actions/core'
 import * as fs from 'fs'
 import * as htmlparser2 from 'htmlparser2'
-import {Element, Document} from 'domhandler'
+import {Document, Element} from 'domhandler'
 import {Issue, IssueTypes, Severity} from './issue'
 import {issueCommand} from '@actions/core/lib/command'
 
@@ -21,7 +21,7 @@ export class Report {
       return
     }
 
-    const ignoreIssueTypes = ignoreIssueType.split(',')
+    const ignoreIssueTypes = ignoreIssueType.split(',').map(s => s.trim())
 
     const xml = htmlparser2.parseDocument(file)
     const issueTypes = this.extractIssueTypes(xml)
