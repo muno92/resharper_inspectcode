@@ -226,7 +226,7 @@ class Report {
             }
             return;
         }
-        const ignoreIssueTypes = ignoreIssueType.split(',');
+        const ignoreIssueTypes = ignoreIssueType.split(',').map(s => s.trim());
         const xml = htmlparser2.parseDocument(file);
         const issueTypes = this.extractIssueTypes(xml);
         this.issues = this.extractIssues(xml, issueTypes, ignoreIssueTypes);
