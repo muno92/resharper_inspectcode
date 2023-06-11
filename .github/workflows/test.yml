@@ -17,9 +17,6 @@ jobs:
           npm run all
   e2e_test:
     uses: ./.github/workflows/reusable-e2e.yml
-    with:
-      operating-system: ${{ matrix.operating-system }}
-      dotnet-version: ${{ matrix.dotnet-version }}
   package:
     needs: [lint_test, e2e_test]
     if: github.event_name == 'pull_request'
