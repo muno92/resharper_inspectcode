@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.6.14](https://github.com/muno92/resharper_inspectcode/compare/1.6.13...1.6.14) - 2023-06-11
+- Update dependency jest-extended to v4 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/390
+- Update dependency htmlparser2 to v9 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/389
+- Enable whitespace in ignoreIssueType by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/392
+- Add option to specify minimumReportSeverity by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/393
+
 ## [1.6.13](https://github.com/muno92/resharper_inspectcode/compare/1.6.12...1.6.13) - 2023-04-23
 - Update dependency prettier to v2.8.8 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/386
 
