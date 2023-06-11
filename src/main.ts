@@ -72,7 +72,7 @@ function getMinimumReportSeverity(): ReSharperSeverity {
     core.getInput('minimumReportSeverity').toUpperCase() ?? ''
 
   switch (minimumReportSeverity) {
-    case 'INTO':
+    case 'INFO':
       return 'INFO'
     case 'SUGGESTION':
       return 'SUGGESTION'
