@@ -16,14 +16,15 @@ jobs:
       - run: |
           npm run all
   e2e_test:
-    runs-on: ${{ matrix.operating-system }}
     strategy:
       fail-fast: false
       matrix:
         operating-system: [ ubuntu-latest, windows-latest, macos-latest ]
         dotnet-version: [ '3.1', '5.0', '6.0', '7.0' ]
-    steps:
-      - uses: ./.github/workflows/reusable-e2e.yml
+    uses: ./.github/workflows/reusable-e2e.yml
+    with:
+      operating-system: ${{ matrix.operating-system }}
+      dotnet-version: ${{ matrix.dotnet-version }}
   package:
     needs: [lint_test, e2e_test]
     if: github.event_name == 'pull_request'
