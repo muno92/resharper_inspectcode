@@ -12,9 +12,19 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    env:
+      MAJOR_TAG: v1
     steps:
       - uses: actions/checkout@v3
       - id: tagpr
         uses: Songmu/tagpr@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Update Tag
+        if: "steps.tagpr.outputs.tag != ''"
+        run: |
+          git checkout --force origin/main
+          git config --local user.email github-actions[bot]@users.noreply.github.com
+          git config --local user.name github-actions[bot]
+          git tag -fa ${{ env.MAJOR_TAG }} -m "Release ${{ steps.tagpr.outputs.tag }}"
+          git push --force origin ${{ env.MAJOR_TAG }}
