@@ -35,3 +35,7 @@ jobs:
           git config --local user.name 'github-actions[bot]'
           git config --local user.mail '41898282+github-actions[bot]@users.noreply.github.com'
           git diff --exit-code --quiet || (git add . && git commit -m 'Compile' && git push origin ${{ github.head_ref }})
+  # Re-run E2E Test after packaging (because Push by GitHub Actions Bot don't trigger test workflow)
+  re_e2e_test:
+    needs: [package]
+    uses: ./.github/workflows/reusable-e2e.yml
