@@ -4,7 +4,7 @@ export class Issue {
     public FilePath: string,
     public Column: number,
     public Message: string,
-    public Severity: Severity,
+    public Severity: GitHubSeverity,
     public Line?: number
   ) {}
 
@@ -15,8 +15,14 @@ export class Issue {
   }
 }
 
-export type Severity = 'notice' | 'warning' | 'error'
+export type GitHubSeverity = 'notice' | 'warning' | 'error'
+export type ReSharperSeverity =
+  | 'INFO'
+  | 'HINT'
+  | 'SUGGESTION'
+  | 'WARNING'
+  | 'ERROR'
 
 export type IssueTypes = {
-  [Id: string]: Severity
+  [Id: string]: GitHubSeverity
 }

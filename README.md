@@ -28,6 +28,16 @@ Version of the Resharper CLI tool to install. Defaults to the latest available.
 
 ### minimumSeverity
 
+- INFO
+- HINT (default)
+- SUGGESTION
+- WARNING
+- ERROR
+
+Minimum severity for issues to be reported. Defaults to "HINT".
+
+### minimumSeverity
+
 - error
 - warning
 - notice (default)

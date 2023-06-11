@@ -2,7 +2,7 @@ import * as core from '@actions/core'
 import * as fs from 'fs'
 import * as htmlparser2 from 'htmlparser2'
 import {Document, Element} from 'domhandler'
-import {Issue, IssueTypes, Severity} from './issue'
+import {GitHubSeverity, Issue, IssueTypes} from './issue'
 import {issueCommand} from '@actions/core/lib/command'
 
 export class Report {
@@ -80,7 +80,7 @@ export class Report {
   private extractIssueTypes(xml: Document): IssueTypes {
     const issueTypes: IssueTypes = {}
 
-    const convertSeverity = (severity: string): Severity => {
+    const convertSeverity = (severity: string): GitHubSeverity => {
       switch (severity) {
         case 'hint':
         case 'suggestion':
@@ -134,7 +134,7 @@ export class Report {
     return this.issues.filter(i => errorTarget.includes(i.Severity)).length > 0
   }
 
-  private switchErrorTarget(minimumSeverity: string): Severity[] {
+  private switchErrorTarget(minimumSeverity: string): GitHubSeverity[] {
     if (minimumSeverity === 'error') {
       return ['error']
     }

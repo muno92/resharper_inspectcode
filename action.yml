@@ -12,6 +12,10 @@ inputs:
   version:
     required: false
     description: Version of the Resharper CLI tool to install. Defaults to the latest available.
+  minimumReportSeverity:
+    required: false
+    description: Minimum severity for issues to be reported. Defaults to "HINT". [INFO, HINT, SUGGESTION, WARNING, ERROR]
+    default: 'hint'
   minimumSeverity:
     required: false
     description: Minimum severity for issues to cause the action to fail. Defaults to "notice". Ignored if failOnIssue is set to '0'.

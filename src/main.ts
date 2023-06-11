@@ -2,6 +2,7 @@ import * as core from '@actions/core'
 import * as exec from '@actions/exec'
 import {Installer} from './installer'
 import {Report} from './report'
+import {ReSharperSeverity} from './issue'
 
 async function run(): Promise<void> {
   try {
@@ -12,7 +13,7 @@ async function run(): Promise<void> {
     const solutionPath: string = core.getInput('solutionPath')
     const outputPath = 'result.xml'
 
-    let command = `jb inspectcode --build --output=${outputPath} --severity=HINT --absolute-paths ${solutionPath}`
+    let command = `jb inspectcode --build --output=${outputPath} --absolute-paths ${solutionPath}`
 
     const include: string = core.getInput('include')
     if (include) {
@@ -31,6 +32,10 @@ async function run(): Promise<void> {
         solutionWideAnalysis.toLowerCase() !== 'true' ? 'no-' : ''
       }swea`
     }
+
+    const minimumReportSeverity = getMinimumReportSeverity()
+
+    command += ` --severity=${minimumReportSeverity}`
 
     const workingDir: string = core.getInput('workingDirectory')
     if (workingDir) {
@@ -59,6 +64,24 @@ async function run(): Promise<void> {
     if (error instanceof Error) {
       core.setFailed(error.message)
     }
+  }
+}
+
+function getMinimumReportSeverity(): ReSharperSeverity {
+  const minimumReportSeverity =
+    core.getInput('minimumReportSeverity').toUpperCase() ?? ''
+
+  switch (minimumReportSeverity) {
+    case 'INTO':
+      return 'INFO'
+    case 'SUGGESTION':
+      return 'SUGGESTION'
+    case 'WARNING':
+      return 'WARNING'
+    case 'ERROR':
+      return 'ERROR'
+    default:
+      return 'HINT'
   }
 }
 
