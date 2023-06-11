@@ -32,4 +32,4 @@
 [tagpr]
 	vPrefix = false
 	releaseBranch = main
-	versionFile = package.json,README.md
+	versionFile = package.json
