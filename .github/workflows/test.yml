@@ -23,19 +23,7 @@ jobs:
         operating-system: [ ubuntu-latest, windows-latest, macos-latest ]
         dotnet-version: [ '3.1', '5.0', '6.0', '7.0' ]
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: ${{ matrix.dotnet-version }}
-      - uses: ./
-        with:
-          solutionPath: TestSolution/TestSolution.sln
-          failOnIssue: '0'
-      # Reproduce second time execution on self-hosted runner
-      - uses: ./
-        with:
-          solutionPath: TestSolution/TestSolution.sln
-          failOnIssue: '0'
+      - uses: ./.github/workflows/reusable-e2e.yml
   package:
     needs: [lint_test, e2e_test]
     if: github.event_name == 'pull_request'

@@ -1,0 +1,34 @@
+name: E2E Test
+
+on:
+  workflow_call:
+    inputs:
+      operating-system:
+        required: true
+        type: string
+      dotnet-version:
+        required: true
+        type: string
+
+jobs:
+  e2e_test:
+    runs-on: ${{ inputs.operating-system }}
+    strategy:
+      fail-fast: false
+      matrix:
+        operating-system: [ ubuntu-latest, windows-latest, macos-latest ]
+        dotnet-version: [ '3.1', '5.0', '6.0', '7.0' ]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ inputs.dotnet-version }}
+      - uses: ./
+        with:
+          solutionPath: TestSolution/TestSolution.sln
+          failOnIssue: '0'
+      # Reproduce second time execution on self-hosted runner
+      - uses: ./
+        with:
+          solutionPath: TestSolution/TestSolution.sln
+          failOnIssue: '0'
