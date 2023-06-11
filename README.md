@@ -59,7 +59,7 @@ Example:
 
 ```yml
 - name: Inspect code
-  uses: muno92/resharper_inspectcode@1.6.13
+  uses: muno92/resharper_inspectcode@1.7.0
   with:
     solutionPath: ./YourSolution.sln
     include: |
@@ -113,7 +113,7 @@ jobs:
       - name: Restore
         run: dotnet restore
       - name: Inspect code
-        uses: muno92/resharper_inspectcode@1.6.5
+        uses: muno92/resharper_inspectcode@1.7.0
         with:
           solutionPath: ./YourSolution.sln
 ```
