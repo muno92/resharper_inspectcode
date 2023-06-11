@@ -20,6 +20,7 @@ jobs:
         with:
           solutionPath: TestSolution/TestSolution.sln
           failOnIssue: '0'
+          minimumReportSeverity: 'WARNING'
       # Reproduce second time execution on self-hosted runner
       - uses: ./
         with:
