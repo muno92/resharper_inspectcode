@@ -35,3 +35,23 @@ jobs:
           git config --local user.name github-actions[bot]
           git tag -fa ${{ env.MAJOR_TAG }} -m "Release ${{ steps.tagpr.outputs.tag }}"
           git push --force origin ${{ env.MAJOR_TAG }}
+  package:
+    needs: tagpr
+    if: ${{ needs.tagpr.outputs.pull_request != '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ needs.tagpr.outputs.pull_request.head.ref }}
+      - name: Install Dependencies
+        run: npm install
+      - name: Build
+        run: npm run build && npm run package
+      - name: Commit compiled code
+        run: |
+          git config --local user.name 'github-actions[bot]'
+          git config --local user.mail 'github-actions[bot]@users.noreply.github.com'
+          git diff --exit-code --quiet || (git add . && git commit -m 'Compile' && git push origin ${{ github.head_ref }})
+  e2e_test:
+    needs: package
+    uses: ./.github/workflows/reusable-e2e.yml

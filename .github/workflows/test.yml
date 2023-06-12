@@ -15,22 +15,6 @@ jobs:
           npm install
       - run: |
           npm run all
-  package:
-    needs: lint_unittest
-    if: github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Install Dependencies
-        run: npm install
-      - name: Build
-        run: npm run build && npm run package
-      - name: Commit compiled code
-        run: |
-          git config --local user.name 'github-actions[bot]'
-          git config --local user.mail 'github-actions[bot]@users.noreply.github.com'
-          git remote set-url origin "https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          git diff --exit-code --quiet || (git add . && git commit -m 'Compile' && git push origin ${{ github.head_ref }})
   e2e_test:
-    needs: package
+    needs: lint_unittest
     uses: ./.github/workflows/reusable-e2e.yml
