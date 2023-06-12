@@ -32,5 +32,5 @@ jobs:
 #          git remote set-url origin "https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 #          git diff --exit-code --quiet || (git add . && git commit -m 'Compile' && git push origin ${{ github.head_ref }})
   e2e_test:
-    needs: package
+#    needs: package
     uses: ./.github/workflows/reusable-e2e.yml
