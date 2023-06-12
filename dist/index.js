@@ -130,6 +130,7 @@ function run() {
     var _a, _b, _c, _d, _e;
     return __awaiter(this, void 0, void 0, function* () {
         try {
+            console.log('test2');
             const installer = new installer_1.Installer();
             const version = (_a = core.getInput('version')) !== null && _a !== void 0 ? _a : '';
             yield installer.install(version);

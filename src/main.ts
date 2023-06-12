@@ -6,6 +6,7 @@ import {ReSharperSeverity} from './issue'
 
 async function run(): Promise<void> {
   try {
+    core.info('test1')
     const installer = new Installer()
     const version: string = core.getInput('version') ?? ''
     await installer.install(version)
