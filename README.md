@@ -26,7 +26,7 @@ Set this option to `'0'` prevent the action from failing when issues exist (anno
 
 Version of the Resharper CLI tool to install. Defaults to the latest available.
 
-### minimumSeverity
+### minimumReportSeverity
 
 - INFO
 - HINT (default)
