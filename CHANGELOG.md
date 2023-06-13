@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.7.1](https://github.com/muno92/resharper_inspectcode/compare/1.7.0...1.7.1) - 2023-06-13
+- Fix typo in minimum report severity switch by @Octol1ttle in https://github.com/muno92/resharper_inspectcode/pull/396
+
 ## [1.7.0](https://github.com/muno92/resharper_inspectcode/compare/1.6.13...1.7.0) - 2023-06-11
 - Update dependency jest-extended to v4 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/390
 - Update dependency htmlparser2 to v9 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/389

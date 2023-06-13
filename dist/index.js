@@ -179,7 +179,7 @@ function getMinimumReportSeverity() {
     var _a;
     const minimumReportSeverity = (_a = core.getInput('minimumReportSeverity').toUpperCase()) !== null && _a !== void 0 ? _a : '';
     switch (minimumReportSeverity) {
-        case 'INTO':
+        case 'INFO':
             return 'INFO';
         case 'SUGGESTION':
             return 'SUGGESTION';
