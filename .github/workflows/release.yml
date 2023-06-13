@@ -37,7 +37,7 @@ jobs:
           git push --force origin ${{ env.MAJOR_TAG }}
   package:
     needs: tagpr
-    if: ${{ needs.tagpr.outputs.pull_request != '' }}
+    if: ${{ needs.tagpr.outputs.tag == '' && needs.tagpr.outputs.pull_request != '' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
