@@ -51,7 +51,7 @@ jobs:
         run: |
           git config --local user.name 'github-actions[bot]'
           git config --local user.mail 'github-actions[bot]@users.noreply.github.com'
-          git diff --exit-code --quiet || (git add . && git commit -m 'Compile' && git push origin ${{ github.head_ref }})
+          git diff --exit-code --quiet || (git add . && git commit -m 'Compile' && git push origin ${{ needs.tagpr.outputs.pull_request.head.ref }})
   e2e_test:
     needs: package
     uses: ./.github/workflows/reusable-e2e.yml
