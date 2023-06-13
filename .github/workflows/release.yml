@@ -40,8 +40,6 @@ jobs:
     if: ${{ needs.tagpr.outputs.pull_request != '' }}
     runs-on: ubuntu-latest
     steps:
-      - run: echo "<${{ needs.tagpr.outputs.pull_request }}>"
-      - run: echo "<${{ toJSON(needs.tagpr.outputs.pull_request) }}>"
       - uses: actions/checkout@v3
         with:
           ref: ${{ needs.tagpr.outputs.pull_request.head.ref }}
