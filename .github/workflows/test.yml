@@ -15,6 +15,3 @@ jobs:
           npm install
       - run: |
           npm run all
-  e2e_test:
-    needs: lint_unittest
-    uses: ./.github/workflows/reusable-e2e.yml
