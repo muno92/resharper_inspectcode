@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.7.2](https://github.com/muno92/resharper_inspectcode/compare/1.7.1...1.7.2) - 2023-07-17
+- Update dependency @typescript-eslint/parser to v6 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/403
+
 ## [1.7.1](https://github.com/muno92/resharper_inspectcode/compare/1.7.0...1.7.1) - 2023-06-13
 - Fix typo in minimum report severity switch by @Octol1ttle in https://github.com/muno92/resharper_inspectcode/pull/396
 
