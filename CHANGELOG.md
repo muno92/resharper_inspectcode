@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.7.3](https://github.com/muno92/resharper_inspectcode/compare/1.7.2...1.7.3) - 2023-07-19
+- Bump word-wrap from 1.2.3 to 1.2.4 by @dependabot in https://github.com/muno92/resharper_inspectcode/pull/405
+
 ## [1.7.2](https://github.com/muno92/resharper_inspectcode/compare/1.7.1...1.7.2) - 2023-07-17
 - Update dependency @typescript-eslint/parser to v6 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/403
 
