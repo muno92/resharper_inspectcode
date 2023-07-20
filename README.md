@@ -89,6 +89,16 @@ Issue Types reference: https://www.jetbrains.com/help/resharper/Reference__Code_
 Explicitly enable or disable solution-wide analysis. If not specified, solution-wide analysis will
 be enabled or disabled based on the existing settings.
 
+### extensions
+
+Comma-separated list of extensions to install.
+
+Example:
+
+```text
+StyleCop.StyleCop,ReSharperPlugin.CognitiveComplexity
+```
+
 ### workingDirectory
 
 The directory to run the command in. All paths (solution path, include/exclude patterns, etc) are

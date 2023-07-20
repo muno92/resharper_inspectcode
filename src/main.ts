@@ -37,6 +37,11 @@ async function run(): Promise<void> {
 
     command += ` --severity=${minimumReportSeverity}`
 
+    const extensions: string = core.getInput('extensions')
+    if (extensions) {
+      command += ` --extensions=${extensions.trim().replace(/(,\s?)|(;\s?)/g, ';')}`
+    }
+
     const workingDir: string = core.getInput('workingDirectory')
     if (workingDir) {
       core.debug(`Changing to working directory: ${workingDir}`)
