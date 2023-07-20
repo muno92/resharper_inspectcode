@@ -35,6 +35,9 @@ inputs:
   solutionWideAnalysis:
     required: false
     description: Explicitly enable or disable solution-wide analysis. If not specified, solution-wide analysis will be enabled or disabled based on the existing settings.
+  extensions:
+    required: false
+    description: Comma-separated list of extensions to install.
 runs:
   using: 'node16'
   main: 'dist/index.js'
