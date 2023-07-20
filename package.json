@@ -1,6 +1,6 @@
 {
   "name": "resharper_inspectcode",
-  "version": "1.7.3",
+  "version": "1.7.4",
   "private": true,
   "description": "Run ReSharper Inspection action",
   "main": "lib/main.js",
