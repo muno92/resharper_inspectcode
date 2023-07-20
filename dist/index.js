@@ -150,6 +150,10 @@ function run() {
             }
             const minimumReportSeverity = getMinimumReportSeverity();
             command += ` --severity=${minimumReportSeverity}`;
+            const extensions = core.getInput('extensions');
+            if (extensions) {
+                command += ` --extensions=${extensions.trim().replace(/(,\s?)|(;\s?)/g, ';')}`;
+            }
             const workingDir = core.getInput('workingDirectory');
             if (workingDir) {
                 core.debug(`Changing to working directory: ${workingDir}`);
