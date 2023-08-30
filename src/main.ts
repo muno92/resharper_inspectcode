@@ -50,7 +50,7 @@ async function run(): Promise<void> {
 
     await exec.exec(command)
 
-    const ignoreIssueType = core.getInput('ignoreIssueType') ?? ''
+    const ignoreIssueType = (core.getInput('ignoreIssueType') ?? '').trim().replace(/[\r\n]+/g, ',')
 
     const report = new Report(outputPath, ignoreIssueType)
     report.output()
