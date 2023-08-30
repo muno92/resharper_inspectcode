@@ -71,12 +71,22 @@ Example:
 
 ### ignoreIssueType
 
-Comma-separated list of issue types to ignore.
+Comma-separated or line-separated list of issue types to ignore.
 
 Example:
 
 ```text
 UnusedField.Compiler,UnusedMember.Global
+```
+
+```yml
+- name: Inspect code
+  uses: muno92/resharper_inspectcode@v1
+  with:
+    solutionPath: ./YourSolution.sln
+    ignoreIssueType: |
+      UnusedField.Compiler
+      UnusedMember.Global
 ```
 
 Issue Types reference: https://www.jetbrains.com/help/resharper/Reference__Code_Inspections_CSHARP.html
