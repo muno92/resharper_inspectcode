@@ -152,7 +152,9 @@ function run() {
             command += ` --severity=${minimumReportSeverity}`;
             const extensions = core.getInput('extensions');
             if (extensions) {
-                command += ` --extensions=${extensions.trim().replace(/(,\s?)|(;\s?)/g, ';')}`;
+                command += ` --extensions=${extensions
+                    .trim()
+                    .replace(/(,\s?)|(;\s?)/g, ';')}`;
             }
             const workingDir = core.getInput('workingDirectory');
             if (workingDir) {
@@ -160,7 +162,9 @@ function run() {
                 process.chdir(workingDir);
             }
             yield exec.exec(command);
-            const ignoreIssueType = ((_d = core.getInput('ignoreIssueType')) !== null && _d !== void 0 ? _d : '').trim().replace(/[\r\n]+/g, ',');
+            const ignoreIssueType = ((_d = core.getInput('ignoreIssueType')) !== null && _d !== void 0 ? _d : '')
+                .trim()
+                .replace(/[\r\n]+/g, ',');
             const report = new report_1.Report(outputPath, ignoreIssueType);
             report.output();
             const failOnIssue = core.getInput('failOnIssue');
