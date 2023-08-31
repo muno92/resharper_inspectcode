@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.8.1](https://github.com/muno92/resharper_inspectcode/compare/1.8.0...1.8.1) - 2023-08-31
+- Add the ability to write ignoreIssueType via newlines by @XmasApple in https://github.com/muno92/resharper_inspectcode/pull/410
+
 ## [1.8.0](https://github.com/muno92/resharper_inspectcode/compare/1.7.3...1.8.0) - 2023-07-20
 - Add extensions input by @Octol1ttle in https://github.com/muno92/resharper_inspectcode/pull/407
 

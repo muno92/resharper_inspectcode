@@ -160,7 +160,7 @@ function run() {
                 process.chdir(workingDir);
             }
             yield exec.exec(command);
-            const ignoreIssueType = (_d = core.getInput('ignoreIssueType')) !== null && _d !== void 0 ? _d : '';
+            const ignoreIssueType = ((_d = core.getInput('ignoreIssueType')) !== null && _d !== void 0 ? _d : '').trim().replace(/[\r\n]+/g, ',');
             const report = new report_1.Report(outputPath, ignoreIssueType);
             report.output();
             const failOnIssue = core.getInput('failOnIssue');
