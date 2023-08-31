@@ -39,7 +39,9 @@ async function run(): Promise<void> {
 
     const extensions: string = core.getInput('extensions')
     if (extensions) {
-      command += ` --extensions=${extensions.trim().replace(/(,\s?)|(;\s?)/g, ';')}`
+      command += ` --extensions=${extensions
+        .trim()
+        .replace(/(,\s?)|(;\s?)/g, ';')}`
     }
 
     const workingDir: string = core.getInput('workingDirectory')
@@ -50,7 +52,9 @@ async function run(): Promise<void> {
 
     await exec.exec(command)
 
-    const ignoreIssueType = (core.getInput('ignoreIssueType') ?? '').trim().replace(/[\r\n]+/g, ',')
+    const ignoreIssueType = (core.getInput('ignoreIssueType') ?? '')
+      .trim()
+      .replace(/[\r\n]+/g, ',')
 
     const report = new Report(outputPath, ignoreIssueType)
     report.output()
