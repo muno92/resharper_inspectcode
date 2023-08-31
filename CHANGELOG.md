@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.8.2](https://github.com/muno92/resharper_inspectcode/compare/1.8.1...1.8.2) - 2023-08-31
+- Update dependency prettier to v3 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/402
+
 ## [1.8.1](https://github.com/muno92/resharper_inspectcode/compare/1.8.0...1.8.1) - 2023-08-31
 - Add the ability to write ignoreIssueType via newlines by @XmasApple in https://github.com/muno92/resharper_inspectcode/pull/410
 
