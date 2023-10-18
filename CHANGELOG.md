@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.8.4](https://github.com/muno92/resharper_inspectcode/compare/1.8.3...1.8.4) - 2023-10-18
+- Bump @babel/traverse from 7.19.0 to 7.23.2 by @dependabot in https://github.com/muno92/resharper_inspectcode/pull/416
+
 ## [1.8.3](https://github.com/muno92/resharper_inspectcode/compare/1.8.2...1.8.3) - 2023-09-07
 - Update dependency @vercel/ncc to ^0.38.0 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/413
 
