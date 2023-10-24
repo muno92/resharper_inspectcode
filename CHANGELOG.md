@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.8.5](https://github.com/muno92/resharper_inspectcode/compare/1.8.4...1.8.5) - 2023-10-24
+- Update dependency @types/node to v20 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/418
+
 ## [1.8.4](https://github.com/muno92/resharper_inspectcode/compare/1.8.3...1.8.4) - 2023-10-18
 - Bump @babel/traverse from 7.19.0 to 7.23.2 by @dependabot in https://github.com/muno92/resharper_inspectcode/pull/416
 
