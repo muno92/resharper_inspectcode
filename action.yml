@@ -39,7 +39,7 @@ inputs:
     required: false
     description: Comma-separated list of extensions to install.
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'dist/index.js'
 branding:
   icon: hash
