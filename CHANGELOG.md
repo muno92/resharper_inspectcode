@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.9.0](https://github.com/muno92/resharper_inspectcode/compare/1.8.5...1.9.0) - 2023-10-29
+- Add option for big solution by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/421
+
 ## [1.8.5](https://github.com/muno92/resharper_inspectcode/compare/1.8.4...1.8.5) - 2023-10-24
 - Update dependency @types/node to v20 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/418
 
