@@ -114,6 +114,22 @@ StyleCop.StyleCop,ReSharperPlugin.CognitiveComplexity
 The directory to run the command in. All paths (solution path, include/exclude patterns, etc) are
 also relative to this directory.
 
+### noBuild
+
+- true
+- false (default)
+
+et you specify whether to build the target solution before starting the analysis.  
+By default, InspectCode always builds the solution.
+
+More info: https://www.jetbrains.com/help/resharper/InspectCode.html#inspection-parameters
+
+### cacheHome
+
+Lets you specify a custom location for the data that InspectCode caches.
+
+More info: https://www.jetbrains.com/help/resharper/InspectCode.html#inspection-parameters
+
 ## Usage
 
 ```yaml
