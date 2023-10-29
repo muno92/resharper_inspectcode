@@ -44,6 +44,11 @@ async function run(): Promise<void> {
         .replace(/(,\s?)|(;\s?)/g, ';')}`
     }
 
+    const noBuild = core.getInput('noBuild') ?? ''
+    if (noBuild.toLowerCase() === 'true') {
+      command += ' --no-build'
+    }
+
     const workingDir: string = core.getInput('workingDirectory')
     if (workingDir) {
       core.debug(`Changing to working directory: ${workingDir}`)

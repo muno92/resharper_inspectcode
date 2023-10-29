@@ -38,6 +38,10 @@ inputs:
   extensions:
     required: false
     description: Comma-separated list of extensions to install.
+  noBuild:
+    required: false
+    default: 'false'
+    description: Let you specify whether to build the target solution before starting the analysis. By default (false), InspectCode always builds the solution.
 runs:
   using: 'node20'
   main: 'dist/index.js'
