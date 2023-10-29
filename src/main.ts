@@ -49,6 +49,11 @@ async function run(): Promise<void> {
       command += ' --no-build'
     }
 
+    const cachesHome = core.getInput('cachesHome') ?? ''
+    if (cachesHome !== '') {
+      command += ` --caches-home=${cachesHome}`
+    }
+
     const workingDir: string = core.getInput('workingDirectory')
     if (workingDir) {
       core.debug(`Changing to working directory: ${workingDir}`)

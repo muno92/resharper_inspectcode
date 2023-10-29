@@ -124,6 +124,12 @@ By default, InspectCode always builds the solution.
 
 More info: https://www.jetbrains.com/help/resharper/InspectCode.html#inspection-parameters
 
+### cacheHome
+
+Lets you specify a custom location for the data that InspectCode caches.
+
+More info: https://www.jetbrains.com/help/resharper/InspectCode.html#inspection-parameters
+
 ## Usage
 
 ```yaml
