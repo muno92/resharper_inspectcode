@@ -13,7 +13,7 @@ async function run(): Promise<void> {
     const solutionPath: string = core.getInput('solutionPath')
     const outputPath = 'result.xml'
 
-    let command = `jb inspectcode --build --output=${outputPath} --absolute-paths ${solutionPath}`
+    let command = `jb inspectcode --output=${outputPath} --absolute-paths ${solutionPath}`
 
     const include: string = core.getInput('include')
     if (include) {
@@ -47,6 +47,8 @@ async function run(): Promise<void> {
     const noBuild = core.getInput('noBuild') ?? ''
     if (noBuild.toLowerCase() === 'true') {
       command += ' --no-build'
+    } else {
+      command += ' --build'
     }
 
     const cachesHome = core.getInput('cachesHome') ?? ''
