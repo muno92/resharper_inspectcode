@@ -135,7 +135,7 @@ function run() {
             yield installer.install(version);
             const solutionPath = core.getInput('solutionPath');
             const outputPath = 'result.xml';
-            let command = `jb inspectcode --build --output=${outputPath} --absolute-paths ${solutionPath}`;
+            let command = `jb inspectcode --output=${outputPath} --absolute-paths ${solutionPath}`;
             const include = core.getInput('include');
             if (include) {
                 command += ` --include=${include.trim().replace(/[\r\n]+/g, ';')}`;
@@ -159,6 +159,9 @@ function run() {
             const noBuild = (_d = core.getInput('noBuild')) !== null && _d !== void 0 ? _d : '';
             if (noBuild.toLowerCase() === 'true') {
                 command += ' --no-build';
+            }
+            else {
+                command += ' --build';
             }
             const cachesHome = (_e = core.getInput('cachesHome')) !== null && _e !== void 0 ? _e : '';
             if (cachesHome !== '') {

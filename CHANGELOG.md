@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.9.1](https://github.com/muno92/resharper_inspectcode/compare/1.9.0...1.9.1) - 2023-11-08
+- Fix --no-build option not working by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/423
+
 ## [1.9.0](https://github.com/muno92/resharper_inspectcode/compare/1.8.5...1.9.0) - 2023-10-29
 - Add option for big solution by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/421
 
