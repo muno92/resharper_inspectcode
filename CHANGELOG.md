@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.9.2](https://github.com/muno92/resharper_inspectcode/compare/1.9.1...1.9.2) - 2023-11-13
+- Update dependency prettier to v3.1.0 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/425
+
 ## [1.9.1](https://github.com/muno92/resharper_inspectcode/compare/1.9.0...1.9.1) - 2023-11-08
 - Fix --no-build option not working by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/423
 
