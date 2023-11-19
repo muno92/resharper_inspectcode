@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.9.3](https://github.com/muno92/resharper_inspectcode/compare/1.9.2...1.9.3) - 2023-11-19
+- Add support .NET 8 by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/428
+
 ## [1.9.2](https://github.com/muno92/resharper_inspectcode/compare/1.9.1...1.9.2) - 2023-11-13
 - Update dependency prettier to v3.1.0 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/425
 
