@@ -145,7 +145,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '7.0.x' # [3.1.x, 5.0.x, 6.0.x, 7.0.x]
+          dotnet-version: '8.0.x' # [3.1.x, 5.0.x, 6.0.x, 7.0.x, 8.0.x]
       - name: Restore
         run: dotnet restore
       - name: Inspect code
