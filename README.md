@@ -130,6 +130,17 @@ Lets you specify a custom location for the data that InspectCode caches.
 
 More info: https://www.jetbrains.com/help/resharper/InspectCode.html#inspection-parameters
 
+### properties
+
+Lets you override MSBuild properties.  
+You can use a semicolon to separate multiple properties `--properties:prop1=val1;prop2=val2`.
+
+Example:
+
+```text
+--properties:Platform=x64;Configuration=Debug
+```
+
 ## Usage
 
 ```yaml
