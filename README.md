@@ -138,7 +138,7 @@ You can use a semicolon to separate multiple properties `--properties:prop1=val1
 Example:
 
 ```text
---properties:Platform=x64;Configuration=Debug
+Platform=x64;Configuration=Debug
 ```
 
 ## Usage
