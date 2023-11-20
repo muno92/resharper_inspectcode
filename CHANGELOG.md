@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.10.1](https://github.com/muno92/resharper_inspectcode/compare/1.10.0...1.10.1) - 2023-11-20
+- Fix properties parameter by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/432
+
 ## [1.10.0](https://github.com/muno92/resharper_inspectcode/compare/1.9.3...1.10.0) - 2023-11-20
 - Add parameter to override MSBuild configuration by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/430
 
