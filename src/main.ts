@@ -58,7 +58,7 @@ async function run(): Promise<void> {
 
     const properties: string = core.getInput('properties') ?? ''
     if (properties) {
-      command += ` --properties:'${properties}'`
+      command += ` "--properties:${properties}"`
     }
 
     const workingDir: string = core.getInput('workingDirectory')
