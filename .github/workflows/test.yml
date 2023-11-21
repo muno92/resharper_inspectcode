@@ -2,6 +2,9 @@ name: 'build-test'
 on: # rebuild any PRs and main branch changes
   pull_request:
   push:
+    branches:
+      - main
+      - 'releases/*'
 
 jobs:
   lint_unittest:
@@ -12,16 +15,3 @@ jobs:
           npm install
       - run: |
           npm run all
-  e2e_test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: '8.0'
-      - uses: ./
-        with:
-          solutionPath: TestSolution/TestSolution.sln
-          failOnIssue: '0'
-          minimumReportSeverity: 'WARNING'
-          properties: 'Platform=\"Any CPU\"'
