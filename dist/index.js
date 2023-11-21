@@ -168,8 +168,9 @@ function run() {
                 command += ` --caches-home=${cachesHome}`;
             }
             const properties = (_f = core.getInput('properties')) !== null && _f !== void 0 ? _f : '';
+            properties.replace('"', '\\"');
             if (properties) {
-                command += ` --properties:'${properties}'`;
+                command += ` --properties:\\"${properties}\\"`;
             }
             const workingDir = core.getInput('workingDirectory');
             if (workingDir) {
