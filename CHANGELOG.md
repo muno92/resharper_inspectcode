@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.10.2](https://github.com/muno92/resharper_inspectcode/compare/1.10.1...1.10.2) - 2023-11-21
+- Enable use double quote in properties option by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/434
+
 ## [1.10.1](https://github.com/muno92/resharper_inspectcode/compare/1.10.0...1.10.1) - 2023-11-20
 - Fix properties parameter by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/432
 
