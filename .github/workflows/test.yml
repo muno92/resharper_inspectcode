@@ -24,4 +24,4 @@ jobs:
           solutionPath: TestSolution/TestSolution.sln
           failOnIssue: '0'
           minimumReportSeverity: 'WARNING'
-          properties: Platform=""Any CPU"";Configuration=Debug
+          properties: 'Platform=""Any CPU"";Configuration=Debug'
