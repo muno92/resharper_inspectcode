@@ -59,7 +59,7 @@ async function run(): Promise<void> {
     const properties: string = core.getInput('properties') ?? ''
     properties.replace('"', '\\"')
     if (properties) {
-      command += ` --properties:\\"${properties}\\"`
+      command += ` --properties:"${properties}"`
     }
 
     const workingDir: string = core.getInput('workingDirectory')
