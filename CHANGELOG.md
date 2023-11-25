@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.11.0](https://github.com/muno92/resharper_inspectcode/compare/1.10.3...1.11.0) - 2023-11-25
+- Add option to specify dotnet version by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/440
+
 ## [1.10.3](https://github.com/muno92/resharper_inspectcode/compare/1.10.2...1.10.3) - 2023-11-21
 - Fix properties option by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/437
 
