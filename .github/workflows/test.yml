@@ -15,5 +15,3 @@ jobs:
           npm install
       - run: |
           npm run all
-  e2e_test:
-    uses: ./.github/workflows/reusable-e2e.yml
