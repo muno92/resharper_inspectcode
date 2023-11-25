@@ -48,6 +48,9 @@ inputs:
   properties:
     required: false
     description: Lets you override MSBuild properties. You can use a semicolon to separate multiple properties --properties:prop1=val1;prop2=val2.
+  dotnetVersion:
+    required: false
+    description: Lets you specify the version of the .NET SDK to use.
 runs:
   using: 'node20'
   main: 'dist/index.js'

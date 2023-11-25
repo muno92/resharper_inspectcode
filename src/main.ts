@@ -61,6 +61,11 @@ async function run(): Promise<void> {
       command += ` --properties:"${properties}"`
     }
 
+    const dotnetVersion: string = core.getInput('dotnetVersion') ?? ''
+    if (dotnetVersion) {
+      command += ` --dotnetcoresdk=${dotnetVersion}`
+    }
+
     const workingDir: string = core.getInput('workingDirectory')
     if (workingDir) {
       core.debug(`Changing to working directory: ${workingDir}`)

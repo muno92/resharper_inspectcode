@@ -127,7 +127,7 @@ const exec = __importStar(__nccwpck_require__(1514));
 const installer_1 = __nccwpck_require__(1480);
 const report_1 = __nccwpck_require__(8269);
 function run() {
-    var _a, _b, _c, _d, _e, _f, _g, _h;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j;
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const installer = new installer_1.Installer();
@@ -171,19 +171,23 @@ function run() {
             if (properties) {
                 command += ` --properties:"${properties}"`;
             }
+            const dotnetVersion = (_g = core.getInput('dotnetVersion')) !== null && _g !== void 0 ? _g : '';
+            if (dotnetVersion) {
+                command += ` --dotnetcoresdk=${dotnetVersion}`;
+            }
             const workingDir = core.getInput('workingDirectory');
             if (workingDir) {
                 core.debug(`Changing to working directory: ${workingDir}`);
                 process.chdir(workingDir);
             }
             yield exec.exec(command);
-            const ignoreIssueType = ((_g = core.getInput('ignoreIssueType')) !== null && _g !== void 0 ? _g : '')
+            const ignoreIssueType = ((_h = core.getInput('ignoreIssueType')) !== null && _h !== void 0 ? _h : '')
                 .trim()
                 .replace(/[\r\n]+/g, ',');
             const report = new report_1.Report(outputPath, ignoreIssueType);
             report.output();
             const failOnIssue = core.getInput('failOnIssue');
-            const minimumSeverity = (_h = core.getInput('minimumSeverity')) !== null && _h !== void 0 ? _h : 'notice';
+            const minimumSeverity = (_j = core.getInput('minimumSeverity')) !== null && _j !== void 0 ? _j : 'notice';
             if (failOnIssue !== '1') {
                 return;
             }
