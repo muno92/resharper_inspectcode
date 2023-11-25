@@ -29,3 +29,4 @@ jobs:
         with:
           solutionPath: TestSolution/TestSolution.sln
           failOnIssue: '0'
+          dotnetVersion: ${{ steps.setup-dotnet.outputs.dotnet-version }}
