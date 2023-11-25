@@ -2,9 +2,9 @@ name: 'build-test'
 on: # rebuild any PRs and main branch changes
   pull_request:
   push:
-    branches:
-      - main
-      - 'releases/*'
+#    branches:
+#      - main
+#      - 'releases/*'
 
 jobs:
   lint_unittest:
@@ -15,3 +15,5 @@ jobs:
           npm install
       - run: |
           npm run all
+  e2e_test:
+    uses: ./.github/workflows/reusable-e2e.yml
