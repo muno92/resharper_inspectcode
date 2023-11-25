@@ -141,6 +141,11 @@ Example:
 Platform=x64;Configuration=Debug
 ```
 
+### dotnetVersion
+
+Lets you specify the version of the .NET SDK to use.
+(Default is the latest version).
+
 ## Usage
 
 ```yaml
@@ -154,6 +159,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup .NET
+        id: setup-dotnet
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '8.0.x' # [3.1.x, 5.0.x, 6.0.x, 7.0.x, 8.0.x]
@@ -163,4 +169,5 @@ jobs:
         uses: muno92/resharper_inspectcode@v1
         with:
           solutionPath: ./YourSolution.sln
+          dotnetVersion: ${{ steps.setup-dotnet.outputs.dotnet-version }}
 ```
