@@ -146,7 +146,6 @@ Platform=x64;Configuration=Debug
 Lets you specify the version of the .NET SDK to use.
 (Default is the latest version).
 
-
 ## Usage
 
 ```yaml
