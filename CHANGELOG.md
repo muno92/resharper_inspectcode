@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.11.1](https://github.com/muno92/resharper_inspectcode/compare/1.11.0...1.11.1) - 2023-12-10
+- Update dependency prettier to v3.1.1 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/442
+
 ## [1.11.0](https://github.com/muno92/resharper_inspectcode/compare/1.10.3...1.11.0) - 2023-11-25
 - Add option to specify dotnet version by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/440
 
