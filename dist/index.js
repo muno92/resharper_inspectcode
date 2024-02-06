@@ -138,7 +138,7 @@ function run() {
             let command = `jb inspectcode --output=${outputPath} --absolute-paths ${solutionPath}`;
             const include = core.getInput('include');
             if (include) {
-                command += ` --include=${include.trim().replace(/[\r\n]+/g, ';')}`;
+                command += ` --include="${include.trim().replace(/[\r\n]+/g, ';')}"`;
             }
             const exclude = (_b = core.getInput('exclude')) !== null && _b !== void 0 ? _b : '';
             if (exclude !== '') {
