@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.11.7](https://github.com/muno92/resharper_inspectcode/compare/1.11.6...1.11.7) - 2024-02-06
+- Add double quote to include parameter by @hwinther-tietoevry in https://github.com/muno92/resharper_inspectcode/pull/454
+
 ## [1.11.6](https://github.com/muno92/resharper_inspectcode/compare/1.11.5...1.11.6) - 2024-02-04
 - Update dependency prettier to v3.2.5 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/452
 
