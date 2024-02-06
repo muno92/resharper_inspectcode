@@ -17,7 +17,7 @@ async function run(): Promise<void> {
 
     const include: string = core.getInput('include')
     if (include) {
-      command += ` --include=${include.trim().replace(/[\r\n]+/g, ';')}`
+      command += ` --include="${include.trim().replace(/[\r\n]+/g, ';')}"`
     }
 
     const exclude = core.getInput('exclude') ?? ''
