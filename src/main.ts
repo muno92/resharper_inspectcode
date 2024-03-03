@@ -38,7 +38,7 @@ async function run(): Promise<void> {
     }
 
     if (report.issueOverThresholdIsExists(minimumSeverity)) {
-      core.setFailed('Issue is exist.')
+      core.setFailed('Issue exists.')
     }
   } catch (error) {
     if (error instanceof Error) {
