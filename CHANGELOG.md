@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.11.8](https://github.com/muno92/resharper_inspectcode/compare/1.11.7...1.11.8) - 2024-03-23
+- the input `cacheHome` should be `cachesHome` [sic] by @n0099 in https://github.com/muno92/resharper_inspectcode/pull/458
+
 ## [1.11.7](https://github.com/muno92/resharper_inspectcode/compare/1.11.6...1.11.7) - 2024-02-06
 - Add double quote to include parameter by @hwinther-tietoevry in https://github.com/muno92/resharper_inspectcode/pull/454
 
