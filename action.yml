@@ -52,7 +52,7 @@ inputs:
     required: false
     description: Lets you specify the version of the .NET SDK to use.
   verbosity:
-    required: false
+    required: true
     description: Sets the verbosity level of the output. [OFF, FATAL, ERROR, WARN, INFO, VERBOSE, TRACE]
 runs:
   using: 'node20'
