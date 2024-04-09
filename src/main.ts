@@ -12,7 +12,7 @@ async function run(): Promise<void> {
 
     const solutionPath: string = core.getInput('solutionPath')
     const outputPath = 'result.xml'
-    let command = `jb inspectcode --output=${outputPath} --absolute-paths ${solutionPath}`;
+    let command = `jb inspectcode --output=${outputPath} --absolute-paths ${solutionPath}`
 
     const verbosity: string = core.getInput('verbosity') ?? ''
     if (verbosity) {
