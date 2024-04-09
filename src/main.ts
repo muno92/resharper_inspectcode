@@ -1,8 +1,8 @@
 import * as core from '@actions/core'
 import * as exec from '@actions/exec'
-import {Installer} from './installer'
-import {Report} from './report'
-import {ReSharperSeverity} from './issue'
+import { Installer } from './installer'
+import { Report } from './report'
+import { ReSharperSeverity } from './issue'
 
 async function run(): Promise<void> {
   try {
@@ -12,9 +12,12 @@ async function run(): Promise<void> {
 
     const solutionPath: string = core.getInput('solutionPath')
     const outputPath = 'result.xml'
-    const verbosity: string = core.getInput('verbosity') ?? 'INFO'
+    const verbosity: string = core.getInput('verbosity') ?? 'ERROR'
+    let command = `jb inspectcode --output=${outputPath} --absolute-paths ${solutionPath}`;
 
-    let command = `jb inspectcode --output=${outputPath} --absolute-paths ${solutionPath} --verbosity=${verbosity}`
+    if (verbosity) {
+      command += ` --verbosity=${verbosity}`;
+    }
 
     const include: string = core.getInput('include')
     if (include) {
@@ -26,12 +29,9 @@ async function run(): Promise<void> {
       command += ` --exclude=${exclude}`
     }
 
-    const solutionWideAnalysis: string =
-      core.getInput('solutionWideAnalysis') ?? ''
+    const solutionWideAnalysis: string = core.getInput('solutionWideAnalysis') ?? ''
     if (solutionWideAnalysis !== '') {
-      command += ` --${
-        solutionWideAnalysis.toLowerCase() !== 'true' ? 'no-' : ''
-      }swea`
+      command += ` --${solutionWideAnalysis.toLowerCase() !== 'true' ? 'no-' : ''}swea`
     }
 
     const minimumReportSeverity = getMinimumReportSeverity()
@@ -39,9 +39,7 @@ async function run(): Promise<void> {
 
     const extensions: string = core.getInput('extensions')
     if (extensions) {
-      command += ` --extensions=${extensions
-        .trim()
-        .replace(/(,\s?)|(;\s?)/g, ';')}`
+      command += ` --extensions=${extensions.trim().replace(/(,\s?)|(;\s?)/g, ';')}`
     }
 
     const noBuild = core.getInput('noBuild') ?? ''
@@ -74,9 +72,7 @@ async function run(): Promise<void> {
 
     await exec.exec(command)
 
-    const ignoreIssueType = (core.getInput('ignoreIssueType') ?? '')
-      .trim()
-      .replace(/[\r\n]+/g, ',')
+    const ignoreIssueType = (core.getInput('ignoreIssueType') ?? '').trim().replace(/[\r\n]+/g, ',')
     const report = new Report(outputPath, ignoreIssueType)
     report.output()
 
@@ -98,9 +94,7 @@ async function run(): Promise<void> {
 }
 
 function getMinimumReportSeverity(): ReSharperSeverity {
-  const minimumReportSeverity =
-    core.getInput('minimumReportSeverity').toUpperCase() ?? ''
-
+  const minimumReportSeverity = core.getInput('minimumReportSeverity').toUpperCase() ?? ''
   switch (minimumReportSeverity) {
     case 'INFO':
       return 'INFO'
