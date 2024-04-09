@@ -12,8 +12,9 @@ async function run(): Promise<void> {
 
     const solutionPath: string = core.getInput('solutionPath')
     const outputPath = 'result.xml'
+    const verbosity: string = core.getInput('verbosity') ?? 'INFO'
 
-    let command = `jb inspectcode --output=${outputPath} --absolute-paths ${solutionPath}`
+    let command = `jb inspectcode --output=${outputPath} --absolute-paths ${solutionPath} --verbosity=${verbosity}`
 
     const include: string = core.getInput('include')
     if (include) {
@@ -34,7 +35,6 @@ async function run(): Promise<void> {
     }
 
     const minimumReportSeverity = getMinimumReportSeverity()
-
     command += ` --severity=${minimumReportSeverity}`
 
     const extensions: string = core.getInput('extensions')
@@ -77,7 +77,6 @@ async function run(): Promise<void> {
     const ignoreIssueType = (core.getInput('ignoreIssueType') ?? '')
       .trim()
       .replace(/[\r\n]+/g, ',')
-
     const report = new Report(outputPath, ignoreIssueType)
     report.output()
 
