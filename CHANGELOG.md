@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.11.9](https://github.com/muno92/resharper_inspectcode/compare/1.11.8...1.11.9) - 2024-04-10
+- update default tool version that support XML format by @omer-za in https://github.com/muno92/resharper_inspectcode/pull/466
+
 ## [1.11.8](https://github.com/muno92/resharper_inspectcode/compare/1.11.7...1.11.8) - 2024-03-23
 - the input `cacheHome` should be `cachesHome` [sic] by @n0099 in https://github.com/muno92/resharper_inspectcode/pull/458
 
