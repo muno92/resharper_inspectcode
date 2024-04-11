@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.11.10](https://github.com/muno92/resharper_inspectcode/compare/1.11.9...1.11.10) - 2024-04-11
+- Add Verbosity Control  by @benjie23 in https://github.com/muno92/resharper_inspectcode/pull/463
+
 ## [1.11.9](https://github.com/muno92/resharper_inspectcode/compare/1.11.8...1.11.9) - 2024-04-10
 - update default tool version that support XML format by @omer-za in https://github.com/muno92/resharper_inspectcode/pull/466
 

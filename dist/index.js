@@ -127,7 +127,7 @@ const exec = __importStar(__nccwpck_require__(1514));
 const installer_1 = __nccwpck_require__(1480);
 const report_1 = __nccwpck_require__(8269);
 function run() {
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const installer = new installer_1.Installer();
@@ -136,19 +136,19 @@ function run() {
             const solutionPath = core.getInput('solutionPath');
             const outputPath = 'result.xml';
             let command = `jb inspectcode --output=${outputPath} --absolute-paths ${solutionPath}`;
-            const verbosity = core.getInput('verbosity') ?? '';
-            if (verbosity) {
+            const verbosity = (_b = core.getInput('verbosity')) !== null && _b !== void 0 ? _b : '';
+            if (verbosity !== '') {
                 command += ` --verbosity=${verbosity}`;
             }
             const include = core.getInput('include');
             if (include) {
                 command += ` --include="${include.trim().replace(/[\r\n]+/g, ';')}"`;
             }
-            const exclude = (_b = core.getInput('exclude')) !== null && _b !== void 0 ? _b : '';
+            const exclude = (_c = core.getInput('exclude')) !== null && _c !== void 0 ? _c : '';
             if (exclude !== '') {
                 command += ` --exclude=${exclude}`;
             }
-            const solutionWideAnalysis = (_c = core.getInput('solutionWideAnalysis')) !== null && _c !== void 0 ? _c : '';
+            const solutionWideAnalysis = (_d = core.getInput('solutionWideAnalysis')) !== null && _d !== void 0 ? _d : '';
             if (solutionWideAnalysis !== '') {
                 command += ` --${solutionWideAnalysis.toLowerCase() !== 'true' ? 'no-' : ''}swea`;
             }
@@ -160,22 +160,22 @@ function run() {
                     .trim()
                     .replace(/(,\s?)|(;\s?)/g, ';')}`;
             }
-            const noBuild = (_d = core.getInput('noBuild')) !== null && _d !== void 0 ? _d : '';
+            const noBuild = (_e = core.getInput('noBuild')) !== null && _e !== void 0 ? _e : '';
             if (noBuild.toLowerCase() === 'true') {
                 command += ' --no-build';
             }
             else {
                 command += ' --build';
             }
-            const cachesHome = (_e = core.getInput('cachesHome')) !== null && _e !== void 0 ? _e : '';
+            const cachesHome = (_f = core.getInput('cachesHome')) !== null && _f !== void 0 ? _f : '';
             if (cachesHome !== '') {
                 command += ` --caches-home=${cachesHome}`;
             }
-            const properties = (_f = core.getInput('properties')) !== null && _f !== void 0 ? _f : '';
+            const properties = (_g = core.getInput('properties')) !== null && _g !== void 0 ? _g : '';
             if (properties) {
                 command += ` --properties:"${properties}"`;
             }
-            const dotnetVersion = (_g = core.getInput('dotnetVersion')) !== null && _g !== void 0 ? _g : '';
+            const dotnetVersion = (_h = core.getInput('dotnetVersion')) !== null && _h !== void 0 ? _h : '';
             if (dotnetVersion) {
                 command += ` --dotnetcoresdk=${dotnetVersion}`;
             }
@@ -185,13 +185,13 @@ function run() {
                 process.chdir(workingDir);
             }
             yield exec.exec(command);
-            const ignoreIssueType = ((_h = core.getInput('ignoreIssueType')) !== null && _h !== void 0 ? _h : '')
+            const ignoreIssueType = ((_j = core.getInput('ignoreIssueType')) !== null && _j !== void 0 ? _j : '')
                 .trim()
                 .replace(/[\r\n]+/g, ',');
             const report = new report_1.Report(outputPath, ignoreIssueType);
             report.output();
             const failOnIssue = core.getInput('failOnIssue');
-            const minimumSeverity = (_j = core.getInput('minimumSeverity')) !== null && _j !== void 0 ? _j : 'notice';
+            const minimumSeverity = (_k = core.getInput('minimumSeverity')) !== null && _k !== void 0 ? _k : 'notice';
             if (failOnIssue !== '1') {
                 return;
             }
