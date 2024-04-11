@@ -82,7 +82,7 @@ async function run(): Promise<void> {
     const ignoreIssueType = (core.getInput('ignoreIssueType') ?? '')
       .trim()
       .replace(/[\r\n]+/g, ',')
-    
+
     const report = new Report(outputPath, ignoreIssueType)
     report.output()
 
@@ -104,9 +104,9 @@ async function run(): Promise<void> {
 }
 
 function getMinimumReportSeverity(): ReSharperSeverity {
-  const minimumReportSeverity = c
-    ore.getInput('minimumReportSeverity').toUpperCase() ?? ''
-  
+  const minimumReportSeverity = 
+    core.getInput('minimumReportSeverity').toUpperCase() ?? ''
+
   switch (minimumReportSeverity) {
     case 'INFO':
       return 'INFO'
