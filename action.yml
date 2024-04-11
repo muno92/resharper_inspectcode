@@ -11,7 +11,7 @@ inputs:
     description: Whether the action should fail if there are any issues.
   version:
     required: false
-    default: '2023.3.4'
+    default: '2024.1.0'
     description: Version of the Resharper CLI tool to install. Defaults to the latest XML version available.
   minimumReportSeverity:
     required: false
