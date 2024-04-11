@@ -104,7 +104,7 @@ async function run(): Promise<void> {
 }
 
 function getMinimumReportSeverity(): ReSharperSeverity {
-  const minimumReportSeverity = 
+  const minimumReportSeverity =
     core.getInput('minimumReportSeverity').toUpperCase() ?? ''
 
   switch (minimumReportSeverity) {
