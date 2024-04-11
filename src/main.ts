@@ -12,7 +12,7 @@ async function run(): Promise<void> {
 
     const solutionPath: string = core.getInput('solutionPath')
     const outputPath = 'result.xml'
-    
+
     let command = `jb inspectcode --output=${outputPath} --absolute-paths ${solutionPath}`
 
     const verbosity: string = core.getInput('verbosity') ?? ''
@@ -36,7 +36,6 @@ async function run(): Promise<void> {
       command += ` --${
         solutionWideAnalysis.toLowerCase() !== 'true' ? 'no-' : ''
       }swea`
-        
     }
 
     const minimumReportSeverity = getMinimumReportSeverity()
@@ -83,6 +82,7 @@ async function run(): Promise<void> {
     const ignoreIssueType = (core.getInput('ignoreIssueType') ?? '')
       .trim()
       .replace(/[\r\n]+/g, ',')
+    
     const report = new Report(outputPath, ignoreIssueType)
     report.output()
 
@@ -106,6 +106,7 @@ async function run(): Promise<void> {
 function getMinimumReportSeverity(): ReSharperSeverity {
   const minimumReportSeverity = c
     ore.getInput('minimumReportSeverity').toUpperCase() ?? ''
+  
   switch (minimumReportSeverity) {
     case 'INFO':
       return 'INFO'
