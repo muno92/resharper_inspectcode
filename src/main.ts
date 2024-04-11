@@ -16,7 +16,7 @@ async function run(): Promise<void> {
     let command = `jb inspectcode --output=${outputPath} --absolute-paths ${solutionPath}`
 
     const verbosity: string = core.getInput('verbosity') ?? ''
-    if (verbosity) {
+    if (verbosity !== '') {
       command += ` --verbosity=${verbosity}`
     }
 
