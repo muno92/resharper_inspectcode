@@ -15,6 +15,11 @@ async function run(): Promise<void> {
 
     let command = `jb inspectcode --output=${outputPath} --absolute-paths ${solutionPath}`
 
+    const verbosity: string = core.getInput('verbosity') ?? ''
+    if (verbosity !== '') {
+      command += ` --verbosity=${verbosity}`
+    }
+
     const include: string = core.getInput('include')
     if (include) {
       command += ` --include="${include.trim().replace(/[\r\n]+/g, ';')}"`

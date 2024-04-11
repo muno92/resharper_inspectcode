@@ -130,6 +130,11 @@ Lets you specify a custom location for the data that InspectCode caches.
 
 More info: https://www.jetbrains.com/help/resharper/InspectCode.html#inspection-parameters
 
+### verbosity
+This parameter lets you control the level of detail in InspectCode's output.
+
+More info: https://www.jetbrains.com/help/resharper/InspectCode.html#auxiliary-parameters
+
 ### properties
 
 Lets you override MSBuild properties.  

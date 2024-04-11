@@ -136,6 +136,10 @@ function run() {
             const solutionPath = core.getInput('solutionPath');
             const outputPath = 'result.xml';
             let command = `jb inspectcode --output=${outputPath} --absolute-paths ${solutionPath}`;
+            const verbosity = core.getInput('verbosity') ?? '';
+            if (verbosity) {
+                command += ` --verbosity=${verbosity}`;
+            }
             const include = core.getInput('include');
             if (include) {
                 command += ` --include="${include.trim().replace(/[\r\n]+/g, ';')}"`;
