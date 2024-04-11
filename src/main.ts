@@ -30,16 +30,17 @@ async function run(): Promise<void> {
       command += ` --exclude=${exclude}`
     }
 
-    const solutionWideAnalysis: string = 
+    const solutionWideAnalysis: string =
       core.getInput('solutionWideAnalysis') ?? ''
     if (solutionWideAnalysis !== '') {
       command += ` --${
-        solutionWideAnalysis.toLowerCase() !== 'true' ? 'no-' : ''}
-        swea`
+        solutionWideAnalysis.toLowerCase() !== 'true' ? 'no-' : ''
+      }swea`
+        
     }
 
     const minimumReportSeverity = getMinimumReportSeverity()
-    
+
     command += ` --severity=${minimumReportSeverity}`
 
     const extensions: string = core.getInput('extensions')
@@ -79,7 +80,9 @@ async function run(): Promise<void> {
 
     await exec.exec(command)
 
-    const ignoreIssueType = (core.getInput('ignoreIssueType') ?? '').trim().replace(/[\r\n]+/g, ',')
+    const ignoreIssueType = (core.getInput('ignoreIssueType') ?? '')
+      .trim()
+      .replace(/[\r\n]+/g, ',')
     const report = new Report(outputPath, ignoreIssueType)
     report.output()
 
