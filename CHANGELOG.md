@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.11.11](https://github.com/muno92/resharper_inspectcode/compare/1.11.10...1.11.11) - 2024-06-04
+- Update dependency eslint-plugin-github to v5 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/472
+
 ## [1.11.10](https://github.com/muno92/resharper_inspectcode/compare/1.11.9...1.11.10) - 2024-04-11
 - Add Verbosity Control  by @benjie23 in https://github.com/muno92/resharper_inspectcode/pull/463
 
