@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.11.11](https://github.com/muno92/resharper_inspectcode/compare/1.11.10...1.11.11) - 2024-06-11
+- Update dependency eslint-plugin-github to v5 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/472
+- Update dependency prettier to v3.3.0 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/471
+- Update dependency eslint-plugin-jest to v28 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/461
+- Fix E2E test failure on ARM Runner by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/476
+- Bump braces from 3.0.2 to 3.0.3 by @dependabot in https://github.com/muno92/resharper_inspectcode/pull/477
+- Update dependency prettier to v3.3.2 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/475
+
 ## [1.11.10](https://github.com/muno92/resharper_inspectcode/compare/1.11.9...1.11.10) - 2024-04-11
 - Add Verbosity Control  by @benjie23 in https://github.com/muno92/resharper_inspectcode/pull/463
 
