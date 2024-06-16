@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.11.12](https://github.com/muno92/resharper_inspectcode/compare/1.11.11...1.11.12) - 2024-06-16
+- Fix output format to enable latest ReSharper by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/479
+
 ## [1.11.11](https://github.com/muno92/resharper_inspectcode/compare/1.11.10...1.11.11) - 2024-06-11
 - Update dependency eslint-plugin-github to v5 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/472
 - Update dependency prettier to v3.3.0 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/471

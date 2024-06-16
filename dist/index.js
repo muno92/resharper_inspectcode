@@ -135,7 +135,9 @@ function run() {
             yield installer.install(version);
             const solutionPath = core.getInput('solutionPath');
             const outputPath = 'result.xml';
-            let command = `jb inspectcode --output=${outputPath} --absolute-paths ${solutionPath}`;
+            // After ReSharper 2024.1, default format is SARIF.
+            // TODO support SARIF
+            let command = `jb inspectcode --format=xml --output=${outputPath} --absolute-paths ${solutionPath}`;
             const verbosity = (_b = core.getInput('verbosity')) !== null && _b !== void 0 ? _b : '';
             if (verbosity !== '') {
                 command += ` --verbosity=${verbosity}`;
