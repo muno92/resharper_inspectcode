@@ -11,8 +11,7 @@ inputs:
     description: Whether the action should fail if there are any issues.
   version:
     required: false
-    default: '2023.3.4'
-    description: Version of the Resharper CLI tool to install. Defaults to the latest XML version available.
+    description: Version of the Resharper CLI tool to install. Defaults to the latest available.
   minimumReportSeverity:
     required: false
     description: Minimum severity for issues to be reported. Defaults to "HINT". [INFO, HINT, SUGGESTION, WARNING, ERROR]
