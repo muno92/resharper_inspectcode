@@ -6,6 +6,12 @@ import {ReSharperSeverity} from './issue'
 
 async function run(): Promise<void> {
   try {
+    const workingDir: string = core.getInput('workingDirectory')
+    if (workingDir) {
+      core.debug(`Changing to working directory: ${workingDir}`)
+      process.chdir(workingDir)
+    }
+
     const installer = new Installer()
     const version: string = core.getInput('version') ?? ''
     await installer.install(version)
@@ -71,12 +77,6 @@ async function run(): Promise<void> {
     const dotnetVersion: string = core.getInput('dotnetVersion') ?? ''
     if (dotnetVersion) {
       command += ` --dotnetcoresdk=${dotnetVersion}`
-    }
-
-    const workingDir: string = core.getInput('workingDirectory')
-    if (workingDir) {
-      core.debug(`Changing to working directory: ${workingDir}`)
-      process.chdir(workingDir)
     }
 
     await exec.exec(command)
