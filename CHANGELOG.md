@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.11.13](https://github.com/muno92/resharper_inspectcode/compare/1.11.12...1.11.13) - 2024-07-17
+- Change working directory at the beginning of the action by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/484
+
 ## [1.11.12](https://github.com/muno92/resharper_inspectcode/compare/1.11.11...1.11.12) - 2024-06-16
 - Fix output format to enable latest ReSharper by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/479
 
