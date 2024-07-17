@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.11.14](https://github.com/muno92/resharper_inspectcode/compare/1.11.13...1.11.14) - 2024-07-17
+- Update dependency prettier to v3.3.3 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/483
+
 ## [1.11.13](https://github.com/muno92/resharper_inspectcode/compare/1.11.12...1.11.13) - 2024-07-17
 - Change working directory at the beginning of the action by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/484
 
