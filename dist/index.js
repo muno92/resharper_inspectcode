@@ -130,6 +130,11 @@ function run() {
     var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
     return __awaiter(this, void 0, void 0, function* () {
         try {
+            const workingDir = core.getInput('workingDirectory');
+            if (workingDir) {
+                core.debug(`Changing to working directory: ${workingDir}`);
+                process.chdir(workingDir);
+            }
             const installer = new installer_1.Installer();
             const version = (_a = core.getInput('version')) !== null && _a !== void 0 ? _a : '';
             yield installer.install(version);
@@ -180,11 +185,6 @@ function run() {
             const dotnetVersion = (_h = core.getInput('dotnetVersion')) !== null && _h !== void 0 ? _h : '';
             if (dotnetVersion) {
                 command += ` --dotnetcoresdk=${dotnetVersion}`;
-            }
-            const workingDir = core.getInput('workingDirectory');
-            if (workingDir) {
-                core.debug(`Changing to working directory: ${workingDir}`);
-                process.chdir(workingDir);
             }
             yield exec.exec(command);
             const ignoreIssueType = ((_j = core.getInput('ignoreIssueType')) !== null && _j !== void 0 ? _j : '')
