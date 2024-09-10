@@ -2,7 +2,7 @@ import * as core from '@actions/core'
 import * as fs from 'fs'
 import * as htmlparser2 from 'htmlparser2'
 import {Document, Element} from 'domhandler'
-import {GitHubSeverity, Issue, IssueTypes} from './issue'
+import {GitHubSeverity, Issue} from './issue'
 import {issueCommand} from '@actions/core/lib/command'
 
 export class Report {
@@ -24,24 +24,22 @@ export class Report {
     const ignoreIssueTypes = ignoreIssueType.split(',').map(s => s.trim())
 
     const xml = htmlparser2.parseDocument(file)
-    const issueTypes = this.extractIssueTypes(xml)
-    this.issues = this.extractIssues(xml, issueTypes, ignoreIssueTypes)
+    this.issues = this.extractIssues(xml, ignoreIssueTypes)
   }
 
   private extractIssues(
     xml: Document,
-    issueTypes: IssueTypes,
     ignoreIssueTypes: string[]
   ): Issue[] {
     return htmlparser2.DomUtils.getElementsByTagName('issue', xml)
-      .map(i => this.parseIssue(i, issueTypes))
+      .map(i => this.parseIssue(i))
       .filter(
         (issue): issue is NonNullable<Issue> =>
           issue != null && !ignoreIssueTypes.includes(issue.TypeId)
       )
   }
 
-  private parseIssue(issueTag: Element, issueTypes: IssueTypes): Issue | null {
+  private parseIssue(issueTag: Element): Issue | null {
     const typeId = issueTag.attributes.find(
       a => a.name.toLowerCase() === 'typeid'
     )
@@ -51,6 +49,11 @@ export class Report {
     const message = issueTag.attributes.find(
       a => a.name.toLowerCase() === 'message'
     )
+    const severity = issueTag.attributes.find(
+      a => a.name.toLowerCase() === 'severity'
+    ) 
+
+    const gitHubSeverity = this.convertSeverity(severity?.value.toLowerCase() ?? 'error')
 
     if (!typeId || !filePath || !message) {
       return null
@@ -66,7 +69,7 @@ export class Report {
       filePath.value,
       column,
       message.value,
-      issueTypes[typeId.value]
+      gitHubSeverity
     )
 
     const line = issueTag.attributes.find(a => a.name.toLowerCase() === 'line')
@@ -77,10 +80,8 @@ export class Report {
     return issue
   }
 
-  private extractIssueTypes(xml: Document): IssueTypes {
-    const issueTypes: IssueTypes = {}
 
-    const convertSeverity = (severity: string): GitHubSeverity => {
+    convertSeverity = (severity: string): GitHubSeverity => {
       switch (severity) {
         case 'hint':
         case 'suggestion':
@@ -91,28 +92,6 @@ export class Report {
           return 'error' //In Problem Matchers, default severity is error
       }
     }
-
-    const issueTypeTags = htmlparser2.DomUtils.getElementsByTagName(
-      'issuetype',
-      xml
-    )
-    for (const issueType of issueTypeTags) {
-      const id = issueType.attributes.find(a => a.name.toLowerCase() === 'id')
-      if (!id) {
-        continue
-      }
-      if (issueTypes[id.value]) {
-        continue
-      }
-      issueTypes[id.value] = convertSeverity(
-        issueType.attributes
-          .find(a => a.name.toLowerCase() === 'severity')
-          ?.value.toLowerCase() ?? 'error'
-      )
-    }
-
-    return issueTypes
-  }
 
   output(): void {
     for (const issue of this.issues) {
