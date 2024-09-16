@@ -7,7 +7,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        resharper-version: [ '2023.3.6', '2024.1.0' ]
+        resharper-version: [ '2023.3.6', '2024.1.0', '2024.1.6', '2024.2.0' ]
         dotnet-version: [ '3.1', '5.0', '6.0', '7.0', '8.0' ]
     runs-on: ubuntu-latest
     steps:
