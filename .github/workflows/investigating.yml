@@ -1,0 +1,27 @@
+name: ReSharper Test
+
+on: push
+
+jobs:
+  e2e_test:
+    strategy:
+      fail-fast: false
+      matrix:
+        resharper-version: [ '2023.3.6', '2024.1.0' ]
+        dotnet-version: [ '3.1', '5.0', '6.0', '7.0', '8.0' ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v3
+        id: setup-dotnet
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+      - name: Install ReSharper
+        run: |
+          dotnet tool update --global JetBrains.ReSharper.GlobalTools --version ${{ matrix.resharper-version }}
+      - name: Run ReSharper
+        run: |
+          jb inspectcode --format=xml --output=report.xml --absolute-paths TestSolution/TestSolution.sln
+      - name: Show Report
+        run: |
+          cat report.xml
