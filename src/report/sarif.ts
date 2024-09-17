@@ -1,7 +1,7 @@
 import * as core from '@actions/core'
 import * as fs from 'fs'
 import {GitHubSeverity, Issue} from '../issue'
-import {issueCommand} from '@actions/core/lib/command'
+import {Report} from './report'
 
 // Ignore `none` severity
 type SarifSeverity = 'note' | 'warning' | 'error'
@@ -32,11 +32,9 @@ type Sarif = {
   }[]
 }
 
-export class SarifReport {
-  issues: Issue[]
-
+export class SarifReport extends Report {
   constructor(reportPath: string, ignoreIssueType: string) {
-    this.issues = []
+    super()
 
     let file: string
     try {
@@ -90,35 +88,5 @@ export class SarifReport {
       convertSeverity(result.level),
       location.physicalLocation.region.startLine
     )
-  }
-
-  output(): void {
-    for (const issue of this.issues) {
-      const properties: {[key: string]: string | number} = {}
-
-      properties['file'] = issue.FilePath
-      if (issue.Line) {
-        properties['line'] = issue.Line
-        properties['col'] = issue.Column
-      }
-
-      issueCommand(issue.Severity, properties, issue.output())
-    }
-  }
-
-  issueOverThresholdIsExists(minimumSeverity: string): boolean {
-    const errorTarget = this.switchErrorTarget(minimumSeverity)
-
-    return this.issues.filter(i => errorTarget.includes(i.Severity)).length > 0
-  }
-
-  private switchErrorTarget(minimumSeverity: string): GitHubSeverity[] {
-    if (minimumSeverity === 'error') {
-      return ['error']
-    }
-    if (minimumSeverity === 'warning') {
-      return ['warning', 'error']
-    }
-    return ['notice', 'warning', 'error']
   }
 }

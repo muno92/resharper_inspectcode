@@ -51,6 +51,7 @@ describe('XML format report', () => {
         '..',
         '__fixtures__',
         'inspection_reports',
+        'xml',
         'failure.xml'
       ),
       ''
@@ -104,5 +105,44 @@ describe('SARIF format report', () => {
       ''
     )
     expect(report.issues).toIncludeSameMembers(failureSarifReportIssues)
+  })
+
+  test.each([
+    {minimumSeverity: 'notice', expected: true},
+    {minimumSeverity: 'warning', expected: true},
+    {minimumSeverity: 'error', expected: false}
+  ])('minimum severity', ({minimumSeverity: minimumSeverity, expected}) => {
+    const issues = [
+      new Issue('', '', 0, '', 'notice'),
+      new Issue('', '', 0, '', 'warning')
+    ]
+    const report = new SarifReport(
+      path.join(
+        __dirname,
+        '..',
+        '__fixtures__',
+        'inspection_reports',
+        'sarif',
+        'failure.json'
+      ),
+      ''
+    )
+    report.issues = issues
+    expect(report.issueOverThresholdIsExists(minimumSeverity)).toBe(expected)
+  })
+
+  test('ignore issue type', () => {
+    const report = new SarifReport(
+      path.join(
+        __dirname,
+        '..',
+        '__fixtures__',
+        'inspection_reports',
+        'sarif',
+        'failure.json'
+      ),
+      'UnusedParameter.Local'
+    )
+    expect(report.issues.length).toBe(6)
   })
 })
