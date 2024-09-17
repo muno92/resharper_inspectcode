@@ -1,7 +1,8 @@
 import {XmlReport} from '../src/report/xml'
 import {SarifReport} from '../src/report/sarif'
 import path from 'path'
-import failureReportIssues from './expected_data/failure_report_issues.json'
+import failureSarifReportIssues from './expected_data/failure_sarif_report_issues.json'
+import failureXmlReportIssues from './expected_data/failure_xml_report_issues.json'
 import {Issue} from '../src/issue'
 
 describe('XML format report', () => {
@@ -32,7 +33,7 @@ describe('XML format report', () => {
       ),
       ''
     )
-    expect(report.issues).toIncludeSameMembers(failureReportIssues)
+    expect(report.issues).toIncludeSameMembers(failureXmlReportIssues)
   })
 
   test.each([
@@ -83,10 +84,25 @@ describe('SARIF format report', () => {
         '__fixtures__',
         'inspection_reports',
         'sarif',
-        'success.xml'
+        'success.json'
       ),
       ''
     )
     expect(report.issues.length).toBe(0)
+  })
+
+  test('failure report has issues', () => {
+    const report = new SarifReport(
+      path.join(
+        __dirname,
+        '..',
+        '__fixtures__',
+        'inspection_reports',
+        'sarif',
+        'failure.json'
+      ),
+      ''
+    )
+    expect(report.issues).toIncludeSameMembers(failureSarifReportIssues)
   })
 })

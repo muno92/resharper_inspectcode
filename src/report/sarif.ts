@@ -1,9 +1,36 @@
 import * as core from '@actions/core'
 import * as fs from 'fs'
-import * as htmlparser2 from 'htmlparser2'
-import {Document, Element} from 'domhandler'
-import {GitHubSeverity, Issue, IssueTypes} from '../issue'
+import {GitHubSeverity, Issue} from '../issue'
 import {issueCommand} from '@actions/core/lib/command'
+
+// Ignore `none` severity
+type SarifSeverity = 'note' | 'warning' | 'error'
+
+type Result = {
+  ruleId: string
+  level: SarifSeverity
+  message: {
+    text: string
+  }
+  locations: {
+    physicalLocation: {
+      artifactLocation: {
+        uri: string
+      }
+      region: {
+        startLine: number
+        startColumn: number
+      }
+    }
+  }[]
+}
+
+// The minimum required type for this project
+type Sarif = {
+  runs: {
+    results: Result[]
+  }[]
+}
 
 export class SarifReport {
   issues: Issue[]
@@ -23,95 +50,46 @@ export class SarifReport {
 
     const ignoreIssueTypes = ignoreIssueType.split(',').map(s => s.trim())
 
-    const xml = htmlparser2.parseDocument(file)
-    const issueTypes = this.extractIssueTypes(xml)
-    this.issues = this.extractIssues(xml, issueTypes, ignoreIssueTypes)
+    const sarif = JSON.parse(file) as Sarif
+    this.issues = this.extractIssues(sarif, ignoreIssueTypes)
   }
 
-  private extractIssues(
-    xml: Document,
-    issueTypes: IssueTypes,
-    ignoreIssueTypes: string[]
-  ): Issue[] {
-    return htmlparser2.DomUtils.getElementsByTagName('issue', xml)
-      .map(i => this.parseIssue(i, issueTypes))
+  private extractIssues(sarif: Sarif, ignoreIssueTypes: string[]): Issue[] {
+    return sarif.runs
+      .flatMap(run => {
+        return run.results.flatMap(result => this.parseIssue(result))
+      })
       .filter(
         (issue): issue is NonNullable<Issue> =>
           issue != null && !ignoreIssueTypes.includes(issue.TypeId)
       )
   }
 
-  private parseIssue(issueTag: Element, issueTypes: IssueTypes): Issue | null {
-    const typeId = issueTag.attributes.find(
-      a => a.name.toLowerCase() === 'typeid'
-    )
-    const filePath = issueTag.attributes.find(
-      a => a.name.toLowerCase() === 'file'
-    )
-    const message = issueTag.attributes.find(
-      a => a.name.toLowerCase() === 'message'
-    )
-
-    if (!typeId || !filePath || !message) {
+  private parseIssue(result: Result): Issue | null {
+    if (result.locations.length === 0) {
       return null
     }
+    const location = result.locations[0]
 
-    const offset =
-      issueTag.attributes.find(a => a.name.toLowerCase() === 'offset')?.value ??
-      '0-0'
-    const column = parseInt(offset.substring(0, offset.indexOf('-')))
-
-    const issue = new Issue(
-      typeId.value,
-      filePath.value,
-      column,
-      message.value,
-      issueTypes[typeId.value]
-    )
-
-    const line = issueTag.attributes.find(a => a.name.toLowerCase() === 'line')
-    if (line) {
-      issue.Line = parseInt(line.value)
-    }
-
-    return issue
-  }
-
-  private extractIssueTypes(xml: Document): IssueTypes {
-    const issueTypes: IssueTypes = {}
-
-    const convertSeverity = (severity: string): GitHubSeverity => {
+    const convertSeverity = (severity: SarifSeverity): GitHubSeverity => {
       switch (severity) {
-        case 'hint':
-        case 'suggestion':
+        case 'note':
           return 'notice'
         case 'warning':
-          return 'warning' //Severity info is not supported
+          return 'warning'
         default:
           return 'error' //In Problem Matchers, default severity is error
       }
     }
 
-    const issueTypeTags = htmlparser2.DomUtils.getElementsByTagName(
-      'issuetype',
-      xml
+    return new Issue(
+      result.ruleId,
+      location.physicalLocation.artifactLocation.uri.replace('file://', ''),
+      location.physicalLocation.region.startColumn,
+      result.message.text,
+      convertSeverity(result.level),
+      location.physicalLocation.region.startLine
     )
-    for (const issueType of issueTypeTags) {
-      const id = issueType.attributes.find(a => a.name.toLowerCase() === 'id')
-      if (!id) {
-        continue
-      }
-      if (issueTypes[id.value]) {
-        continue
-      }
-      issueTypes[id.value] = convertSeverity(
-        issueType.attributes
-          .find(a => a.name.toLowerCase() === 'severity')
-          ?.value.toLowerCase() ?? 'error'
-      )
-    }
-
-    return issueTypes
   }
 
   output(): void {
