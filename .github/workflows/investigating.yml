@@ -20,7 +20,7 @@ jobs:
           dotnet tool update --global JetBrains.ReSharper.GlobalTools --version ${{ matrix.resharper-version }}
       - name: Run ReSharper
         run: |
-          jb inspectcode --output=report.xml --verbosity=WARN --severity=WARNING --absolute-paths TestSolution/TestSolution.sln
+          jb inspectcode --output=report.xml --verbosity=WARN --severity=WARNING --build --absolute-paths TestSolution/TestSolution.sln
       - name: Show Report
         run: |
           cat report.xml
