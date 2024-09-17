@@ -1,0 +1,40 @@
+{
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.6.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "results": [],
+      "tool": {
+        "driver": {
+          "name": "InspectCode",
+          "organization": "JetBrains, Inc",
+          "fullName": "JetBrains Inspect Code 2024.2",
+          "semanticVersion": "242.0.20240814.114127",
+          "informationUri": "http://www.jetbrains.com/resharper/features/command-line.html",
+          "taxa": []
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "versionControlProvenance": [
+        {
+          "repositoryUri": "https://github.com/muno92/resharper_inspectcode",
+          "revisionId": "7ba17aec27776b986314be6967a40d78a37650f8",
+          "branch": "investigating-resharper-version"
+        }
+      ],
+      "originalUriBaseIds": {
+        "solutionDir": {
+          "uri": "file:///home/runner/work/resharper_inspectcode/resharper_inspectcode/TestSolution/",
+          "description": {
+            "text": "Solution Directory"
+          }
+        }
+      },
+      "columnKind": "utf16CodeUnits"
+    }
+  ]
+}
