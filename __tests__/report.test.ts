@@ -1,4 +1,5 @@
 import {XmlReport} from '../src/report/xml'
+import {SarifReport} from '../src/report/sarif'
 import path from 'path'
 import failureReportIssues from './expected_data/failure_report_issues.json'
 import {Issue} from '../src/issue'
@@ -73,3 +74,19 @@ describe('XML format report', () => {
   })
 })
 
+describe('SARIF format report', () => {
+  test('success report has no issue', () => {
+    const report = new SarifReport(
+      path.join(
+        __dirname,
+        '..',
+        '__fixtures__',
+        'inspection_reports',
+        'sarif',
+        'success.xml'
+      ),
+      ''
+    )
+    expect(report.issues.length).toBe(0)
+  })
+})
