@@ -10,6 +10,7 @@ test('success report has no issue', () => {
       '..',
       '__fixtures__',
       'inspection_reports',
+      'xml',
       'success.xml'
     ),
     ''
@@ -24,6 +25,7 @@ test('failure report has issues', () => {
       '..',
       '__fixtures__',
       'inspection_reports',
+      'xml',
       'failure.xml'
     ),
     ''
@@ -61,6 +63,7 @@ test('ignore issue type', () => {
       '..',
       '__fixtures__',
       'inspection_reports',
+      'xml',
       'failure.xml'
     ),
     'UnusedMember.Global,UnusedField.Compiler'
