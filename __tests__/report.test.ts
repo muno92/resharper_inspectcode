@@ -1,10 +1,10 @@
-import {Report} from '../src/report'
+import {XmlReport} from '../src/report/xml'
 import path from 'path'
 import failureReportIssues from './expected_data/failure_report_issues.json'
 import {Issue} from '../src/issue'
 
 test('success report has no issue', () => {
-  const report = new Report(
+  const report = new XmlReport(
     path.join(
       __dirname,
       '..',
@@ -19,7 +19,7 @@ test('success report has no issue', () => {
 })
 
 test('failure report has issues', () => {
-  const report = new Report(
+  const report = new XmlReport(
     path.join(
       __dirname,
       '..',
@@ -42,7 +42,7 @@ test.each([
     new Issue('', '', 0, '', 'notice'),
     new Issue('', '', 0, '', 'warning')
   ]
-  const report = new Report(
+  const report = new XmlReport(
     path.join(
       __dirname,
       '..',
@@ -57,7 +57,7 @@ test.each([
 })
 
 test('ignore issue type', () => {
-  const report = new Report(
+  const report = new XmlReport(
     path.join(
       __dirname,
       '..',

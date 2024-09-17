@@ -2,10 +2,10 @@ import * as core from '@actions/core'
 import * as fs from 'fs'
 import * as htmlparser2 from 'htmlparser2'
 import {Document, Element} from 'domhandler'
-import {GitHubSeverity, Issue, IssueTypes} from './issue'
+import {GitHubSeverity, Issue, IssueTypes} from '../issue'
 import {issueCommand} from '@actions/core/lib/command'
 
-export class Report {
+export class XmlReport {
   issues: Issue[]
 
   constructor(reportPath: string, ignoreIssueType: string) {

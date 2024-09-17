@@ -1,7 +1,7 @@
 import * as core from '@actions/core'
 import * as exec from '@actions/exec'
 import {Installer} from './installer'
-import {Report} from './report'
+import {XmlReport} from './report/xml'
 import {ReSharperSeverity} from './issue'
 
 async function run(): Promise<void> {
@@ -85,7 +85,7 @@ async function run(): Promise<void> {
       .trim()
       .replace(/[\r\n]+/g, ',')
 
-    const report = new Report(outputPath, ignoreIssueType)
+    const report = new XmlReport(outputPath, ignoreIssueType)
     report.output()
 
     const failOnIssue = core.getInput('failOnIssue')
