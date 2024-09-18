@@ -1,0 +1,901 @@
+{
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.6.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "ArrangeTypeMemberModifiers",
+          "ruleIndex": 0,
+          "level": "note",
+          "message": {
+            "text": "Inconsistent modifiers style: missing 'private' modifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///home/runner/work/resharper_inspectcode/resharper_inspectcode/TestSolution/TestConsoleApp/Program.cs",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 11,
+                  "startColumn": 21,
+                  "endLine": 11,
+                  "endColumn": 25,
+                  "charOffset": 185,
+                  "charLength": 4
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "D0B35621979091015F48878B78976B7D49BB9B913A20837C39AAA5C0F8F0F51F"
+          },
+          "properties": {
+            "tags": ["C#",".NETStandard 2.1"]
+          }
+        },
+        {
+          "ruleId": "ArrangeTypeModifiers",
+          "ruleIndex": 1,
+          "level": "note",
+          "message": {
+            "text": "Inconsistent modifiers style: missing 'internal' modifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///home/runner/work/resharper_inspectcode/resharper_inspectcode/TestSolution/TestConsoleApp/Program.cs",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 11,
+                  "endLine": 5,
+                  "endColumn": 18,
+                  "charOffset": 52,
+                  "charLength": 7
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "292926ED29CC5DA92CB72542C0DAA3989EC4CF2B6600D2A19866E82B17D2C3F8"
+          },
+          "properties": {
+            "tags": ["C#",".NETStandard 2.1"]
+          }
+        },
+        {
+          "ruleId": "InconsistentNaming",
+          "ruleIndex": 5,
+          "level": "warning",
+          "message": {
+            "text": "Name 'canBePrivate' does not match rule 'Static fields (not private)'. Suggested name is 'CanBePrivate'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///home/runner/work/resharper_inspectcode/resharper_inspectcode/TestSolution/TestConsoleApp/Program.cs",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 7,
+                  "startColumn": 30,
+                  "endLine": 7,
+                  "endColumn": 42,
+                  "charOffset": 95,
+                  "charLength": 12
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "5017B50594DF69103B9DD4303FE9F3960CB207A15736475D0ADCB483CE25DE4C"
+          },
+          "properties": {
+            "tags": ["C#",".NETStandard 2.1"]
+          }
+        },
+        {
+          "ruleId": "MemberCanBePrivate.Global",
+          "ruleIndex": 6,
+          "level": "note",
+          "message": {
+            "text": "Field 'canBePrivate' can be made private"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///home/runner/work/resharper_inspectcode/resharper_inspectcode/TestSolution/TestConsoleApp/Program.cs",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 7,
+                  "startColumn": 9,
+                  "endLine": 7,
+                  "endColumn": 15,
+                  "charOffset": 74,
+                  "charLength": 6
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "5017B50594DF69103B9DD4303FE9F3960CB207A15736475D0ADCB483CE25DE4C"
+          },
+          "properties": {
+            "tags": ["C#",".NETStandard 2.1"]
+          }
+        },
+        {
+          "ruleId": "NotAccessedField.Compiler",
+          "ruleIndex": 7,
+          "level": "warning",
+          "message": {
+            "text": "Field 'unusedField' is assigned but its value is never used"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///home/runner/work/resharper_inspectcode/resharper_inspectcode/TestSolution/TestConsoleApp/Program.cs",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 9,
+                  "startColumn": 28,
+                  "endLine": 9,
+                  "endColumn": 39,
+                  "charOffset": 147,
+                  "charLength": 11
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "A859C223DAFB2A6C15253A379C47C0A6A91E2FB2D272C066ECE6937814F03674"
+          },
+          "properties": {
+            "tags": ["C#",".NETStandard 2.1"]
+          }
+        },
+        {
+          "ruleId": "NotAccessedVariable.Compiler",
+          "ruleIndex": 8,
+          "level": "warning",
+          "message": {
+            "text": "Local variable 'unusedVariable' is only assigned but its value is never used"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///home/runner/work/resharper_inspectcode/resharper_inspectcode/TestSolution/TestConsoleApp/Program.cs",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 13,
+                  "startColumn": 17,
+                  "endLine": 13,
+                  "endColumn": 31,
+                  "charOffset": 231,
+                  "charLength": 14
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "0ABCBC3A98CE16B7D1F1B2010A86B81527D0205B7397A12E3808953B310EE70C"
+          },
+          "properties": {
+            "tags": ["C#",".NETStandard 2.1"]
+          }
+        },
+        {
+          "ruleId": "UnusedParameter.Local",
+          "ruleIndex": 9,
+          "level": "warning",
+          "message": {
+            "text": "Parameter 'args' is never used"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///home/runner/work/resharper_inspectcode/resharper_inspectcode/TestSolution/TestConsoleApp/Program.cs",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 11,
+                  "startColumn": 35,
+                  "endLine": 11,
+                  "endColumn": 39,
+                  "charOffset": 199,
+                  "charLength": 4
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "D0B35621979091015F48878B78976B7D49BB9B913A20837C39AAA5C0F8F0F51F"
+          },
+          "properties": {
+            "tags": ["C#",".NETStandard 2.1"]
+          }
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "InspectCode",
+          "organization": "JetBrains, Inc",
+          "fullName": "JetBrains Inspect Code 2024.2",
+          "semanticVersion": "242.0.20240814.114127",
+          "informationUri": "http://www.jetbrains.com/resharper/features/command-line.html",
+          "rules": [
+            {
+              "id": "ArrangeTypeMemberModifiers",
+              "fullDescription": {
+                "text": "'private' modifier can be safely added/removed from type members without changing code semantics"
+              },
+              "help": {
+                "text": "https://www.jetbrains.com/help/resharper/ArrangeTypeMemberModifiers.html"
+              },
+              "shortDescription": {
+                "text": "Use explicit or implicit modifier definition for type members"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "helpUri": "https://www.jetbrains.com/help/resharper/ArrangeTypeMemberModifiers.html",
+              "relationships": [
+                {
+                  "target": {
+                    "id": "CSHARP.CodeStyleIssues",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "ArrangeTypeModifiers",
+              "fullDescription": {
+                "text": "'internal' modifier can be safely added/removed from types without changing code semantics"
+              },
+              "help": {
+                "text": "https://www.jetbrains.com/help/resharper/ArrangeTypeModifiers.html"
+              },
+              "shortDescription": {
+                "text": "Use explicit or implicit modifier definition for types"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "helpUri": "https://www.jetbrains.com/help/resharper/ArrangeTypeModifiers.html",
+              "relationships": [
+                {
+                  "target": {
+                    "id": "CSHARP.CodeStyleIssues",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "ClassNeverInstantiated.Global",
+              "fullDescription": {
+                "text": "Non-static class is never instantiated"
+              },
+              "help": {
+                "text": "https://www.jetbrains.com/help/resharper/ClassNeverInstantiated.Global.html"
+              },
+              "shortDescription": {
+                "text": "Class is never instantiated: Non-private accessibility"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "helpUri": "https://www.jetbrains.com/help/resharper/ClassNeverInstantiated.Global.html",
+              "relationships": [
+                {
+                  "target": {
+                    "id": "CSHARP.CodeSmell",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                },
+                {
+                  "target": {
+                    "id": "VBASIC.CodeSmell",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "ConvertToConstant.Global",
+              "fullDescription": {
+                "text": "Convert local variable or field into constant"
+              },
+              "shortDescription": {
+                "text": "Convert local variable or field into constant: Non-private accessibility"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "relationships": [
+                {
+                  "target": {
+                    "id": "CSHARP.BestPractice",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                },
+                {
+                  "target": {
+                    "id": "VBASIC.BestPractice",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "FieldCanBeMadeReadOnly.Global",
+              "fullDescription": {
+                "text": "Field has no write usages after initialization and can be made readonly"
+              },
+              "help": {
+                "text": "https://www.jetbrains.com/help/resharper/FieldCanBeMadeReadOnly.Global.html"
+              },
+              "shortDescription": {
+                "text": "Field can be made readonly: Non-private accessibility"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "helpUri": "https://www.jetbrains.com/help/resharper/FieldCanBeMadeReadOnly.Global.html",
+              "relationships": [
+                {
+                  "target": {
+                    "id": "CSHARP.BestPractice",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                },
+                {
+                  "target": {
+                    "id": "VBASIC.BestPractice",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "InconsistentNaming",
+              "fullDescription": {
+                "text": "Name doesn't match naming style defined for this kind of symbol"
+              },
+              "help": {
+                "text": "https://www.jetbrains.com/help/resharper/InconsistentNaming.html"
+              },
+              "shortDescription": {
+                "text": "Inconsistent Naming"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "helpUri": "https://www.jetbrains.com/help/resharper/InconsistentNaming.html",
+              "relationships": [
+                {
+                  "target": {
+                    "id": "CSHARP.ConstraintViolation",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                },
+                {
+                  "target": {
+                    "id": "VBASIC.ConstraintViolation",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                },
+                {
+                  "target": {
+                    "id": "XAML.ConstraintViolation",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "MemberCanBePrivate.Global",
+              "fullDescription": {
+                "text": "Member can be made private"
+              },
+              "help": {
+                "text": "https://www.jetbrains.com/help/resharper/MemberCanBePrivate.Global.html"
+              },
+              "shortDescription": {
+                "text": "Member can be made private: Non-private accessibility"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "helpUri": "https://www.jetbrains.com/help/resharper/MemberCanBePrivate.Global.html",
+              "relationships": [
+                {
+                  "target": {
+                    "id": "CSHARP.BestPractice",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                },
+                {
+                  "target": {
+                    "id": "VBASIC.BestPractice",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                },
+                {
+                  "target": {
+                    "id": "XAML.BestPractice",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "NotAccessedField.Compiler",
+              "fullDescription": {
+                "text": "Field is assigned but its value is never used (compiler warning)"
+              },
+              "shortDescription": {
+                "text": "Non-accessed field"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "relationships": [
+                {
+                  "target": {
+                    "id": "CSHARP.CompilerWarnings",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                },
+                {
+                  "target": {
+                    "id": "VBASIC.CompilerWarnings",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "NotAccessedVariable.Compiler",
+              "fullDescription": {
+                "text": "Local variable is assigned but its value is never used (compiler warning)"
+              },
+              "shortDescription": {
+                "text": "Non-accessed local variable"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "relationships": [
+                {
+                  "target": {
+                    "id": "CSHARP.CompilerWarnings",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                },
+                {
+                  "target": {
+                    "id": "VBASIC.CompilerWarnings",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "UnusedParameter.Local",
+              "fullDescription": {
+                "text": "Parameter is never used"
+              },
+              "help": {
+                "text": "https://www.jetbrains.com/help/resharper/UnusedParameter.Local.html"
+              },
+              "shortDescription": {
+                "text": "Unused parameter: Private accessibility"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "helpUri": "https://www.jetbrains.com/help/resharper/UnusedParameter.Local.html",
+              "relationships": [
+                {
+                  "target": {
+                    "id": "CSHARP.DeclarationRedundancy",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                },
+                {
+                  "target": {
+                    "id": "VBASIC.DeclarationRedundancy",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                }
+              ]
+            }
+          ],
+          "taxa": [
+            {
+              "id": "CSHARP",
+              "name": "C#"
+            },
+            {
+              "id": "CSHARP.BestPractice",
+              "name": "Common Practices and Code Improvements",
+              "relationships": [
+                {
+                  "target": {
+                    "id": "CSHARP",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "CSHARP.CodeSmell",
+              "name": "Potential Code Quality Issues",
+              "relationships": [
+                {
+                  "target": {
+                    "id": "CSHARP",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "CSHARP.CodeStyleIssues",
+              "name": "Syntax Style",
+              "relationships": [
+                {
+                  "target": {
+                    "id": "CSHARP",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "CSHARP.CompilerWarnings",
+              "name": "Compiler Warnings",
+              "relationships": [
+                {
+                  "target": {
+                    "id": "CSHARP",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "CSHARP.ConstraintViolation",
+              "name": "Constraints Violations",
+              "relationships": [
+                {
+                  "target": {
+                    "id": "CSHARP",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "CSHARP.DeclarationRedundancy",
+              "name": "Redundancies in Symbol Declarations",
+              "relationships": [
+                {
+                  "target": {
+                    "id": "CSHARP",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "VBASIC",
+              "name": "VB.NET"
+            },
+            {
+              "id": "VBASIC.BestPractice",
+              "name": "Common Practices and Code Improvements",
+              "relationships": [
+                {
+                  "target": {
+                    "id": "VBASIC",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "VBASIC.CodeSmell",
+              "name": "Potential Code Quality Issues",
+              "relationships": [
+                {
+                  "target": {
+                    "id": "VBASIC",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "VBASIC.CompilerWarnings",
+              "name": "Compiler Warnings",
+              "relationships": [
+                {
+                  "target": {
+                    "id": "VBASIC",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "VBASIC.ConstraintViolation",
+              "name": "Constraints Violations",
+              "relationships": [
+                {
+                  "target": {
+                    "id": "VBASIC",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "VBASIC.DeclarationRedundancy",
+              "name": "Redundancies in Symbol Declarations",
+              "relationships": [
+                {
+                  "target": {
+                    "id": "VBASIC",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "XAML",
+              "name": "XAML"
+            },
+            {
+              "id": "XAML.BestPractice",
+              "name": "Common Practices and Code Improvements",
+              "relationships": [
+                {
+                  "target": {
+                    "id": "XAML",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "XAML.ConstraintViolation",
+              "name": "Constraints Violations",
+              "relationships": [
+                {
+                  "target": {
+                    "id": "XAML",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "versionControlProvenance": [
+        {
+          "repositoryUri": "https://github.com/muno92/resharper_inspectcode",
+          "revisionId": "f86416b34d13cf29bfd080d3a33980328b6319cd",
+          "branch": "investigating-resharper-version"
+        }
+      ],
+      "originalUriBaseIds": {
+        "solutionDir": {
+          "uri": "file:///home/runner/work/resharper_inspectcode/resharper_inspectcode/TestSolution/",
+          "description": {
+            "text": "Solution Directory"
+          }
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///home/runner/work/resharper_inspectcode/resharper_inspectcode/TestSolution/TestConsoleApp/Program.cs"
+          },
+          "hashes": {
+            "md5": "8140311D1C962C254CEACE93F2C9F478",
+            "sha-1": "0FC7DB48994234E03289370D32F35C14893BF014",
+            "sha-256": "08CEF9C88F7644163492A2BE4C148197C0013F90578852D342A7A6212E217C26"
+          }
+        }
+      ],
+      "columnKind": "utf16CodeUnits"
+    }
+  ]
+}

@@ -1,8 +1,10 @@
 import * as core from '@actions/core'
 import * as exec from '@actions/exec'
 import {Installer} from './installer'
-import {Report} from './report'
+import {XmlReport} from './report/xml'
 import {ReSharperSeverity} from './issue'
+import {Report} from './report/report'
+import {SarifReport} from './report/sarif'
 
 async function run(): Promise<void> {
   try {
@@ -17,11 +19,9 @@ async function run(): Promise<void> {
     await installer.install(version)
 
     const solutionPath: string = core.getInput('solutionPath')
-    const outputPath = 'result.xml'
+    const outputPath = 'result'
 
-    // After ReSharper 2024.1, default format is SARIF.
-    // TODO support SARIF
-    let command = `jb inspectcode --format=xml --output=${outputPath} --absolute-paths ${solutionPath}`
+    let command = `jb inspectcode --output=${outputPath} --absolute-paths ${solutionPath}`
 
     const verbosity: string = core.getInput('verbosity') ?? ''
     if (verbosity !== '') {
@@ -85,7 +85,7 @@ async function run(): Promise<void> {
       .trim()
       .replace(/[\r\n]+/g, ',')
 
-    const report = new Report(outputPath, ignoreIssueType)
+    const report = await parseResult(outputPath, ignoreIssueType)
     report.output()
 
     const failOnIssue = core.getInput('failOnIssue')
@@ -103,6 +103,37 @@ async function run(): Promise<void> {
       core.setFailed(error.message)
     }
   }
+}
+
+async function parseResult(
+  outputPath: string,
+  ignoreIssueType: string
+): Promise<Report> {
+  const resharperVersion = await getResharperVersion()
+  const match = resharperVersion.match(/\d{4}/)
+  if (match === null) {
+    throw new Error('Failed to get ReSharper release year')
+  }
+  const resharperReleaseYear = Number(match[0])
+  if (resharperReleaseYear < 2024) {
+    // Before ReSharper 2024.1, the default format is XML and SARIF format doesn't contain level.
+    core.info('Parsing XML format report')
+    return new XmlReport(outputPath, ignoreIssueType)
+  }
+  core.info('Parsing SARIF format report')
+  return new SarifReport(outputPath, ignoreIssueType)
+}
+
+async function getResharperVersion(): Promise<string> {
+  const output = (await exec.getExecOutput('jb inspectcode --version')).stdout
+  // node-semver can't parse format like "2024.1", so use regex
+  const match = output.match(/Version: (\d{4}\.\d+\.?\d*)/)
+
+  if (match === null) {
+    throw new Error('Failed to get ReSharper version')
+  }
+
+  return match[1]
 }
 
 function getMinimumReportSeverity(): ReSharperSeverity {

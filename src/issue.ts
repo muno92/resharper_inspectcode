@@ -22,7 +22,3 @@ export type ReSharperSeverity =
   | 'SUGGESTION'
   | 'WARNING'
   | 'ERROR'
-
-export type IssueTypes = {
-  [Id: string]: GitHubSeverity
-}

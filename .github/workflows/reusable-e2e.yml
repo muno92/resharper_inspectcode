@@ -19,12 +19,15 @@ jobs:
         id: setup-dotnet
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
+      # Test with ReSharper 2023.x
       - uses: ./
         with:
           solutionPath: TestSolution/TestSolution.sln
           failOnIssue: '0'
           minimumReportSeverity: 'WARNING'
           dotnetVersion: ${{ steps.setup-dotnet.outputs.dotnet-version }}
+          version: '2023.3.6'
+      # Test with latest ReSharper
       # Reproduce second time execution on self-hosted runner
       - uses: ./
         with:

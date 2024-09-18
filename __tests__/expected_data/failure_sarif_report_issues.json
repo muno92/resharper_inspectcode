@@ -1,0 +1,58 @@
+[
+  {
+    "Column": 21,
+    "FilePath": "/home/runner/work/resharper_inspectcode/resharper_inspectcode/TestSolution/TestConsoleApp/Program.cs",
+    "Line": 11,
+    "Message": "Inconsistent modifiers style: missing 'private' modifier",
+    "Severity": "notice",
+    "TypeId": "ArrangeTypeMemberModifiers"
+  },
+  {
+    "Column": 11,
+    "FilePath": "/home/runner/work/resharper_inspectcode/resharper_inspectcode/TestSolution/TestConsoleApp/Program.cs",
+    "Line": 5,
+    "Message": "Inconsistent modifiers style: missing 'internal' modifier",
+    "Severity": "notice",
+    "TypeId": "ArrangeTypeModifiers"
+  },
+  {
+    "Column": 30,
+    "FilePath": "/home/runner/work/resharper_inspectcode/resharper_inspectcode/TestSolution/TestConsoleApp/Program.cs",
+    "Line": 7,
+    "Message": "Name 'canBePrivate' does not match rule 'Static fields (not private)'. Suggested name is 'CanBePrivate'.",
+    "Severity": "warning",
+    "TypeId": "InconsistentNaming"
+  },
+  {
+    "Column": 9,
+    "FilePath": "/home/runner/work/resharper_inspectcode/resharper_inspectcode/TestSolution/TestConsoleApp/Program.cs",
+    "Line": 7,
+    "Message": "Field 'canBePrivate' can be made private",
+    "Severity": "notice",
+    "TypeId": "MemberCanBePrivate.Global"
+  },
+  {
+    "Column": 28,
+    "FilePath": "/home/runner/work/resharper_inspectcode/resharper_inspectcode/TestSolution/TestConsoleApp/Program.cs",
+    "Line": 9,
+    "Message": "Field 'unusedField' is assigned but its value is never used",
+    "Severity": "warning",
+    "TypeId": "NotAccessedField.Compiler"
+  },
+  {
+    "Column": 17,
+    "FilePath": "/home/runner/work/resharper_inspectcode/resharper_inspectcode/TestSolution/TestConsoleApp/Program.cs",
+    "Line": 13,
+    "Message": "Local variable 'unusedVariable' is only assigned but its value is never used",
+    "Severity": "warning",
+    "TypeId": "NotAccessedVariable.Compiler"
+  },
+  {
+    "Column": 35,
+    "FilePath": "/home/runner/work/resharper_inspectcode/resharper_inspectcode/TestSolution/TestConsoleApp/Program.cs",
+    "Line": 11,
+    "Message": "Parameter 'args' is never used",
+    "Severity": "warning",
+    "TypeId": "UnusedParameter.Local"
+  }
+]
