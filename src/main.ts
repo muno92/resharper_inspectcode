@@ -21,9 +21,7 @@ async function run(): Promise<void> {
     const solutionPath: string = core.getInput('solutionPath')
     const outputPath = 'result'
 
-    // After ReSharper 2024.1, default format is SARIF.
-    // TODO support SARIF
-    let command = `jb inspectcode --format=xml --output=${outputPath} --absolute-paths ${solutionPath}`
+    let command = `jb inspectcode --output=${outputPath} --absolute-paths ${solutionPath}`
 
     const verbosity: string = core.getInput('verbosity') ?? ''
     if (verbosity !== '') {
