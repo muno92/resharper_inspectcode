@@ -125,7 +125,8 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__nccwpck_require__(2186));
 const exec = __importStar(__nccwpck_require__(1514));
 const installer_1 = __nccwpck_require__(1480);
-const report_1 = __nccwpck_require__(8269);
+const xml_1 = __nccwpck_require__(8204);
+const sarif_1 = __nccwpck_require__(7967);
 function run() {
     var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
     return __awaiter(this, void 0, void 0, function* () {
@@ -139,10 +140,8 @@ function run() {
             const version = (_a = core.getInput('version')) !== null && _a !== void 0 ? _a : '';
             yield installer.install(version);
             const solutionPath = core.getInput('solutionPath');
-            const outputPath = 'result.xml';
-            // After ReSharper 2024.1, default format is SARIF.
-            // TODO support SARIF
-            let command = `jb inspectcode --format=xml --output=${outputPath} --absolute-paths ${solutionPath}`;
+            const outputPath = 'result';
+            let command = `jb inspectcode --output=${outputPath} --absolute-paths ${solutionPath}`;
             const verbosity = (_b = core.getInput('verbosity')) !== null && _b !== void 0 ? _b : '';
             if (verbosity !== '') {
                 command += ` --verbosity=${verbosity}`;
@@ -190,7 +189,7 @@ function run() {
             const ignoreIssueType = ((_j = core.getInput('ignoreIssueType')) !== null && _j !== void 0 ? _j : '')
                 .trim()
                 .replace(/[\r\n]+/g, ',');
-            const report = new report_1.Report(outputPath, ignoreIssueType);
+            const report = yield parseResult(outputPath, ignoreIssueType);
             report.output();
             const failOnIssue = core.getInput('failOnIssue');
             const minimumSeverity = (_k = core.getInput('minimumSeverity')) !== null && _k !== void 0 ? _k : 'notice';
@@ -206,6 +205,34 @@ function run() {
                 core.setFailed(error.message);
             }
         }
+    });
+}
+function parseResult(outputPath, ignoreIssueType) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const resharperVersion = yield getResharperVersion();
+        const match = resharperVersion.match(/\d{4}/);
+        if (match === null) {
+            throw new Error('Failed to get ReSharper release year');
+        }
+        const resharperReleaseYear = Number(match[0]);
+        if (resharperReleaseYear < 2024) {
+            // Before ReSharper 2024.1, the default format is XML and SARIF format doesn't contain level.
+            core.info('Parsing XML format report');
+            return new xml_1.XmlReport(outputPath, ignoreIssueType);
+        }
+        core.info('Parsing SARIF format report');
+        return new sarif_1.SarifReport(outputPath, ignoreIssueType);
+    });
+}
+function getResharperVersion() {
+    return __awaiter(this, void 0, void 0, function* () {
+        const output = (yield exec.getExecOutput('jb inspectcode --version')).stdout;
+        // node-semver can't parse format like "2024.1", so use regex
+        const match = output.match(/Version: (\d{4}\.\d+\.?\d*)/);
+        if (match === null) {
+            throw new Error('Failed to get ReSharper version');
+        }
+        return match[1];
     });
 }
 function getMinimumReportSeverity() {
@@ -229,7 +256,49 @@ run();
 
 /***/ }),
 
-/***/ 8269:
+/***/ 9631:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.Report = void 0;
+const command_1 = __nccwpck_require__(7351);
+class Report {
+    constructor() {
+        this.issues = [];
+    }
+    output() {
+        for (const issue of this.issues) {
+            const properties = {};
+            properties['file'] = issue.FilePath;
+            if (issue.Line) {
+                properties['line'] = issue.Line;
+                properties['col'] = issue.Column;
+            }
+            (0, command_1.issueCommand)(issue.Severity, properties, issue.output());
+        }
+    }
+    issueOverThresholdIsExists(minimumSeverity) {
+        const errorTarget = this.switchErrorTarget(minimumSeverity);
+        return this.issues.filter(i => errorTarget.includes(i.Severity)).length > 0;
+    }
+    switchErrorTarget(minimumSeverity) {
+        if (minimumSeverity === 'error') {
+            return ['error'];
+        }
+        if (minimumSeverity === 'warning') {
+            return ['warning', 'error'];
+        }
+        return ['notice', 'warning', 'error'];
+    }
+}
+exports.Report = Report;
+
+
+/***/ }),
+
+/***/ 7967:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -258,15 +327,96 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.Report = void 0;
+exports.SarifReport = void 0;
+const core = __importStar(__nccwpck_require__(2186));
+const fs = __importStar(__nccwpck_require__(7147));
+const issue_1 = __nccwpck_require__(6018);
+const report_1 = __nccwpck_require__(9631);
+class SarifReport extends report_1.Report {
+    constructor(reportPath, ignoreIssueType) {
+        super();
+        let file;
+        try {
+            file = fs.readFileSync(reportPath, { encoding: 'utf8' });
+        }
+        catch (err) {
+            if (err instanceof Error) {
+                core.error(err.message);
+            }
+            return;
+        }
+        const ignoreIssueTypes = ignoreIssueType.split(',').map(s => s.trim());
+        const sarif = JSON.parse(file);
+        this.issues = this.extractIssues(sarif, ignoreIssueTypes);
+    }
+    extractIssues(sarif, ignoreIssueTypes) {
+        return sarif.runs
+            .flatMap(run => {
+            return run.results.flatMap(result => this.parseIssue(result));
+        })
+            .filter((issue) => issue != null && !ignoreIssueTypes.includes(issue.TypeId));
+    }
+    parseIssue(result) {
+        if (result.locations.length === 0) {
+            return null;
+        }
+        const location = result.locations[0];
+        const convertSeverity = (severity) => {
+            switch (severity) {
+                case 'note':
+                    return 'notice';
+                case 'warning':
+                    return 'warning';
+                default:
+                    return 'error'; //In Problem Matchers, default severity is error
+            }
+        };
+        return new issue_1.Issue(result.ruleId, location.physicalLocation.artifactLocation.uri.replace('file://', ''), location.physicalLocation.region.startColumn, result.message.text, convertSeverity(result.level), location.physicalLocation.region.startLine);
+    }
+}
+exports.SarifReport = SarifReport;
+
+
+/***/ }),
+
+/***/ 8204:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.XmlReport = void 0;
 const core = __importStar(__nccwpck_require__(2186));
 const fs = __importStar(__nccwpck_require__(7147));
 const htmlparser2 = __importStar(__nccwpck_require__(2928));
 const issue_1 = __nccwpck_require__(6018);
-const command_1 = __nccwpck_require__(7351);
-class Report {
+const report_1 = __nccwpck_require__(9631);
+class XmlReport extends report_1.Report {
     constructor(reportPath, ignoreIssueType) {
-        this.issues = [];
+        super();
         let file;
         try {
             file = fs.readFileSync(reportPath, { encoding: 'utf8' });
@@ -332,32 +482,8 @@ class Report {
         }
         return issueTypes;
     }
-    output() {
-        for (const issue of this.issues) {
-            const properties = {};
-            properties['file'] = issue.FilePath;
-            if (issue.Line) {
-                properties['line'] = issue.Line;
-                properties['col'] = issue.Column;
-            }
-            (0, command_1.issueCommand)(issue.Severity, properties, issue.output());
-        }
-    }
-    issueOverThresholdIsExists(minimumSeverity) {
-        const errorTarget = this.switchErrorTarget(minimumSeverity);
-        return this.issues.filter(i => errorTarget.includes(i.Severity)).length > 0;
-    }
-    switchErrorTarget(minimumSeverity) {
-        if (minimumSeverity === 'error') {
-            return ['error'];
-        }
-        if (minimumSeverity === 'warning') {
-            return ['warning', 'error'];
-        }
-        return ['notice', 'warning', 'error'];
-    }
 }
-exports.Report = Report;
+exports.XmlReport = XmlReport;
 
 
 /***/ }),
