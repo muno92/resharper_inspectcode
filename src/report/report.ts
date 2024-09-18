@@ -1,7 +1,7 @@
 import {GitHubSeverity, Issue} from '../issue'
 import {issueCommand} from '@actions/core/lib/command'
 
-export class Report {
+export abstract class Report {
   issues: Issue[]
 
   constructor() {
