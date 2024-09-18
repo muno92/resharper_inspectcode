@@ -117,8 +117,10 @@ async function parseResult(
   const resharperReleaseYear = Number(match[0])
   if (resharperReleaseYear < 2024) {
     // Before ReSharper 2024.1, the default format is XML and SARIF format doesn't contain level.
+    core.info('Parsing XML format report')
     return new XmlReport(outputPath, ignoreIssueType)
   }
+  core.info('Parsing SARIF format report')
   return new SarifReport(outputPath, ignoreIssueType)
 }
 
