@@ -7,7 +7,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        resharper-version: [ '2023.3.6' ]
+        resharper-version: [ '2023.3.6', '2024.1' ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,7 +20,7 @@ jobs:
           dotnet tool update --global JetBrains.ReSharper.GlobalTools --version ${{ matrix.resharper-version }}
       - name: Run ReSharper
         run: |
-          jb inspectcode --output=report.xml --format=json TestSolution/TestSolution.sln
+          jb inspectcode --output=report.xml --format=sarif TestSolution/TestSolution.sln
       - name: Show Report
         run: |
           cat report.xml
