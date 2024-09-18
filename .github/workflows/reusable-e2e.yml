@@ -3,6 +3,7 @@ name: E2E Test
 on:
   workflow_call:
   workflow_dispatch:
+  push:
 
 jobs:
   e2e_test:
