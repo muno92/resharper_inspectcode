@@ -52,6 +52,10 @@ jobs:
           git config --local user.name 'github-actions[bot]'
           git config --local user.mail '41898282+github-actions[bot]@users.noreply.github.com'
           git diff --exit-code --quiet || (git add . && git commit -m 'Compile' && git push origin ${{ fromJSON(needs.tagpr.outputs.pull_request).head.ref }})
+    outputs:
+      tagpr_branch: ${{ fromJSON(needs.tagpr.outputs.pull_request).head.ref }}
   e2e_test:
     needs: package
     uses: ./.github/workflows/reusable-e2e.yml
+    with:
+      branch: ${{ needs.package.outputs.tagpr_branch }}

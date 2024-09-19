@@ -2,6 +2,10 @@ name: E2E Test
 
 on:
   workflow_call:
+    inputs:
+      branch:
+        required: true
+        type: string
   workflow_dispatch:
 
 jobs:
@@ -15,6 +19,8 @@ jobs:
     runs-on: ${{ (contains(fromJSON('["3.1", "5.0"]'), matrix.dotnet-version) && matrix.operating-system == 'macos-latest' && 'macos-13') || matrix.operating-system }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.branch || github.ref_name }}
       - uses: actions/setup-dotnet@v3
         id: setup-dotnet
         with:
