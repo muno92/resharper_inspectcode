@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.12.1](https://github.com/muno92/resharper_inspectcode/compare/1.12.0...1.12.1) - 2024-10-29
+- Update dependency @types/node to v22 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/493
+
 ## [1.12.0](https://github.com/muno92/resharper_inspectcode/compare/1.11.14...1.12.0) - 2024-09-18
 - Support sarif by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/490
 
