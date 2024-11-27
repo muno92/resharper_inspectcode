@@ -1,6 +1,6 @@
-import * as core from '@actions/core'
-import * as fs from 'fs'
-import * as htmlparser2 from 'htmlparser2'
+import {error} from '@actions/core'
+import {readFileSync} from 'fs'
+import {DomUtils, parseDocument} from 'htmlparser2'
 import {Document, Element} from 'domhandler'
 import {GitHubSeverity, Issue} from '../issue'
 import {Report} from './report'
@@ -15,17 +15,17 @@ export class XmlReport extends Report {
 
     let file: string
     try {
-      file = fs.readFileSync(reportPath, {encoding: 'utf8'})
+      file = readFileSync(reportPath, {encoding: 'utf8'})
     } catch (err) {
       if (err instanceof Error) {
-        core.error(err.message)
+        error(err.message)
       }
       return
     }
 
     const ignoreIssueTypes = ignoreIssueType.split(',').map(s => s.trim())
 
-    const xml = htmlparser2.parseDocument(file)
+    const xml = parseDocument(file)
     const issueTypes = this.extractIssueTypes(xml)
     this.issues = this.extractIssues(xml, issueTypes, ignoreIssueTypes)
   }
@@ -35,7 +35,7 @@ export class XmlReport extends Report {
     issueTypes: IssueTypes,
     ignoreIssueTypes: string[]
   ): Issue[] {
-    return htmlparser2.DomUtils.getElementsByTagName('issue', xml)
+    return DomUtils.getElementsByTagName('issue', xml)
       .map(i => this.parseIssue(i, issueTypes))
       .filter(
         (issue): issue is NonNullable<Issue> =>
@@ -94,10 +94,7 @@ export class XmlReport extends Report {
       }
     }
 
-    const issueTypeTags = htmlparser2.DomUtils.getElementsByTagName(
-      'issuetype',
-      xml
-    )
+    const issueTypeTags = DomUtils.getElementsByTagName('issuetype', xml)
     for (const issueType of issueTypeTags) {
       const id = issueType.attributes.find(a => a.name.toLowerCase() === 'id')
       if (!id) {
