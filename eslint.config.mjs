@@ -21,6 +21,8 @@ export default [
   },
   ...compat.extends('plugin:github/recommended'),
   {
+    files: ['**/*.ts'],
+
     plugins: {
       jest,
       '@typescript-eslint': typescriptEslint
