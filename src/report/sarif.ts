@@ -12,7 +12,7 @@ type Result = {
   message: {
     text: string
   }
-  locations: {
+  locations: Array<{
     physicalLocation: {
       artifactLocation: {
         uri: string
@@ -22,14 +22,14 @@ type Result = {
         startColumn: number
       }
     }
-  }[]
+  }>
 }
 
 // The minimum required type for this project
 type Sarif = {
-  runs: {
+  runs: Array<{
     results: Result[]
-  }[]
+  }>
 }
 
 export class SarifReport extends Report {
