@@ -95,6 +95,14 @@ export default [
       semi: 'off',
       '@typescript-eslint/unbound-method': 'error',
       'i18n-text/no-en': 'off'
+    },
+
+    settings: {
+      'import/resolver': {
+        node: {
+          extensions: ['.js', '.ts']
+        }
+      }
     }
   }
 ]
