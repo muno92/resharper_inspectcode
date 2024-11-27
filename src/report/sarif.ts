@@ -1,5 +1,5 @@
-import * as core from '@actions/core'
-import * as fs from 'fs'
+import {error} from '@actions/core'
+import {readFileSync} from 'fs'
 import {GitHubSeverity, Issue} from '../issue'
 import {Report} from './report'
 
@@ -38,10 +38,10 @@ export class SarifReport extends Report {
 
     let file: string
     try {
-      file = fs.readFileSync(reportPath, {encoding: 'utf8'})
+      file = readFileSync(reportPath, {encoding: 'utf8'})
     } catch (err) {
       if (err instanceof Error) {
-        core.error(err.message)
+        error(err.message)
       }
       return
     }
