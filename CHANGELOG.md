@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.12.4](https://github.com/muno92/resharper_inspectcode/compare/1.12.3...1.12.4) - 2024-12-04
+- Update dependency prettier to v3.4.2 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/501
+
 ## [1.12.3](https://github.com/muno92/resharper_inspectcode/compare/1.12.2...1.12.3) - 2024-11-27
 - Support .NET 9 by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/497
 - Bump ESLint and typescript-eslint-parser by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/499
