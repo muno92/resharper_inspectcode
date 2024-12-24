@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.12.5](https://github.com/muno92/resharper_inspectcode/compare/1.12.4...1.12.5) - 2024-12-24
+- Update dependency htmlparser2 to v10 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/503
+
 ## [1.12.4](https://github.com/muno92/resharper_inspectcode/compare/1.12.3...1.12.4) - 2024-12-04
 - Update dependency prettier to v3.4.2 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/501
 
