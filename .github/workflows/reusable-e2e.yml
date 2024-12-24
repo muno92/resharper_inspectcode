@@ -16,7 +16,7 @@ jobs:
         operating-system: [ ubuntu-latest, windows-latest, macos-latest ]
         dotnet-version: [ '3.1', '5.0', '6.0', '7.0', '8.0', '9.0' ]
     # macos-latest is ARM Runner, so .NET Core 3.1 and .NET 5 cannot be used.
-    runs-on: ${{ (contains(fromJSON('["3.1", "5.0"]'), matrix.dotnet-version) && matrix.operating-system == 'macos-latest' && 'macos-13') || matrix.operating-system }}
+    runs-on: ${{ (contains(fromJSON('["3.1", "5.0"]'), matrix.dotnet-version) && (matrix.operating-system == 'macos-latest' && 'macos-13') || (matrix.operating-system == 'ubuntu-latest' && 'ubuntu-22.04')) || matrix.operating-system }}
     steps:
       - uses: actions/checkout@v4
         with:
