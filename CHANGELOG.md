@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.12.6](https://github.com/muno92/resharper_inspectcode/compare/1.12.5...1.12.6) - 2025-01-22
+- Bump undici from 5.28.4 to 5.28.5 by @dependabot in https://github.com/muno92/resharper_inspectcode/pull/506
+
 ## [1.12.5](https://github.com/muno92/resharper_inspectcode/compare/1.12.4...1.12.5) - 2024-12-24
 - Update dependency htmlparser2 to v10 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/503
 
