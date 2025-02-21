@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.12.9](https://github.com/muno92/resharper_inspectcode/compare/1.12.8...1.12.9) - 2025-02-21
+- Update dependency globals to v16 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/512
+
 ## [1.12.8](https://github.com/muno92/resharper_inspectcode/compare/1.12.7...1.12.8) - 2025-02-14
 - Update dependency prettier to v3.5.1 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/510
 
