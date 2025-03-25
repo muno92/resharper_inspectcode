@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.12.12](https://github.com/muno92/resharper_inspectcode/compare/1.12.11...1.12.12) - 2025-03-25
+- Update dependency eslint-plugin-github to v6 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/519
+
 ## [1.12.11](https://github.com/muno92/resharper_inspectcode/compare/1.12.10...1.12.11) - 2025-03-03
 - Update dependency prettier to v3.5.3 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/516
 
