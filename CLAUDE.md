@@ -8,7 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Format check: `npm run format-check` (Prettier)
 - Format fix: `npm run format` (Prettier)
 - Test all: `npm test` (Node.js test runner)
-- Run single test: `node --test --require ts-node/register "__tests__/<test-file>.node.test.ts" -t '<test-name>'`
+- Run single test: `node --test --require ts-node/register --project tsconfig.test.json "__tests__/<test-file>.node.test.ts" -t '<test-name>'`
 - Run Jest tests: `npm run test:jest`
 - Package: `npm run package` (ncc build)
 - Full workflow: `npm run all` (build, format, lint, package, test)

@@ -10,7 +10,7 @@
     "format-check": "prettier --check **/*.ts",
     "lint": "eslint src/**/*.ts",
     "package": "ncc build --source-map --license licenses.txt",
-    "test": "node --test --require ts-node/register \"__tests__/**/*.node.test.ts\"",
+    "test": "node --test --require ts-node/register --project tsconfig.test.json \"__tests__/**/*.node.test.ts\"",
     "test:jest": "jest",
     "all": "npm run build && npm run format && npm run lint && npm run package && npm test"
   },
