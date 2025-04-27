@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.12.13](https://github.com/muno92/resharper_inspectcode/compare/1.12.12...1.12.13) - 2025-04-27
+- [Junie] Migrate from Jest to Node.js built-in Test Runner by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/522
+
 ## [1.12.12](https://github.com/muno92/resharper_inspectcode/compare/1.12.11...1.12.12) - 2025-03-25
 - Update dependency eslint-plugin-github to v6 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/519
 
