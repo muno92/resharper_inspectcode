@@ -6,7 +6,14 @@ const path = require('path')
 const failureSarifReportIssues = require('./expected_data/failure_sarif_report_issues.json')
 const failureXmlReportIssues = require('./expected_data/failure_xml_report_issues.json')
 const {Issue} = require('../lib/issue')
-const {assertIncludesSameMembers} = require('./test-utils')
+
+const sortObjectKeys = (objects) => {
+  return objects.map(obj =>
+    Object.fromEntries(
+      Object.entries(obj).sort(([a], [b]) => a.localeCompare(b))
+    )
+  )
+}
 
 describe('XML format report', () => {
   describe('XML report tests', () => {
@@ -37,7 +44,8 @@ describe('XML format report', () => {
         ),
         ''
       )
-      assertIncludesSameMembers(report.issues, failureXmlReportIssues)
+
+      assert.strictEqual(JSON.stringify(sortObjectKeys(JSON.parse(JSON.stringify(report.issues)))), JSON.stringify(sortObjectKeys(failureXmlReportIssues)))
     })
 
     it('minimum severity - notice', () => {
@@ -98,7 +106,7 @@ describe('SARIF format report', () => {
         ),
         ''
       )
-      assertIncludesSameMembers(report.issues, failureSarifReportIssues)
+      assert.strictEqual(JSON.stringify(sortObjectKeys(JSON.parse(JSON.stringify(report.issues)))), JSON.stringify(sortObjectKeys(failureSarifReportIssues)))
     })
 
     it('minimum severity - notice', () => {
