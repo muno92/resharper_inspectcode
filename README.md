@@ -176,3 +176,20 @@ jobs:
           solutionPath: ./YourSolution.sln
           dotnetVersion: ${{ steps.setup-dotnet.outputs.dotnet-version }}
 ```
+
+## Development
+
+### Testing
+
+This project uses Node.js built-in test runner:
+
+```bash
+# Install dependencies
+npm install
+
+# Run tests
+npm test
+
+# Run tests with Jest (legacy)
+npm run test:jest
+```
