@@ -1,6 +1,6 @@
-import {it} from 'node:test'
-import assert from 'node:assert'
-import {Issue} from '../src/issue'
+const {it} = require('node:test')
+const assert = require('node:assert')
+const {Issue} = require('../lib/issue')
 
 it('output message with line and column number', () => {
   const issue = new Issue(

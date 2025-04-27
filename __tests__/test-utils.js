@@ -4,7 +4,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.assertIncludesSameMembers = assertIncludesSameMembers;
-exports.describe = describe;
 const node_assert_1 = __importDefault(require("node:assert"));
 /**
  * Custom assertion to check if two arrays contain the same members, regardless of order.
@@ -52,12 +51,4 @@ function assertIncludesSameMembers(actual, expected) {
         });
         node_assert_1.default.ok(matchingItem !== undefined, `Expected array to include an item with properties ${JSON.stringify(item)}, but it was not found`);
     }
-}
-/**
- * Utility function to create a test suite
- */
-function describe(name, fn) {
-    // Group tests with a header
-    process.stdout.write(`\n# ${name}\n`);
-    fn();
 }

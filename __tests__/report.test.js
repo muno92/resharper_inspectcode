@@ -1,15 +1,15 @@
-import {describe as testDescribe, it} from 'node:test'
-import assert from 'node:assert'
-import {XmlReport} from '../src/report/xml'
-import {SarifReport} from '../src/report/sarif'
-import path from 'path'
-import failureSarifReportIssues from './expected_data/failure_sarif_report_issues.json'
-import failureXmlReportIssues from './expected_data/failure_xml_report_issues.json'
-import {Issue} from '../src/issue'
-import {describe, assertIncludesSameMembers} from './test-utils'
+const {describe, it} = require('node:test')
+const assert = require('node:assert')
+const {XmlReport} = require('../lib/report/xml')
+const {SarifReport} = require('../lib/report/sarif')
+const path = require('path')
+const failureSarifReportIssues = require('./expected_data/failure_sarif_report_issues.json')
+const failureXmlReportIssues = require('./expected_data/failure_xml_report_issues.json')
+const {Issue} = require('../lib/issue')
+const {assertIncludesSameMembers} = require('./test-utils')
 
 describe('XML format report', () => {
-  testDescribe('XML report tests', () => {
+  describe('XML report tests', () => {
     it('success report has no issue', () => {
       const report = new XmlReport(
         path.join(
@@ -70,7 +70,7 @@ describe('XML format report', () => {
 })
 
 describe('SARIF format report', () => {
-  testDescribe('SARIF report tests', () => {
+  describe('SARIF report tests', () => {
     it('success report has no issue', () => {
       const report = new SarifReport(
         path.join(
@@ -132,10 +132,10 @@ describe('SARIF format report', () => {
 
 // Helper function for testing minimum severity
 function testMinimumSeverity(
-  minimumSeverity: string,
-  expected: boolean,
-  format: 'xml' | 'sarif'
-): void {
+  minimumSeverity,
+  expected,
+  format
+) {
   const issues = [
     new Issue('', '', 0, '', 'notice'),
     new Issue('', '', 0, '', 'warning')
