@@ -1,4 +1,3 @@
-import jest from 'eslint-plugin-jest'
 import typescriptEslint from '@typescript-eslint/eslint-plugin'
 import globals from 'globals'
 import tsParser from '@typescript-eslint/parser'
@@ -18,7 +17,7 @@ const compat = new FlatCompat({
 
 export default [
   {
-    ignores: ['**/dist/', '**/lib/', '**/node_modules/', '**/jest.config.js']
+    ignores: ['**/dist/', '**/lib/', '**/node_modules/']
   },
   github.getFlatConfigs().recommended,
   ...github.getFlatConfigs().typescript,
@@ -26,14 +25,12 @@ export default [
     files: ['**/*.ts'],
 
     plugins: {
-      jest,
       '@typescript-eslint': typescriptEslint
     },
 
     languageOptions: {
       globals: {
-        ...globals.node,
-        ...jest.environments.globals.globals
+        ...globals.node
       },
 
       parser: tsParser,
