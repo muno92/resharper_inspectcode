@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.13.0](https://github.com/muno92/resharper_inspectcode/compare/1.12.13...1.13.0) - 2025-05-16
+- Bump undici from 5.28.5 to 5.29.0 by @dependabot in https://github.com/muno92/resharper_inspectcode/pull/524
+
 ## [1.12.13](https://github.com/muno92/resharper_inspectcode/compare/1.12.12...1.12.13) - 2025-04-27
 - [Junie] Migrate from Jest to Node.js built-in Test Runner by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/522
 
