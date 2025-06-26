@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.13.1](https://github.com/muno92/resharper_inspectcode/compare/1.13.0...1.13.1) - 2025-06-26
+- Update dependency prettier to v3.6.0 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/527
+- Update dependency prettier to v3.6.1 by @renovate in https://github.com/muno92/resharper_inspectcode/pull/529
+
 ## [1.13.0](https://github.com/muno92/resharper_inspectcode/compare/1.12.13...1.13.0) - 2025-05-16
 - Bump undici from 5.28.5 to 5.29.0 by @dependabot in https://github.com/muno92/resharper_inspectcode/pull/524
 
