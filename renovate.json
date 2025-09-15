@@ -4,5 +4,6 @@
     "group:allNonMajor"
   ],
   "enabledManagers": ["npm"],
+  "minimumReleaseAge": "7 days",
   "rangeStrategy": "replace"
 }
