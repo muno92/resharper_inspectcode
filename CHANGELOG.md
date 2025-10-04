@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.14.0](https://github.com/muno92/resharper_inspectcode/compare/1.13.1...1.14.0) - 2025-10-04
+- Don't use macos-13 for e2e test by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/533
+- Drop support for .NET Core 3.1 and .NET 5 by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/534
+- Drop .NET 6 support by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/537
+
 ## [1.13.1](https://github.com/muno92/resharper_inspectcode/compare/1.13.0...1.13.1) - 2025-09-07
 - Update dependency prettier to v3.6.0 by @renovate[bot] in https://github.com/muno92/resharper_inspectcode/pull/527
 - Update dependency prettier to v3.6.1 by @renovate[bot] in https://github.com/muno92/resharper_inspectcode/pull/529
