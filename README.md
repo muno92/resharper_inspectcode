@@ -167,7 +167,7 @@ jobs:
         id: setup-dotnet
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '9.0.x' # [6.0.x, 7.0.x, 8.0.x, 9.0.x]
+          dotnet-version: '9.0.x' # [7.0.x, 8.0.x, 9.0.x]
       - name: Restore
         run: dotnet restore
       - name: Inspect code
