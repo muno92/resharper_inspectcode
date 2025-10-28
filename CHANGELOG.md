@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.15.0](https://github.com/muno92/resharper_inspectcode/compare/1.14.0...1.15.0) - 2025-10-28
+- Bump Node.js to 24 by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/540
+
 ## [1.14.0](https://github.com/muno92/resharper_inspectcode/compare/1.13.1...1.14.0) - 2025-10-04
 - Don't use macos-13 for e2e test by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/533
 - Drop support for .NET Core 3.1 and .NET 5 by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/534
