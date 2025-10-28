@@ -16,7 +16,7 @@ jobs:
       pull_request: ${{ steps.tagpr.outputs.pull_request }}
       tag: ${{ steps.tagpr.outputs.tag }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - id: tagpr
         uses: Songmu/tagpr@v1
         env:
@@ -28,7 +28,7 @@ jobs:
     env:
       MAJOR_TAG: v1
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Update Tag
         run: |
           git config --local user.email github-actions[bot]@users.noreply.github.com
@@ -40,7 +40,7 @@ jobs:
     if: ${{ needs.tagpr.outputs.tag == '' && needs.tagpr.outputs.pull_request != '' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           ref: ${{ fromJSON(needs.tagpr.outputs.pull_request).head.ref }}
       - name: Install Dependencies
