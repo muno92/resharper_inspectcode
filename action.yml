@@ -55,7 +55,7 @@ inputs:
     required: false
     description: Sets the verbosity level of the output. [OFF, FATAL, ERROR, WARN, INFO, VERBOSE, TRACE]
 runs:
-  using: 'node20'
+  using: 'node24'
   main: 'dist/index.js'
 branding:
   icon: hash
