@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.15.1](https://github.com/muno92/resharper_inspectcode/compare/1.15.0...1.15.1) - 2025-11-15
+- Update dependency js-yaml to v4.1.1 [SECURITY] by @renovate[bot] in https://github.com/muno92/resharper_inspectcode/pull/543
+
 ## [1.15.0](https://github.com/muno92/resharper_inspectcode/compare/1.14.0...1.15.0) - 2025-10-28
 - Bump Node.js to 24 by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/540
 
