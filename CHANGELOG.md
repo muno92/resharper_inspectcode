@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.15.5](https://github.com/muno92/resharper_inspectcode/compare/1.15.4...1.15.5) - 2025-12-18
+- Update dependency @actions/core to v2 by @renovate[bot] in https://github.com/muno92/resharper_inspectcode/pull/552
+- Update dependency @actions/exec to v2 by @renovate[bot] in https://github.com/muno92/resharper_inspectcode/pull/553
+
 ## [1.15.4](https://github.com/muno92/resharper_inspectcode/compare/1.15.3...1.15.4) - 2025-12-11
 - Update dependency prettier to v3.7.4 by @renovate[bot] in https://github.com/muno92/resharper_inspectcode/pull/550
 
