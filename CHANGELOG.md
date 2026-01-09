@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.15.6](https://github.com/muno92/resharper_inspectcode/compare/1.15.5...1.15.6) - 2026-01-09
+- Update dependency globals to v17 by @renovate[bot] in https://github.com/muno92/resharper_inspectcode/pull/555
+
 ## [1.15.5](https://github.com/muno92/resharper_inspectcode/compare/1.15.4...1.15.5) - 2025-12-18
 - Update dependency @actions/core to v2 by @renovate[bot] in https://github.com/muno92/resharper_inspectcode/pull/552
 - Update dependency @actions/exec to v2 by @renovate[bot] in https://github.com/muno92/resharper_inspectcode/pull/553
