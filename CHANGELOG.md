@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.15.9](https://github.com/muno92/resharper_inspectcode/compare/1.15.8...1.15.9) - 2026-02-03
+- Fix vulnerabilities by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/562
+
 ## [1.15.8](https://github.com/muno92/resharper_inspectcode/compare/1.15.7...1.15.8) - 2026-01-29
 - Update dependency prettier to v3.8.1 by @renovate[bot] in https://github.com/muno92/resharper_inspectcode/pull/559
 
