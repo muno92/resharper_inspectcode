@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.16.0](https://github.com/muno92/resharper_inspectcode/compare/1.15.9...1.16.0) - 2026-03-14
+- Bump minimatch from 3.1.2 to 3.1.5 by @dependabot[bot] in https://github.com/muno92/resharper_inspectcode/pull/567
+- Bump undici from 6.23.0 to 6.24.1 by @dependabot[bot] in https://github.com/muno92/resharper_inspectcode/pull/569
+
 ## [1.15.9](https://github.com/muno92/resharper_inspectcode/compare/1.15.8...1.15.9) - 2026-02-03
 - Fix vulnerabilities by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/562
 
