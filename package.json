@@ -27,7 +27,7 @@
   "dependencies": {
     "@actions/core": "^2.0.0",
     "@actions/exec": "^2.0.0",
-    "htmlparser2": "^10.0.0"
+    "htmlparser2": "^11.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
