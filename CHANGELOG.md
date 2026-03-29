@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.17.0](https://github.com/muno92/resharper_inspectcode/compare/1.16.0...1.17.0) - 2026-03-29
+- Bump flatted from 3.3.2 to 3.4.2 by @dependabot[bot] in https://github.com/muno92/resharper_inspectcode/pull/573
+- Bump picomatch from 2.3.1 to 2.3.2 by @dependabot[bot] in https://github.com/muno92/resharper_inspectcode/pull/570
+- Update dependency htmlparser2 to v12 by @renovate[bot] in https://github.com/muno92/resharper_inspectcode/pull/572
+
 ## [1.16.0](https://github.com/muno92/resharper_inspectcode/compare/1.15.9...1.16.0) - 2026-03-14
 - Bump minimatch from 3.1.2 to 3.1.5 by @dependabot[bot] in https://github.com/muno92/resharper_inspectcode/pull/567
 - Bump undici from 6.23.0 to 6.24.1 by @dependabot[bot] in https://github.com/muno92/resharper_inspectcode/pull/569
