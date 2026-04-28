@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.17.1](https://github.com/muno92/resharper_inspectcode/compare/1.17.0...1.17.1) - 2026-04-28
+- Update dependency prettier to v3.8.3 by @renovate[bot] in https://github.com/muno92/resharper_inspectcode/pull/576
+
 ## [1.17.0](https://github.com/muno92/resharper_inspectcode/compare/1.16.0...1.17.0) - 2026-03-29
 - Bump flatted from 3.3.2 to 3.4.2 by @dependabot[bot] in https://github.com/muno92/resharper_inspectcode/pull/573
 - Bump picomatch from 2.3.1 to 2.3.2 by @dependabot[bot] in https://github.com/muno92/resharper_inspectcode/pull/570
