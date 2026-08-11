@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.17.3](https://github.com/muno92/resharper_inspectcode/compare/1.17.2...1.17.3) - 2026-08-11
+
+- Bump ESLint to v10 by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/588
+- Bump TypeScript to v6 by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/590
+
 ## [1.17.2](https://github.com/muno92/resharper_inspectcode/compare/1.17.1...1.17.2) - 2026-08-11
 
 - Update all non-major dependencies by @renovate[bot] in https://github.com/muno92/resharper_inspectcode/pull/578
