@@ -17,8 +17,4 @@ export class Issue {
 
 export type GitHubSeverity = 'notice' | 'warning' | 'error'
 export type ReSharperSeverity =
-  | 'INFO'
-  | 'HINT'
-  | 'SUGGESTION'
-  | 'WARNING'
-  | 'ERROR'
+  'INFO' | 'HINT' | 'SUGGESTION' | 'WARNING' | 'ERROR'
