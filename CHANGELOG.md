@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.17.2](https://github.com/muno92/resharper_inspectcode/compare/1.17.1...1.17.2) - 2026-08-11
+
+- Update all non-major dependencies by @renovate[bot] in https://github.com/muno92/resharper_inspectcode/pull/578
+- Update dependency js-yaml to v4.3.1 [SECURITY] by @renovate[bot] in https://github.com/muno92/resharper_inspectcode/pull/582
+- Update dependency js-yaml to v5 by @renovate[bot] in https://github.com/muno92/resharper_inspectcode/pull/587
+- Bump undici from 6.24.1 to 6.28.0 by @dependabot[bot] in https://github.com/muno92/resharper_inspectcode/pull/584
+
 ## [1.17.1](https://github.com/muno92/resharper_inspectcode/compare/1.17.0...1.17.1) - 2026-04-28
 - Update dependency prettier to v3.8.3 by @renovate[bot] in https://github.com/muno92/resharper_inspectcode/pull/576
 
