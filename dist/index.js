@@ -35692,308 +35692,193 @@ const escapeText = /* #__PURE__ */ getEscaper(/[&<>\u00A0]/g, new Map([
 ;// CONCATENATED MODULE: ./node_modules/dom-serializer/dist/foreign-names.js
 /**
  * Mixed-case SVG and MathML element names recognized in foreign content.
- */
-const elementNames = new Map([
-    "altGlyph",
-    "altGlyphDef",
-    "altGlyphItem",
-    "animateColor",
-    "animateMotion",
-    "animateTransform",
-    "clipPath",
-    "feBlend",
-    "feColorMatrix",
-    "feComponentTransfer",
-    "feComposite",
-    "feConvolveMatrix",
-    "feDiffuseLighting",
-    "feDisplacementMap",
-    "feDistantLight",
-    "feDropShadow",
-    "feFlood",
-    "feFuncA",
-    "feFuncB",
-    "feFuncG",
-    "feFuncR",
-    "feGaussianBlur",
-    "feImage",
-    "feMerge",
-    "feMergeNode",
-    "feMorphology",
-    "feOffset",
-    "fePointLight",
-    "feSpecularLighting",
-    "feSpotLight",
-    "feTile",
-    "feTurbulence",
-    "foreignObject",
-    "glyphRef",
-    "linearGradient",
-    "radialGradient",
-    "textPath",
-].map((value) => [value.toLowerCase(), value]));
-/**
- * Mixed-case SVG and MathML attribute names recognized in foreign content.
- */
-const attributeNames = new Map([
-    "definitionURL",
-    "attributeName",
-    "attributeType",
-    "baseFrequency",
-    "baseProfile",
-    "calcMode",
-    "clipPathUnits",
-    "diffuseConstant",
-    "edgeMode",
-    "filterUnits",
-    "glyphRef",
-    "gradientTransform",
-    "gradientUnits",
-    "kernelMatrix",
-    "kernelUnitLength",
-    "keyPoints",
-    "keySplines",
-    "keyTimes",
-    "lengthAdjust",
-    "limitingConeAngle",
-    "markerHeight",
-    "markerUnits",
-    "markerWidth",
-    "maskContentUnits",
-    "maskUnits",
-    "numOctaves",
-    "pathLength",
-    "patternContentUnits",
-    "patternTransform",
-    "patternUnits",
-    "pointsAtX",
-    "pointsAtY",
-    "pointsAtZ",
-    "preserveAlpha",
-    "preserveAspectRatio",
-    "primitiveUnits",
-    "refX",
-    "refY",
-    "repeatCount",
-    "repeatDur",
-    "requiredExtensions",
-    "requiredFeatures",
-    "specularConstant",
-    "specularExponent",
-    "spreadMethod",
-    "startOffset",
-    "stdDeviation",
-    "stitchTiles",
-    "surfaceScale",
-    "systemLanguage",
-    "tableValues",
-    "targetX",
-    "targetY",
-    "textLength",
-    "viewBox",
-    "viewTarget",
-    "xChannelSelector",
-    "yChannelSelector",
-    "zoomAndPan",
-].map((value) => [value.toLowerCase(), value]));
-
-;// CONCATENATED MODULE: ./node_modules/dom-serializer/dist/index.js
-/*
- * Module dependencies
- */
-
-
-/**
- * Mixed-case SVG and MathML tags & attributes
- * recognized by the HTML parser.
  * @see https://html.spec.whatwg.org/multipage/parsing.html#parsing-main-inforeign
  */
+const elementNames = new Map("altGlyph altGlyphDef altGlyphItem animateColor animateMotion animateTransform clipPath feBlend feColorMatrix feComponentTransfer feComposite feConvolveMatrix feDiffuseLighting feDisplacementMap feDistantLight feDropShadow feFlood feFuncA feFuncB feFuncG feFuncR feGaussianBlur feImage feMerge feMergeNode feMorphology feOffset fePointLight feSpecularLighting feSpotLight feTile feTurbulence foreignObject glyphRef linearGradient radialGradient textPath"
+    .split(" ")
+    .map((name) => [name.toLowerCase(), name]));
+/**
+ * Mixed-case SVG and MathML attribute names recognized in foreign content.
+ * @see https://html.spec.whatwg.org/multipage/parsing.html#parsing-main-inforeign
+ */
+const attributeNames = new Map("definitionURL attributeName attributeType baseFrequency baseProfile calcMode clipPathUnits diffuseConstant edgeMode filterUnits glyphRef gradientTransform gradientUnits kernelMatrix kernelUnitLength keyPoints keySplines keyTimes lengthAdjust limitingConeAngle markerHeight markerUnits markerWidth maskContentUnits maskUnits numOctaves pathLength patternContentUnits patternTransform patternUnits pointsAtX pointsAtY pointsAtZ preserveAlpha preserveAspectRatio primitiveUnits refX refY repeatCount repeatDur requiredExtensions requiredFeatures specularConstant specularExponent spreadMethod startOffset stdDeviation stitchTiles surfaceScale systemLanguage tableValues targetX targetY textLength viewBox viewTarget xChannelSelector yChannelSelector zoomAndPan"
+    .split(" ")
+    .map((name) => [name.toLowerCase(), name]));
+//# sourceMappingURL=foreign-names.js.map
+;// CONCATENATED MODULE: ./node_modules/dom-serializer/dist/index.js
 
-const unencodedElements = new Set([
-    "style",
-    "script",
-    "xmp",
-    "iframe",
-    "noembed",
-    "noframes",
-    "plaintext",
-    "noscript",
-]);
-function replaceQuotes(value) {
-    return value.replace(/"/g, "&quot;");
-}
+
+
+// ── Constants ────────────────────────────────────────────────────────
+/** Elements whose text content is never entity-encoded. */
+const unencodedElements = new Set("style script xmp iframe noembed noframes plaintext noscript".split(" "));
+/** HTML void elements — they cannot have children. */
+const dist_voidElements = new Set("area base basefont br col command embed frame hr img input isindex keygen link meta param source track wbr".split(" "));
+/** Elements that switch the parser into foreign (XML-like) mode. */
+const foreignElements = new Set(["svg", "math"]);
 /**
- * Format attributes
- * @param attributes Attribute map to serialize.
- * @param options Options that control this operation.
+ * Foreign-mode integration points: children of these elements are parsed
+ * as HTML again, not as foreign content.
  */
-function formatAttributes(attributes, options) {
-    if (!attributes)
-        return;
-    const encode = (options.encodeEntities ?? options.decodeEntities) === false
-        ? replaceQuotes
-        : !!options.xmlMode || options.encodeEntities !== "utf8"
-            ? encodeXML
-            : escapeAttribute;
-    return Object.keys(attributes)
-        .map((key) => {
-        const value = attributes[key];
-        const normalizedValue = value == null ? "" : String(value);
-        if (options.xmlMode === "foreign") {
-            /* Fix up mixed-case attribute names */
-            key = attributeNames.get(key) ?? key;
-        }
-        if (!(options.emptyAttrs || options.xmlMode) && normalizedValue === "") {
-            return key;
-        }
-        return `${key}="${encode(normalizedValue)}"`;
-    })
-        .join(" ");
-}
-/**
- * Self-enclosing tags
- */
-const singleTag = new Set([
-    "area",
-    "base",
-    "basefont",
-    "br",
-    "col",
-    "command",
-    "embed",
-    "frame",
-    "hr",
-    "img",
-    "input",
-    "isindex",
-    "keygen",
-    "link",
-    "meta",
-    "param",
-    "source",
-    "track",
-    "wbr",
-]);
+const foreignModeIntegrationPoints = new Set("mi mo mn ms mtext annotation-xml foreignObject desc title".split(" "));
+// ── Public API ───────────────────────────────────────────────────────
 /**
  * Renders a DOM node or an array of DOM nodes to a string.
  *
- * Can be thought of as the equivalent of the `outerHTML` of the passed node(s).
+ * Can be thought of as the equivalent of the `outerHTML` of the passed
+ * node(s).
  * @param node Node to be rendered.
  * @param options Changes serialization behavior
  */
 function render(node, options = {}) {
     const nodes = "length" in node ? node : [node];
+    /*
+     * `xmlMode` is threaded as a separate argument through the internal
+     * functions so that foreign-mode transitions (svg/mathml ↔ html) can
+     * adjust it without copying the options object on every element.
+     */
+    const xmlMode = options.xmlMode ?? false;
     let output = "";
-    let index = 0;
-    while (index < nodes.length) {
-        output += renderNode(nodes[index], options);
-        index++;
+    // eslint-disable-next-line unicorn/no-for-loop
+    for (let index = 0; index < nodes.length; index++) {
+        output += renderNode(nodes[index], options, xmlMode);
     }
     return output;
 }
 /* harmony default export */ const dom_serializer_dist = (render);
-function renderNode(node, options) {
+// ── Internal rendering ───────────────────────────────────────────────
+/**
+ * Render an array of child nodes (skips the single-node wrapping in `render`).
+ * @param children The child nodes to render.
+ * @param options The serialization options.
+ * @param xmlMode The XML mode to use.
+ */
+function renderChildren(children, options, xmlMode) {
+    let output = "";
+    // eslint-disable-next-line unicorn/no-for-loop
+    for (let index = 0; index < children.length; index++) {
+        output += renderNode(children[index], options, xmlMode);
+    }
+    return output;
+}
+function renderNode(node, options, xmlMode) {
     switch (node.type) {
         case Root: {
-            return render(node.children, options);
+            return renderChildren(node.children, options, xmlMode);
         }
-        // @ts-expect-error We don't use `Doctype` yet
-        case Doctype:
         case Directive: {
-            return renderDirective(node);
+            return `<${node.data}>`;
         }
         case Comment: {
-            return renderComment(node);
+            return `<!--${node.data}-->`;
         }
         case CDATA: {
-            return renderCdata(node);
+            return `<![CDATA[${node.children[0].data}]]>`;
         }
         case Script:
         case Style:
         case Tag: {
-            return renderTag(node, options);
+            return renderTag(node, options, xmlMode);
         }
         case Text: {
-            return renderText(node, options);
+            const element = node;
+            const data = element.data || "";
+            /*
+             * Skip encoding when entities weren't decoded on input, or when
+             * inside a raw-text element (script, style, etc.) in HTML mode.
+             */
+            if ((options.encodeEntities ?? options.decodeEntities) !== false &&
+                !(!xmlMode &&
+                    element.parent &&
+                    unencodedElements.has(element.parent.name))) {
+                // `xmlMode: "foreign"` is truthy
+                return xmlMode || options.encodeEntities !== "utf8"
+                    ? encodeXML(data)
+                    : escapeText(data);
+            }
+            return data;
         }
     }
 }
-const foreignModeIntegrationPoints = new Set([
-    "mi",
-    "mo",
-    "mn",
-    "ms",
-    "mtext",
-    "annotation-xml",
-    "foreignObject",
-    "desc",
-    "title",
-]);
-const foreignElements = new Set(["svg", "math"]);
-function renderTag(element, options) {
-    // Handle SVG / MathML in HTML
-    if (options.xmlMode === "foreign") {
-        /* Fix up mixed-case element names */
+function renderTag(element, options, xmlMode) {
+    if (xmlMode === "foreign") {
+        // Correct lowercase element names back to their canonical mixed-case form
         element.name = elementNames.get(element.name) ?? element.name;
-        /* Exit foreign mode at integration points */
+        // Integration points exit foreign mode: their children are HTML
         if (element.parent &&
             foreignModeIntegrationPoints.has(element.parent.name)) {
-            options = { ...options, xmlMode: false };
+            xmlMode = false;
         }
     }
-    if (!options.xmlMode && foreignElements.has(element.name)) {
-        options = { ...options, xmlMode: "foreign" };
+    if (!xmlMode && foreignElements.has(element.name)) {
+        xmlMode = "foreign";
     }
-    let tag = `<${element.name}`;
-    const attribs = formatAttributes(element.attribs, options);
-    if (attribs) {
-        tag += ` ${attribs}`;
-    }
-    if (element.children.length === 0 &&
-        (options.xmlMode
-            ? // In XML mode or foreign mode, and user hasn't explicitly turned off self-closing tags
-                options.selfClosingTags !== false
-            : // User explicitly asked for self-closing tags, even in HTML mode
-                options.selfClosingTags && singleTag.has(element.name))) {
-        if (!options.xmlMode)
-            tag += " ";
-        tag += "/>";
+    const { name, children } = element;
+    // Cache the void-element check — used for both self-closing and closing-tag logic
+    const isVoid = !xmlMode && dist_voidElements.has(name);
+    let tag = `<${name}${formatAttributes(element.attribs, options, xmlMode)}`;
+    if (children.length === 0 &&
+        (xmlMode
+            ? options.selfClosingTags !== false
+            : options.selfClosingTags && isVoid)) {
+        // XML: `<br/>`, HTML: `<br />`
+        tag += xmlMode ? "/>" : " />";
     }
     else {
         tag += ">";
-        if (element.children.length > 0) {
-            tag += render(element.children, options);
+        if (children.length > 0) {
+            tag += renderChildren(children, options, xmlMode);
         }
-        if (!!options.xmlMode || !singleTag.has(element.name)) {
-            tag += `</${element.name}>`;
+        if (!isVoid) {
+            tag += `</${name}>`;
         }
     }
     return tag;
 }
-function renderDirective(element) {
-    return `<${element.data}>`;
+// ── Attribute formatting ─────────────────────────────────────────────
+function replaceQuotes(value) {
+    return value.replaceAll('"', "&quot;");
 }
-function renderText(element, options) {
-    let data = element.data || "";
-    // If entities weren't decoded, no need to encode them back
-    if ((options.encodeEntities ?? options.decodeEntities) !== false &&
-        !(!options.xmlMode &&
-            element.parent &&
-            unencodedElements.has(element.parent.name))) {
-        data =
-            !!options.xmlMode || options.encodeEntities !== "utf8"
-                ? encodeXML(data)
-                : escapeText(data);
+/**
+ * Serialize an element's attribute map to a string.
+ *
+ * Returns a string with a leading space before each attribute, or an
+ * empty string if there are no attributes. This convention lets the
+ * caller unconditionally concatenate the result onto the tag name.
+ * @param attributes
+ * @param options
+ * @param xmlMode
+ */
+function formatAttributes(attributes, options, xmlMode) {
+    if (!attributes)
+        return "";
+    /*
+     * Pick the right encoder:
+     *  - Encoding disabled → only escape double-quotes (for valid attributes)
+     *  - XML / non-utf8    → full numeric entity encoding (encodeXML)
+     *  - HTML + utf8       → minimal escaping (escapeAttribute)
+     */
+    const encode = (options.encodeEntities ?? options.decodeEntities) === false
+        ? replaceQuotes
+        : xmlMode || options.encodeEntities !== "utf8"
+            ? encodeXML
+            : escapeAttribute;
+    const isForeign = xmlMode === "foreign";
+    const showEmpty = !!(options.emptyAttrs ?? xmlMode);
+    let result = "";
+    for (const key in attributes) {
+        if (!Object.hasOwn(attributes, key))
+            continue;
+        const value = attributes[key];
+        const k = isForeign ? (attributeNames.get(key) ?? key) : key;
+        result +=
+            !showEmpty && (value == null || value === "")
+                ? ` ${k}`
+                : ` ${k}="${encode(value == null ? "" : String(value))}"`;
     }
-    return data;
+    return result;
 }
-function renderCdata(element) {
-    return `<![CDATA[${element.children[0].data}]]>`;
-}
-function renderComment(element) {
-    return `<!--${element.data}-->`;
-}
-
+//# sourceMappingURL=index.js.map
 ;// CONCATENATED MODULE: ./node_modules/domutils/dist/stringify.js
 
 
