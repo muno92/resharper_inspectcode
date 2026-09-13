@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.17.4](https://github.com/muno92/resharper_inspectcode/compare/1.17.3...1.17.4) - 2026-09-13
+
+- Update dependency @vercel/ncc to ^0.45.0 by @renovate[bot] in https://github.com/muno92/resharper_inspectcode/pull/591
+- Bump js-yaml from 4.3.1 to 4.3.2 by @dependabot[bot] in https://github.com/muno92/resharper_inspectcode/pull/592
+
 ## [1.17.3](https://github.com/muno92/resharper_inspectcode/compare/1.17.2...1.17.3) - 2026-08-11
 
 - Bump ESLint to v10 by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/588
