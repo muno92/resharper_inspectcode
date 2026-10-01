@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.17.6](https://github.com/muno92/resharper_inspectcode/compare/1.17.5...1.17.6) - 2026-10-01
+
+- Update dependency prettier to v3.9.9 by @renovate[bot] in https://github.com/muno92/resharper_inspectcode/pull/596
+- Bump undici from 6.28.0 to 6.29.0 by @dependabot[bot] in https://github.com/muno92/resharper_inspectcode/pull/597
+- Bump brace-expansion by @dependabot[bot] in https://github.com/muno92/resharper_inspectcode/pull/599
+
 ## [1.17.5](https://github.com/muno92/resharper_inspectcode/compare/1.17.4...1.17.5) - 2026-09-24
 
 - Update dependency prettier to v3.9.7 by @renovate[bot] in https://github.com/muno92/resharper_inspectcode/pull/594
