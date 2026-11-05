@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.17.9](https://github.com/muno92/resharper_inspectcode/compare/1.17.8...1.17.9) - 2026-11-04
+
+- Bump minimatch by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/605
+
 ## [1.17.8](https://github.com/muno92/resharper_inspectcode/compare/1.17.7...1.17.8) - 2026-11-02
 
 - Bump undici from 6.29.0 to 6.29.1 by @dependabot[bot] in https://github.com/muno92/resharper_inspectcode/pull/603
