@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.17.10](https://github.com/muno92/resharper_inspectcode/compare/1.17.9...1.17.10) - 2026-11-19
+
+- Update dependency prettier to v3.10.0 by @renovate[bot] in https://github.com/muno92/resharper_inspectcode/pull/607
+- Update dependency prettier to v3.10.1 by @renovate[bot] in https://github.com/muno92/resharper_inspectcode/pull/609
+
 ## [1.17.9](https://github.com/muno92/resharper_inspectcode/compare/1.17.8...1.17.9) - 2026-11-04
 
 - Bump minimatch by @muno92 in https://github.com/muno92/resharper_inspectcode/pull/605
